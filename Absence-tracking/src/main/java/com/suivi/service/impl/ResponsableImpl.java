@@ -34,14 +34,22 @@ public class ResponsableImpl implements ResponsableFilièreService{
 
 	@Override
 	public int save(ResponsableFilière responsableFilière) {
-		// TODO Auto-generated method stub
-		return 0;
+		ResponsableFilière responsableFilièreFounded = findByFilière(responsableFilière.getFilière());
+		if(responsableFilièreFounded == null) {
+			responsableFilièreDao.save(responsableFilièreFounded);
+			return 1;
+		}
+		else return -1;
 	}
 
 	@Override
 	public int update(ResponsableFilière responsableFilière) {
-		// TODO Auto-generated method stub
-		return 0;
+		ResponsableFilière responsableFilièreFounded = findByFilière(responsableFilière.getFilière());
+		if(responsableFilièreFounded != null) {
+			responsableFilièreFounded.setEnseignant(responsableFilière.getEnseignant());
+			return 1;
+		}
+		else return -1;
 	}
 
 	@Override

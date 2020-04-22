@@ -33,12 +33,22 @@ public class FilièreImpl implements FilièreService{
 
 	@Override
 	public int save(Filière filière) {
-		return 0;
+		Filière filièreFounded = findByLibelle(filière.getLibelle());
+		if(filièreFounded == null) {
+			filièreDao.save(filièreFounded);
+			return 1;
+		}
+		else return -1;
 	}
 
 	@Override
 	public int update(Filière filière) {
-		return 0;
+		Filière filièreFounded = findByLibelle(filière.getLibelle());
+		if(filièreFounded != null) {
+			filièreFounded.setCycle(filière.getCycle());
+			return 1;
+		}
+		else return -1;
 	}
 
 	@Override

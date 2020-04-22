@@ -52,14 +52,25 @@ public class EnseignantImpl implements EnseignantService{
 
 	@Override
 	public int save(Enseignant enseignant) {
-		// TODO Auto-generated method stub
-		return 0;
+		Enseignant enseignantFounded = findByMatricule(enseignant.getMatricule());
+		if(enseignantFounded == null) {
+			enseignantDao.save(enseignantFounded);
+			return 1;
+		}
+		else return -1;
 	}
 
 	@Override
 	public int update(Enseignant enseignant) {
-		// TODO Auto-generated method stub
-		return 0;
+		Enseignant enseignantFounded = findByMatricule(enseignant.getMatricule());
+		if(enseignantFounded != null) {
+			enseignantFounded.setMail(enseignant.getMail());
+			enseignantFounded.setTel(enseignant.getTel());
+			enseignantFounded.setFirstName(enseignant.getFirstName());
+			enseignantFounded.setLastName(enseignant.getLastName());
+			return 1;
+		}
+		else return -1;
 	}
 
 	@Override

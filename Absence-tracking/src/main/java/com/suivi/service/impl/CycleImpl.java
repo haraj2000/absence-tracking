@@ -27,15 +27,14 @@ public class CycleImpl implements CycleService{
 
 	@Override
 	public int save(Cycle cycle) {
-		// TODO Auto-generated method stub
-		return 0;
+		Cycle cycleFounded = findByLibelle(cycle.getLibelle());
+				if(cycleFounded == null) {
+					cycleDao.save(cycleFounded);
+					return 1;
+				}
+				else return -1;
 	}
 
-	@Override
-	public int update(Cycle cycle) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public List<Cycle> findAll() {

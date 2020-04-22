@@ -27,15 +27,14 @@ public class MatièreImpl implements MatièreService{
 
 	@Override
 	public int save(Matière matière) {
-		// TODO Auto-generated method stub
-		return 0;
+		Matière matièreFounded = findByLibelle(matière.getLibelle());
+		if(matièreFounded == null) {
+			matièreDao.save(matièreFounded);
+			return 1;
+		}
+		else return -1;
 	}
 
-	@Override
-	public int update(Matière matière) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public List<Matière> findAll() {

@@ -45,14 +45,22 @@ public class TypeFormationImpl implements TypeFormationService{
 
 	@Override
 	public int save(TypeFormation typeFormation) {
-		// TODO Auto-generated method stub
-		return 0;
+		TypeFormation typeFormationFounded = findByLibelle(typeFormation.getLibelle());
+		if(typeFormationFounded == null) {
+			typeFormationDao.save(typeFormationFounded);
+			return 1;
+		}
+		else return -1;
 	}
 
 	@Override
 	public int update(TypeFormation typeFormation) {
-		// TODO Auto-generated method stub
-		return 0;
+		TypeFormation typeFormationFounded = findByLibelle(typeFormation.getLibelle());
+		if(typeFormationFounded != null) {
+			typeFormationFounded.setEnseignant(typeFormation.getEnseignant());
+			return 1;
+		}
+		else return -1;
 	}
 
 	@Override

@@ -27,14 +27,12 @@ public class DépartementImpl implements DépartementService{
 
 	@Override
 	public int save(Département département) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int update(Département département) {
-		// TODO Auto-generated method stub
-		return 0;
+		Département départementFounded = findByLibelle(département.getLibelle());
+		if(départementFounded == null) {
+			départementDao.save(départementFounded);
+			return 1;
+		}
+		else return -1;
 	}
 
 	@Override
