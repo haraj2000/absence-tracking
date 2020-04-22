@@ -11,7 +11,7 @@ import com.suivi.bean.Enseignant;
 public interface EnseignantDao extends JpaRepository<Enseignant, Long>{
 
 	public List<Enseignant> findByFirstName(String firstName);
-	public List<Enseignant> findByFirstLast(String firstLast);
+	public List<Enseignant> findByLastName(String lastName);
 	public Enseignant findByMatricule(String matricule);
 	public Enseignant findByCin(String cin);
 	public Enseignant findByMail(String mail);

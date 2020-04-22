@@ -4,6 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,34 +27,35 @@ public class TypeFormationRest {
 	@Autowired
 	private TypeFormationService formationService;
 
-	public TypeFormation findByLibelle(String libelle) {
+	@GetMapping("/libelle/{libelle}")
+	public TypeFormation findByLibelle(@PathVariable String libelle) {
 		return formationService.findByLibelle(libelle);
 	}
-
-	public List<TypeFormation> findByEnseignant(Enseignant enseignant) {
+	@GetMapping("/enseignant")
+	public List<TypeFormation> findByEnseignant(@RequestBody Enseignant enseignant) {
 		return formationService.findByEnseignant(enseignant);
 	}
-
-	public List<TypeFormation> findByMatière(Matière matière) {
+	@GetMapping("/matière")
+	public List<TypeFormation> findByMatière(@RequestBody Matière matière) {
 		return formationService.findByMatière(matière);
 	}
-
-	public List<TypeFormation> findByModule(Module module) {
+	@GetMapping("/module")
+	public List<TypeFormation> findByModule(@RequestBody Module module) {
 		return formationService.findByModule(module);
 	}
-
-	public int deleteByLibelle(String libelle) {
+	@DeleteMapping("/libelle/{libelle}")
+	public int deleteByLibelle(@PathVariable String libelle) {
 		return formationService.deleteByLibelle(libelle);
 	}
-
-	public int save(TypeFormation typeFormation) {
+	@PostMapping("/")
+	public int save(@RequestBody TypeFormation typeFormation) {
 		return formationService.save(typeFormation);
 	}
-
-	public int update(TypeFormation typeFormation) {
+	@PutMapping("/")
+	public int update(@RequestBody TypeFormation typeFormation) {
 		return formationService.update(typeFormation);
 	}
-
+	@GetMapping("/")
 	public List<TypeFormation> findAll() {
 		return formationService.findAll();
 	}

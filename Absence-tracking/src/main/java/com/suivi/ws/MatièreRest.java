@@ -4,6 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,22 +24,23 @@ public class MatièreRest {
 	@Autowired
 	private MatièreService matièreService;
 
-	public Matière findByLibelle(String libelle) {
+	@GetMapping("/libelle/{libelle}")
+	public Matière findByLibelle(@PathVariable String libelle) {
 		return matièreService.findByLibelle(libelle);
 	}
-
-	public int deleteByLibelle(String libelle) {
+	@DeleteMapping("/libelle/{libelle}")
+	public int deleteByLibelle(@PathVariable String libelle) {
 		return matièreService.deleteByLibelle(libelle);
 	}
-
-	public int save(Matière matière) {
+	@PostMapping("/")
+	public int save(@RequestBody Matière matière) {
 		return matièreService.save(matière);
 	}
-
-	public int update(Matière matière) {
+	@PutMapping("/")
+	public int update(@RequestBody Matière matière) {
 		return matièreService.update(matière);
 	}
-
+	@GetMapping("/")
 	public List<Matière> findAll() {
 		return matièreService.findAll();
 	}

@@ -4,6 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,22 +24,23 @@ public class DépartementRest {
 	@Autowired 
 	private DépartementService départementService;
 
-	public Département findByLibelle(String libelle) {
+	@GetMapping("/libelle/{libelle}")
+	public Département findByLibelle(@PathVariable String libelle) {
 		return départementService.findByLibelle(libelle);
 	}
-
-	public int deleteByLibelle(String libelle) {
+	@DeleteMapping("/libelle/{libelle}")
+	public int deleteByLibelle(@PathVariable String libelle) {
 		return départementService.deleteByLibelle(libelle);
 	}
-
-	public int save(Département département) {
+	@PostMapping("/")
+	public int save(@RequestBody Département département) {
 		return départementService.save(département);
 	}
-
-	public int update(Département département) {
+	@PutMapping("/")
+	public int update(@RequestBody Département département) {
 		return départementService.update(département);
 	}
-
+	@GetMapping("/")
 	public List<Département> findAll() {
 		return départementService.findAll();
 	}

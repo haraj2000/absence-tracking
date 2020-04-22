@@ -22,7 +22,7 @@ public class EnseignantImpl implements EnseignantService{
 	}
 
 	@Override
-	public List<Enseignant> findByFirstLast(String firstLast) {
+	public List<Enseignant> findByLastName(String lastName) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -4,6 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,26 +25,27 @@ public class ResponsableRest {
 	@Autowired
 	private ResponsableFilièreService responsableFilièreService;
 
-	public ResponsableFilière findByFilière(Filière filière) {
+	@GetMapping("/filière")
+	public ResponsableFilière findByFilière(@RequestBody Filière filière) {
 		return responsableFilièreService.findByFilière(filière);
 	}
-
-	public ResponsableFilière findByEnseignant(Enseignant enseignant) {
+	@GetMapping("/enseignant")
+	public ResponsableFilière findByEnseignant(@RequestBody Enseignant enseignant) {
 		return responsableFilièreService.findByEnseignant(enseignant);
 	}
-
-	public int deleteByFilière(Filière filière) {
+	@DeleteMapping("/")
+	public int deleteByFilière(@RequestBody Filière filière) {
 		return responsableFilièreService.deleteByFilière(filière);
 	}
-
-	public int save(ResponsableFilière responsableFilière) {
+	@PostMapping("/")
+	public int save(@RequestBody ResponsableFilière responsableFilière) {
 		return responsableFilièreService.save(responsableFilière);
 	}
-
-	public int update(ResponsableFilière responsableFilière) {
+	@PutMapping("/")
+	public int update(@RequestBody ResponsableFilière responsableFilière) {
 		return responsableFilièreService.update(responsableFilière);
 	}
-
+	@GetMapping("/")
 	public List<ResponsableFilière> findAll() {
 		return responsableFilièreService.findAll();
 	}
