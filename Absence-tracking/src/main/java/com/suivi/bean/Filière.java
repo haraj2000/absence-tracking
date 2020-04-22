@@ -1,11 +1,12 @@
 package com.suivi.bean;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
+@Entity
 public class Filière {
 
 	@Id
@@ -14,8 +15,7 @@ public class Filière {
 	private String libelle;
 	@ManyToOne
 	private Cycle cycle;
-	@OneToOne(mappedBy = "filière")
-	private ResponsableFilière responsableFilière;
+	
 	
 	public Long getId() {
 		return id;
@@ -35,20 +35,13 @@ public class Filière {
 	public void setCycle(Cycle cycle) {
 		this.cycle = cycle;
 	}
-	public ResponsableFilière getResponsableFilière() {
-		return responsableFilière;
-	}
-	public void setResponsableFilière(ResponsableFilière responsableFilière) {
-		this.responsableFilière = responsableFilière;
-	}
 	public Filière() {
 		super();
 	}
-	public Filière(String libelle, Cycle cycle, ResponsableFilière responsableFilière) {
+	public Filière(String libelle, Cycle cycle) {
 		super();
 		this.libelle = libelle;
 		this.cycle = cycle;
-		this.responsableFilière = responsableFilière;
 	}
 		
 }

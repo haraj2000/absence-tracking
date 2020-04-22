@@ -1,5 +1,13 @@
 package com.suivi.dao;
 
-public interface MatièreDao {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+import com.suivi.bean.Matière;
+
+@Repository
+public interface MatièreDao extends JpaRepository<MatièreDao, Long>{
+
+	public Matière findByLibelle(String libelle);
+	public int deleteByLibelle(String libelle);
 }
