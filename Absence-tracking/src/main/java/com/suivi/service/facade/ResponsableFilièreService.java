@@ -1,17 +1,17 @@
-package com.suivi.dao;
+package com.suivi.service.facade;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
 import com.suivi.bean.Enseignant;
 import com.suivi.bean.Filière;
 import com.suivi.bean.ResponsableFilière;
 
-@Repository
-public interface ResponsableFilièreDao extends JpaRepository<ResponsableFilière, Long>{
+public interface ResponsableFilièreService {
 
 	public ResponsableFilière findByFilière(Filière filière);
 	public ResponsableFilière findByEnseignant(Enseignant enseignant);
 	public int deleteByFilière(Filière filière);
-	
+	public int save(ResponsableFilière responsableFilière);
+	public int update(ResponsableFilière responsableFilière);
+	public List<ResponsableFilière> findAll();
 }
