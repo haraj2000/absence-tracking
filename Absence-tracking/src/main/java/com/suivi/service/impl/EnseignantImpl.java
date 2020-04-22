@@ -17,44 +17,37 @@ public class EnseignantImpl implements EnseignantService{
 	
 	@Override
 	public List<Enseignant> findByFirstName(String firstName) {
-		// TODO Auto-generated method stub
-		return null;
+		return enseignantDao.findByFirstName(firstName);
 	}
 
 	@Override
 	public List<Enseignant> findByLastName(String lastName) {
-		// TODO Auto-generated method stub
-		return null;
+		return enseignantDao.findByLastName(lastName);
 	}
 
 	@Override
 	public Enseignant findByMatricule(String matricule) {
-		// TODO Auto-generated method stub
-		return null;
+		return enseignantDao.findByMatricule(matricule);
 	}
 
 	@Override
 	public Enseignant findByCin(String cin) {
-		// TODO Auto-generated method stub
-		return null;
+		return enseignantDao.findByCin(cin);
 	}
 
 	@Override
 	public Enseignant findByMail(String mail) {
-		// TODO Auto-generated method stub
-		return null;
+		return enseignantDao.findByMail(mail);
 	}
 
 	@Override
 	public int deleteByMatricule(String matricule) {
-		// TODO Auto-generated method stub
-		return 0;
+		return enseignantDao.deleteByMatricule(matricule);
 	}
 
 	@Override
 	public int deleteByCin(String cin) {
-		// TODO Auto-generated method stub
-		return 0;
+		return enseignantDao.deleteByCin(cin);
 	}
 
 	@Override
@@ -71,8 +64,7 @@ public class EnseignantImpl implements EnseignantService{
 
 	@Override
 	public List<Enseignant> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return enseignantDao.findAll();
 	}
 
 }

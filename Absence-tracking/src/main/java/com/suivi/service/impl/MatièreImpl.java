@@ -17,14 +17,12 @@ public class MatièreImpl implements MatièreService{
 	
 	@Override
 	public Matière findByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return null;
+		return matièreDao.findByLibelle(libelle);
 	}
 
 	@Override
 	public int deleteByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return 0;
+		return matièreDao.deleteByLibelle(libelle);
 	}
 
 	@Override
@@ -41,8 +39,7 @@ public class MatièreImpl implements MatièreService{
 
 	@Override
 	public List<Matière> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return matièreDao.findAll();
 	}
 
 	

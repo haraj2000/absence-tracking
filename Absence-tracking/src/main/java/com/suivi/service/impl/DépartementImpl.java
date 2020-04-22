@@ -17,14 +17,12 @@ public class DépartementImpl implements DépartementService{
 	
 	@Override
 	public Département findByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return null;
+		return départementDao.findByLibelle(libelle);
 	}
 
 	@Override
 	public int deleteByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return 0;
+		return départementDao.deleteByLibelle(libelle);
 	}
 
 	@Override
@@ -41,8 +39,7 @@ public class DépartementImpl implements DépartementService{
 
 	@Override
 	public List<Département> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return départementDao.findAll();
 	}
 
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.suivi.bean.Matière;
 
 @Repository
-public interface MatièreDao extends JpaRepository<MatièreDao, Long>{
+public interface MatièreDao extends JpaRepository<Matière, Long>{
 
 	public Matière findByLibelle(String libelle);
 	public int deleteByLibelle(String libelle);

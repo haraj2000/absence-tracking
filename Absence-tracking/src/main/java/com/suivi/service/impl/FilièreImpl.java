@@ -18,38 +18,32 @@ public class FilièreImpl implements FilièreService{
 	
 	@Override
 	public Filière findByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return null;
+		return filièreDao.findByLibelle(libelle);
 	}
 
 	@Override
 	public List<Filière> findByCycle(Cycle cycle) {
-		// TODO Auto-generated method stub
-		return null;
+		return filièreDao.findByCycle(cycle);
 	}
 
 	@Override
 	public int deleteByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return 0;
+		return filièreDao.deleteByLibelle(libelle);
 	}
 
 	@Override
 	public int save(Filière filière) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int update(Filière filière) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public List<Filière> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return filièreDao.findAll();
 	}
 
 }

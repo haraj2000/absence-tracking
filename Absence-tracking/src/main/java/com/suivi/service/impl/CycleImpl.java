@@ -17,14 +17,12 @@ public class CycleImpl implements CycleService{
 	
 	@Override
 	public Cycle findByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return null;
+		return cycleDao.findByLibelle(libelle);
 	}
 
 	@Override
 	public int deleteByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return 0;
+		return cycleDao.deleteByLibelle(libelle);
 	}
 
 	@Override
@@ -41,8 +39,7 @@ public class CycleImpl implements CycleService{
 
 	@Override
 	public List<Cycle> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return cycleDao.findAll();
 	}
 
 	

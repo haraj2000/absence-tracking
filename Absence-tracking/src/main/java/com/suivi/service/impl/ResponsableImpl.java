@@ -19,20 +19,17 @@ public class ResponsableImpl implements ResponsableFilièreService{
 	
 	@Override
 	public ResponsableFilière findByFilière(Filière filière) {
-		// TODO Auto-generated method stub
-		return null;
+		return responsableFilièreDao.findByFilière(filière);
 	}
 
 	@Override
 	public ResponsableFilière findByEnseignant(Enseignant enseignant) {
-		// TODO Auto-generated method stub
-		return null;
+		return responsableFilièreDao.findByEnseignant(enseignant);
 	}
 
 	@Override
 	public int deleteByFilière(Filière filière) {
-		// TODO Auto-generated method stub
-		return 0;
+		return responsableFilièreDao.deleteByFilière(filière);
 	}
 
 	@Override
@@ -49,8 +46,7 @@ public class ResponsableImpl implements ResponsableFilièreService{
 
 	@Override
 	public List<ResponsableFilière> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return responsableFilièreDao.findAll();
 	}
 
 }

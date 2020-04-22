@@ -20,32 +20,27 @@ public class TypeFormationImpl implements TypeFormationService{
 	
 	@Override
 	public TypeFormation findByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return null;
+		return typeFormationDao.findByLibelle(libelle);
 	}
 
 	@Override
 	public List<TypeFormation> findByEnseignant(Enseignant enseignant) {
-		// TODO Auto-generated method stub
-		return null;
+		return typeFormationDao.findByEnseignant(enseignant);
 	}
 
 	@Override
 	public List<TypeFormation> findByMatière(Matière matière) {
-		// TODO Auto-generated method stub
-		return null;
+		return typeFormationDao.findByMatière(matière);
 	}
 
 	@Override
 	public List<TypeFormation> findByModule(Module module) {
-		// TODO Auto-generated method stub
-		return null;
+		return typeFormationDao.findByModule(module);
 	}
 
 	@Override
 	public int deleteByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return 0;
+		return typeFormationDao.deleteByLibelle(libelle);
 	}
 
 	@Override
@@ -62,8 +57,7 @@ public class TypeFormationImpl implements TypeFormationService{
 
 	@Override
 	public List<TypeFormation> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return typeFormationDao.findAll();
 	}
 
 }
