@@ -2,6 +2,8 @@ package com.suivi.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,7 @@ public class ResponsableImpl implements ResponsableFilièreService{
 	}
 
 	@Override
+	@Transactional
 	public int deleteByFilière(Filière filière) {
 		return responsableFilièreDao.deleteByFilière(filière);
 	}

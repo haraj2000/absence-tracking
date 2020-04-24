@@ -2,6 +2,8 @@ package com.suivi.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,7 @@ public class GroupeImpl implements GroupeService {
 	}
 
 	@Override
+	@Transactional
 	public int deleteByLibelle(String libelle) {
 		return groupeDao.deleteByLibelle(libelle);
 	}

@@ -2,6 +2,8 @@ package com.suivi.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +44,7 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
+	@Transactional
 	public int deleteByCin(String cin) {
 		return etudiantDao.deleteByCin(cin);
 	}

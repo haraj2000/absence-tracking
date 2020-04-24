@@ -2,6 +2,8 @@ package com.suivi.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,11 +43,13 @@ public class EnseignantImpl implements EnseignantService{
 	}
 
 	@Override
+	@Transactional
 	public int deleteByMatricule(String matricule) {
 		return enseignantDao.deleteByMatricule(matricule);
 	}
 
 	@Override
+	@Transactional
 	public int deleteByCin(String cin) {
 		return enseignantDao.deleteByCin(cin);
 	}
