@@ -21,7 +21,7 @@ import com.suivi.service.facade.TypeFormationService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("pfe/absence-tracking")
+@RequestMapping("absence-tracking/typeFormation")
 public class TypeFormationRest {
 	
 	@Autowired

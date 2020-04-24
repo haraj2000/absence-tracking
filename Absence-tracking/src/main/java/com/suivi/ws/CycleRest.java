@@ -17,7 +17,7 @@ import com.suivi.service.facade.CycleService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("pfe/absence-tracking")
+@RequestMapping("absence-tracking/cycle")
 public class CycleRest {
 	
 	@Autowired

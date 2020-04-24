@@ -18,7 +18,7 @@ import com.suivi.service.facade.EnseignantService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("pfe/absence-tracking")
+@RequestMapping("absence-tracking/enseignant")
 public class EnseignantRest {
 	
 	@Autowired
