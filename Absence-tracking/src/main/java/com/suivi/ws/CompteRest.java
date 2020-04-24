@@ -17,7 +17,7 @@ import com.suivi.service.facade.CompteService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("pfe/absence-tracking")
+@RequestMapping("absence-tracking/compte")
 public class CompteRest {
 	@Autowired
 	private CompteService compteService;

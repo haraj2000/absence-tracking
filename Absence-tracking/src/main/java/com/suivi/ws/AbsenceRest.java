@@ -21,7 +21,7 @@ import com.suivi.service.facade.AbsenceService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("pfe/absence-tracking")
+@RequestMapping("absence-tracking/absence")
 public class AbsenceRest {
 	@Autowired
 	private AbsenceService absenceService;

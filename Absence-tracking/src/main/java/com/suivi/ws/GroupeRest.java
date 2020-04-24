@@ -17,7 +17,7 @@ import com.suivi.service.facade.GroupeService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("pfe/absence-tracking")
+@RequestMapping("absence-tracking/groupe")
 public class GroupeRest {
 	@Autowired
 	private GroupeService groupeService;

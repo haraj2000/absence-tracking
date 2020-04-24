@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 @Entity
 public class Enseignant {
@@ -19,6 +20,7 @@ public class Enseignant {
 	private String firstName;
 	private String lastName;
 	private String mail;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date birthDay;
 	private int tel;
 	@ManyToOne

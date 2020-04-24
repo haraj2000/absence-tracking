@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Filière {
@@ -14,18 +13,10 @@ public class Filière {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
-	@OneToOne
-	private ResponsableFilière responsableFilière;
 	@ManyToOne
 	private Cycle cycle;
 	
-	
-	public ResponsableFilière getResponsableFilière() {
-		return responsableFilière;
-	}
-	public void setResponsableFilière(ResponsableFilière responsableFilière) {
-		this.responsableFilière = responsableFilière;
-	}
+
 	public Long getId() {
 		return id;
 	}

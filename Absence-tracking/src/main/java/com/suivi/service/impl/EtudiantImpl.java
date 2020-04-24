@@ -9,7 +9,6 @@ import com.suivi.bean.Etudiant;
 import com.suivi.bean.Groupe;
 import com.suivi.dao.EtudiantDao;
 import com.suivi.service.facade.EtudiantService;
-import com.sun.xml.bind.v2.util.EditDistance;
 
 @Service
 public class EtudiantImpl implements EtudiantService {

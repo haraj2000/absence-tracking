@@ -17,7 +17,7 @@ import com.suivi.service.facade.ModuleService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("pfe/absence-tracking")
+@RequestMapping("absence-tracking/module")
 public class ModuleRest {
 	@Autowired
 	private ModuleService moduleService;

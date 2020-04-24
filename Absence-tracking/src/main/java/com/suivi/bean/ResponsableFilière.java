@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class ResponsableFilière extends Enseignant{
+public class ResponsableFilière {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -19,8 +19,8 @@ import com.suivi.service.facade.EtudiantService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("pfe/absence-tracking")
-public class EtidiantRest {
+@RequestMapping("absence-tracking/etudiant")
+public class EtudiantRest {
 	@Autowired
 	private EtudiantService etudiantService;
 
