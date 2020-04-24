@@ -12,7 +12,7 @@ public class TypeFormation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String Libelle;
+	private String libelle;
 	@ManyToOne
 	private Module module;
 	@ManyToOne
@@ -26,11 +26,12 @@ public class TypeFormation {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	public String getLibelle() {
-		return Libelle;
+		return libelle;
 	}
 	public void setLibelle(String libelle) {
-		Libelle = libelle;
+		this.libelle = libelle;
 	}
 	public Module getModule() {
 		return module;
@@ -55,7 +56,7 @@ public class TypeFormation {
 	}
 	public TypeFormation(String libelle, Module module, Enseignant enseignant, Matière matière) {
 		super();
-		Libelle = libelle;
+		this.libelle = libelle;
 		this.module = module;
 		this.enseignant = enseignant;
 		this.matière = matière;
