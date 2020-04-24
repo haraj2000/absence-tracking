@@ -17,11 +17,14 @@ public class Etudiant {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String cin;
+	private String cne;
+	private int codeApogee;
 	private String firstName;
 	private String lastName;
 	private String mail;
 	private Date birthDay;
 	private int tel;
+	private int nbrAbsence;
 	@OneToOne
 	private Compte compte;
 	@ManyToOne
@@ -88,16 +91,40 @@ public class Etudiant {
 	public void setFilière(Filière filière) {
 		this.filière = filière;
 	}
-	public Etudiant(Long id, String cin, String firstName, String lastName, String mail, Date birthDay, int tel,
-			Compte compte, Groupe groupe, Filière filière) {
+	
+	
+	public String getCne() {
+		return cne;
+	}
+	public void setCne(String cne) {
+		this.cne = cne;
+	}
+	public int getCodeApogee() {
+		return codeApogee;
+	}
+	public void setCodeApogee(int codeApogee) {
+		this.codeApogee = codeApogee;
+	}
+	public int getNbrAbsence() {
+		return nbrAbsence;
+	}
+	public void setNbrAbsence(int nbrAbsence) {
+		this.nbrAbsence = nbrAbsence;
+	}
+
+	public Etudiant(Long id, String cin, String cne, int codeApogee, String firstName, String lastName, String mail,
+			Date birthDay, int tel, int nbrAbsence, Compte compte, Groupe groupe, Filière filière) {
 		super();
 		this.id = id;
 		this.cin = cin;
+		this.cne = cne;
+		this.codeApogee = codeApogee;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.mail = mail;
 		this.birthDay = birthDay;
 		this.tel = tel;
+		this.nbrAbsence = nbrAbsence;
 		this.compte = compte;
 		this.groupe = groupe;
 		this.filière = filière;
@@ -130,11 +157,12 @@ public class Etudiant {
 	}
 	@Override
 	public String toString() {
-		return "Etudiant [id=" + id + ", cin=" + cin + ", firstName=" + firstName + ", lastName=" + lastName + ", mail="
-				+ mail + ", birthDay=" + birthDay + ", tel=" + tel + ", compte=" + compte + ", groupe=" + groupe
-				+ ", filière=" + filière + "]";
+		return "Etudiant [id=" + id + ", cin=" + cin + ", cne=" + cne + ", codeApogee=" + codeApogee + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", mail=" + mail + ", birthDay=" + birthDay + ", tel=" + tel
+				+ ", nbrAbsence=" + nbrAbsence + ", compte=" + compte + ", groupe=" + groupe + ", filière=" + filière
+				+ "]";
 	}
-	
+
 	
 	
 	

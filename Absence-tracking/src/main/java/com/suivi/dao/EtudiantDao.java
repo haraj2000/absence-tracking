@@ -13,7 +13,9 @@ public interface EtudiantDao extends JpaRepository<Etudiant, Long>{
 	public List<Etudiant> findByLastName(String lastName);
 	public List<Etudiant> findByGroupe(Groupe groupe);
 	public Etudiant findByCin(String cin);
+	public Etudiant findBynCne(String cne);
 	public Etudiant findByMail(String mail);
 	public int deleteByCin(String cin);
+	public int deleteByCne(String cne);
 
 }

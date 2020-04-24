@@ -75,4 +75,14 @@ public class EtudiantImpl implements EtudiantService {
 		return etudiantDao.findAll();
 	}
 
+	@Override
+	public Etudiant findBynCne(String cne) {
+		return etudiantDao.findBynCne(cne);
+	}
+
+	@Override
+	public int deleteByCne(String cne) {
+		return etudiantDao.deleteByCne(cne);
+	}
+
 }

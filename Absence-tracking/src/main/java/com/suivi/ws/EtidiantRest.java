@@ -68,6 +68,18 @@ public class EtidiantRest {
 	public List<Etudiant> findAll() {
 		return etudiantService.findAll();
 	}
+
+	@GetMapping("/cne/{cne}")
+	public Etudiant findBynCne(@PathVariable String cne) {
+		return etudiantService.findBynCne(cne);
+	}
+
+	@DeleteMapping("/cne/{cne}")
+	public int deleteByCne(@PathVariable String cne) {
+		return etudiantService.deleteByCne(cne);
+	}
+	
+	
 	
 	
 
