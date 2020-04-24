@@ -54,7 +54,7 @@ public class EnseignantImpl implements EnseignantService{
 	public int save(Enseignant enseignant) {
 		Enseignant enseignantFounded = findByMatricule(enseignant.getMatricule());
 		if(enseignantFounded == null) {
-			enseignantDao.save(enseignantFounded);
+			enseignantDao.save(enseignant);
 			return 1;
 		}
 		else return -1;

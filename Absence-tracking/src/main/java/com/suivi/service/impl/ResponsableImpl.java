@@ -36,7 +36,7 @@ public class ResponsableImpl implements ResponsableFilièreService{
 	public int save(ResponsableFilière responsableFilière) {
 		ResponsableFilière responsableFilièreFounded = findByFilière(responsableFilière.getFilière());
 		if(responsableFilièreFounded == null) {
-			responsableFilièreDao.save(responsableFilièreFounded);
+			responsableFilièreDao.save(responsableFilière);
 			return 1;
 		}
 		else return -1;

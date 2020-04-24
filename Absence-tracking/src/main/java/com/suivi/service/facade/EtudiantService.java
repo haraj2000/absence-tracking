@@ -12,7 +12,7 @@ public interface EtudiantService {
 	public List<Etudiant> findByGroupe(Groupe groupe);
 	public Etudiant findByCin(String cin);
 	public Etudiant findByMail(String mail);
-	public Etudiant findBynCne(String cne);
+	public Etudiant findByCne(String cne);
 	public int deleteByCne(String cne);
 	public int deleteByCin(String cin);
 	public int save(Etudiant etudiant);

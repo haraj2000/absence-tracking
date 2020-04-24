@@ -28,7 +28,7 @@ public class ModuleImpl implements ModuleService{
 	public int save(Module module) {
 		Module moduleFounded = findByLibelle(module.getLibelle());
 		if(moduleFounded == null) {
-			moduleDao.save(moduleFounded);
+			moduleDao.save(module);
 			return 1;
 		}
 		else return -1;

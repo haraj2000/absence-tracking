@@ -50,7 +50,7 @@ public class EtudiantImpl implements EtudiantService {
 	public int save(Etudiant etudiant) {
 		Etudiant etudiantFounded = findByCin(etudiant.getCin());
 		if(etudiantFounded == null) {
-			etudiantDao.save(etudiantFounded);
+			etudiantDao.save(etudiant);
 			return 1;
 		}
 		else return -1;
@@ -75,8 +75,8 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
-	public Etudiant findBynCne(String cne) {
-		return etudiantDao.findBynCne(cne);
+	public Etudiant findByCne(String cne) {
+		return etudiantDao.findByCne(cne);
 	}
 
 	@Override

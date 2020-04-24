@@ -28,7 +28,7 @@ public class GroupeImpl implements GroupeService {
 	public int save(Groupe groupe) {
 		Groupe groupeFouded = findByLibelle(groupe.getLibelle());
 		if(groupeFouded == null) {
-			groupeDao.save(groupeFouded);
+			groupeDao.save(groupe);
 			return 1;
 		}
 		else return -1;

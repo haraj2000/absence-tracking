@@ -29,7 +29,7 @@ public class CompteImpl implements CompteService {
 	public int save(Compte compte) {
 		Compte compteFouded = findByMail(compte.getMail());
 		if(compteFouded == null) {
-			compteDao.save(compteFouded);
+			compteDao.save(compte);
 			return 1;
 		}
 		else return -1;

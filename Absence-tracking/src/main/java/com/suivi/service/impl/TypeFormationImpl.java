@@ -47,7 +47,7 @@ public class TypeFormationImpl implements TypeFormationService{
 	public int save(TypeFormation typeFormation) {
 		TypeFormation typeFormationFounded = findByLibelle(typeFormation.getLibelle());
 		if(typeFormationFounded == null) {
-			typeFormationDao.save(typeFormationFounded);
+			typeFormationDao.save(typeFormation);
 			return 1;
 		}
 		else return -1;

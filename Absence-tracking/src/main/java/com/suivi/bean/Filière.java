@@ -15,7 +15,6 @@ public class Filière {
 	private String libelle;
 	@ManyToOne
 	private Cycle cycle;
-	
 
 	public Long getId() {
 		return id;

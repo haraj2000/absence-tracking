@@ -42,7 +42,7 @@ public class AbsenceImpl implements AbsenceService{
 	public int save(Absence absence) {
 		Absence absenceFounded = findByEtudiant(absence.getEtudiant());
 		if(absenceFounded == null) {
-			absenceDao.save(absenceFounded);
+			absenceDao.save(absence);
 			return 1;
 		}
 		else return -1;

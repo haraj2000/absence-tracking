@@ -28,7 +28,7 @@ public class SéanceImpl implements SéanceService {
 	public int save(Séance séance) {
 		Séance séanceFounded = findByLibelle(séance.getLibelle());
 		if(séanceFounded == null) {
-			séanceDao.save(séanceFounded);
+			séanceDao.save(séance);
 			return 1;
 		}
 		else return -1;

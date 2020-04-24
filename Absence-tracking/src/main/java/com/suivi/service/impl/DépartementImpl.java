@@ -29,7 +29,7 @@ public class DépartementImpl implements DépartementService{
 	public int save(Département département) {
 		Département départementFounded = findByLibelle(département.getLibelle());
 		if(départementFounded == null) {
-			départementDao.save(départementFounded);
+			départementDao.save(département);
 			return 1;
 		}
 		else return -1;

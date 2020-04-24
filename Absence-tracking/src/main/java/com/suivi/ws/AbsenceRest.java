@@ -31,12 +31,12 @@ public class AbsenceRest {
 		return absenceService.findByDate(date);
 	}
 
-	@GetMapping("/")
+	@GetMapping("/etudiant")
 	public Absence findByEtudiant(@RequestBody Etudiant etudiant) {
 		return absenceService.findByEtudiant(etudiant);
 	}
 
-	@GetMapping("/")
+	@GetMapping("/séance")
 	public Absence findBySéance(@RequestBody Séance séance) {
 		return absenceService.findBySéance(séance);
 	}

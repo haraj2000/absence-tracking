@@ -29,7 +29,7 @@ public class CycleImpl implements CycleService{
 	public int save(Cycle cycle) {
 		Cycle cycleFounded = findByLibelle(cycle.getLibelle());
 				if(cycleFounded == null) {
-					cycleDao.save(cycleFounded);
+					cycleDao.save(cycle);
 					return 1;
 				}
 				else return -1;

@@ -29,7 +29,7 @@ public class MatièreImpl implements MatièreService{
 	public int save(Matière matière) {
 		Matière matièreFounded = findByLibelle(matière.getLibelle());
 		if(matièreFounded == null) {
-			matièreDao.save(matièreFounded);
+			matièreDao.save(matière);
 			return 1;
 		}
 		else return -1;

@@ -34,7 +34,7 @@ public class EtudiantRest {
 		return etudiantService.findByLastName(lastName);
 	}
 
-	@GetMapping("/")
+	@GetMapping("/groupe")
 	public List<Etudiant> findByGroupe(@RequestBody Groupe groupe) {
 		return etudiantService.findByGroupe(groupe);
 	}
@@ -70,8 +70,8 @@ public class EtudiantRest {
 	}
 
 	@GetMapping("/cne/{cne}")
-	public Etudiant findBynCne(@PathVariable String cne) {
-		return etudiantService.findBynCne(cne);
+	public Etudiant findByCne(@PathVariable String cne) {
+		return etudiantService.findByCne(cne);
 	}
 
 	@DeleteMapping("/cne/{cne}")

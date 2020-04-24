@@ -35,7 +35,7 @@ public class FilièreImpl implements FilièreService{
 	public int save(Filière filière) {
 		Filière filièreFounded = findByLibelle(filière.getLibelle());
 		if(filièreFounded == null) {
-			filièreDao.save(filièreFounded);
+			filièreDao.save(filière);
 			return 1;
 		}
 		else return -1;
