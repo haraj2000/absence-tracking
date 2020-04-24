@@ -22,6 +22,8 @@ public class Enseignant {
 	private Date birthDay;
 	private int tel;
 	@ManyToOne
+	private Compte compte;
+	@ManyToOne
 	private Département département;
 	@ManyToOne
 	private Matière matière;
@@ -85,6 +87,12 @@ public class Enseignant {
 	}
 	public void setDépartement(Département département) {
 		this.département = département;
+	}
+	public Compte getCompte() {
+		return compte;
+	}
+	public void setCompte(Compte compte) {
+		this.compte = compte;
 	}
 	public Enseignant() {
 		super();
