@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.suivi.bean.Enseignant;
 import com.suivi.bean.Matière;
 import com.suivi.bean.Module;
-import com.suivi.bean.TypeFormation;
+import com.suivi.bean.TypeSéance;
 import com.suivi.dao.TypeFormationDao;
 import com.suivi.service.facade.TypeFormationService;
 
@@ -21,22 +21,22 @@ public class TypeFormationImpl implements TypeFormationService{
 	private TypeFormationDao typeFormationDao;
 	
 	@Override
-	public TypeFormation findByLibelle(String libelle) {
+	public TypeSéance findByLibelle(String libelle) {
 		return typeFormationDao.findByLibelle(libelle);
 	}
 
 	@Override
-	public List<TypeFormation> findByEnseignant(Enseignant enseignant) {
+	public List<TypeSéance> findByEnseignant(Enseignant enseignant) {
 		return typeFormationDao.findByEnseignant(enseignant);
 	}
 
 	@Override
-	public List<TypeFormation> findByMatière(Matière matière) {
+	public List<TypeSéance> findByMatière(Matière matière) {
 		return typeFormationDao.findByMatière(matière);
 	}
 
 	@Override
-	public List<TypeFormation> findByModule(Module module) {
+	public List<TypeSéance> findByModule(Module module) {
 		return typeFormationDao.findByModule(module);
 	}
 
@@ -47,27 +47,27 @@ public class TypeFormationImpl implements TypeFormationService{
 	}
 
 	@Override
-	public int save(TypeFormation typeFormation) {
-		TypeFormation typeFormationFounded = findByLibelle(typeFormation.getLibelle());
+	public int save(TypeSéance typeSéance) {
+		TypeSéance typeFormationFounded = findByLibelle(typeSéance.getLibelle());
 		if(typeFormationFounded == null) {
-			typeFormationDao.save(typeFormation);
+			typeFormationDao.save(typeSéance);
 			return 1;
 		}
 		else return -1;
 	}
 
 	@Override
-	public int update(TypeFormation typeFormation) {
-		TypeFormation typeFormationFounded = findByLibelle(typeFormation.getLibelle());
+	public int update(TypeSéance typeSéance) {
+		TypeSéance typeFormationFounded = findByLibelle(typeSéance.getLibelle());
 		if(typeFormationFounded != null) {
-			typeFormationFounded.setEnseignant(typeFormation.getEnseignant());
+			typeFormationFounded.setEnseignant(typeSéance.getEnseignant());
 			return 1;
 		}
 		else return -1;
 	}
 
 	@Override
-	public List<TypeFormation> findAll() {
+	public List<TypeSéance> findAll() {
 		return typeFormationDao.findAll();
 	}
 

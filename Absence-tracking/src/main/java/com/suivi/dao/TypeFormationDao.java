@@ -8,14 +8,14 @@ import org.springframework.stereotype.Repository;
 import com.suivi.bean.Enseignant;
 import com.suivi.bean.Matière;
 import com.suivi.bean.Module;
-import com.suivi.bean.TypeFormation;
+import com.suivi.bean.TypeSéance;
 
 @Repository
-public interface TypeFormationDao extends JpaRepository<TypeFormation, Long>{
+public interface TypeFormationDao extends JpaRepository<TypeSéance, Long>{
 
-	public TypeFormation  findByLibelle(String libelle);
-	public List<TypeFormation> findByEnseignant(Enseignant enseignant);
-	public List<TypeFormation> findByMatière(Matière matière);
-	public List<TypeFormation> findByModule(Module module);
+	public TypeSéance  findByLibelle(String libelle);
+	public List<TypeSéance> findByEnseignant(Enseignant enseignant);
+	public List<TypeSéance> findByMatière(Matière matière);
+	public List<TypeSéance> findByModule(Module module);
 	public int deleteByLibelle(String libelle);			
 }

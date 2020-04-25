@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,9 +23,16 @@ public class Séance {
 	private Date hourStart;
 	@Temporal(TemporalType.TIME)
 	private Date hourStop;
-	private String typeFormation;
+	@ManyToOne
+	private TypeSéance typeSéance;
 	
 	
+	public TypeSéance getTypeSéance() {
+		return typeSéance;
+	}
+	public void setTypeSéance(TypeSéance typeSéance) {
+		this.typeSéance = typeSéance;
+	}
 	public Date getDate() {
 		return date;
 	}
@@ -43,12 +51,6 @@ public class Séance {
 	public void setHourStop(Date hourStop) {
 		this.hourStop = hourStop;
 	}
-	public String getTypeFormation() {
-		return typeFormation;
-	}
-	public void setTypeFormation(String typeFormation) {
-		this.typeFormation = typeFormation;
-	}
 	public Long getId() {
 		return id;
 	}
@@ -62,14 +64,13 @@ public class Séance {
 		this.libelle = libelle;
 	}
 
-	public Séance(Long id, String libelle, Date date, Date hourStart, Date hourStop, String typeFormation) {
+	public Séance(String libelle, Date date, Date hourStart, Date hourStop, TypeSéance typeSéance) {
 		super();
-		this.id = id;
 		this.libelle = libelle;
 		this.date = date;
 		this.hourStart = hourStart;
 		this.hourStop = hourStop;
-		this.typeFormation = typeFormation;
+		this.typeSéance = typeSéance;
 	}
 	public Séance() {
 		super();
@@ -100,8 +101,9 @@ public class Séance {
 	@Override
 	public String toString() {
 		return "Séance [id=" + id + ", libelle=" + libelle + ", date=" + date + ", hourStart=" + hourStart
-				+ ", hourStop=" + hourStop + ", typeFormation=" + typeFormation + "]";
+				+ ", hourStop=" + hourStop + ", typeSéance=" + typeSéance + "]";
 	}
+
 
 	
 }

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.suivi.bean.Enseignant;
 import com.suivi.bean.Matière;
 import com.suivi.bean.Module;
-import com.suivi.bean.TypeFormation;
+import com.suivi.bean.TypeSéance;
 import com.suivi.service.facade.TypeFormationService;
 
 @RestController
@@ -28,19 +28,19 @@ public class TypeFormationRest {
 	private TypeFormationService formationService;
 
 	@GetMapping("/libelle/{libelle}")
-	public TypeFormation findByLibelle(@PathVariable String libelle) {
+	public TypeSéance findByLibelle(@PathVariable String libelle) {
 		return formationService.findByLibelle(libelle);
 	}
 	@GetMapping("/enseignant")
-	public List<TypeFormation> findByEnseignant(@RequestBody Enseignant enseignant) {
+	public List<TypeSéance> findByEnseignant(@RequestBody Enseignant enseignant) {
 		return formationService.findByEnseignant(enseignant);
 	}
 	@GetMapping("/matière")
-	public List<TypeFormation> findByMatière(@RequestBody Matière matière) {
+	public List<TypeSéance> findByMatière(@RequestBody Matière matière) {
 		return formationService.findByMatière(matière);
 	}
 	@GetMapping("/module")
-	public List<TypeFormation> findByModule(@RequestBody Module module) {
+	public List<TypeSéance> findByModule(@RequestBody Module module) {
 		return formationService.findByModule(module);
 	}
 	@DeleteMapping("/libelle/{libelle}")
@@ -48,15 +48,15 @@ public class TypeFormationRest {
 		return formationService.deleteByLibelle(libelle);
 	}
 	@PostMapping("/")
-	public int save(@RequestBody TypeFormation typeFormation) {
-		return formationService.save(typeFormation);
+	public int save(@RequestBody TypeSéance typeSéance) {
+		return formationService.save(typeSéance);
 	}
 	@PutMapping("/")
-	public int update(@RequestBody TypeFormation typeFormation) {
-		return formationService.update(typeFormation);
+	public int update(@RequestBody TypeSéance typeSéance) {
+		return formationService.update(typeSéance);
 	}
 	@GetMapping("/")
-	public List<TypeFormation> findAll() {
+	public List<TypeSéance> findAll() {
 		return formationService.findAll();
 	}
 	

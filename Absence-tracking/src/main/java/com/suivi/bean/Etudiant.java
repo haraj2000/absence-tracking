@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Etudiant {
@@ -20,7 +22,7 @@ public class Etudiant {
 	private int codeApogee;
 	private String firstName;
 	private String lastName;
-	private String mail;
+	@Temporal(TemporalType.DATE)
 	private Date birthDay;
 	private int tel;
 	private int nbrAbsence;
@@ -53,12 +55,6 @@ public class Etudiant {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-	public String getMail() {
-		return mail;
-	}
-	public void setMail(String mail) {
-		this.mail = mail;
 	}
 	public Date getBirthDay() {
 		return birthDay;
@@ -111,7 +107,7 @@ public class Etudiant {
 		this.nbrAbsence = nbrAbsence;
 	}
 
-	public Etudiant(Long id, String cin, String cne, int codeApogee, String firstName, String lastName, String mail,
+	public Etudiant(Long id, String cin, String cne, int codeApogee, String firstName, String lastName,
 			Date birthDay, int tel, int nbrAbsence, Compte compte, Groupe groupe, Filière filière) {
 		super();
 		this.id = id;
@@ -120,7 +116,6 @@ public class Etudiant {
 		this.codeApogee = codeApogee;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.mail = mail;
 		this.birthDay = birthDay;
 		this.tel = tel;
 		this.nbrAbsence = nbrAbsence;
@@ -157,7 +152,7 @@ public class Etudiant {
 	@Override
 	public String toString() {
 		return "Etudiant [id=" + id + ", cin=" + cin + ", cne=" + cne + ", codeApogee=" + codeApogee + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", mail=" + mail + ", birthDay=" + birthDay + ", tel=" + tel
+				+ firstName + ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel
 				+ ", nbrAbsence=" + nbrAbsence + ", compte=" + compte + ", groupe=" + groupe + ", filière=" + filière
 				+ "]";
 	}

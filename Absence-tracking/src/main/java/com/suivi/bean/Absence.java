@@ -1,6 +1,5 @@
 package com.suivi.bean;
 
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +17,6 @@ public class Absence {
 	private String justification;
 	@ManyToOne
 	private Etudiant etudiant;
-	@ManyToOne
-	private Module module;
 	@ManyToOne
 	private Séance séance;
 	public Long getId() {
@@ -41,12 +38,6 @@ public class Absence {
 	public void setEtudiant(Etudiant etudiant) {
 		this.etudiant = etudiant;
 	}
-	public Module getModule() {
-		return module;
-	}
-	public void setModule(Module module) {
-		this.module = module;
-	}
 	public Séance getSéance() {
 		return séance;
 	}
@@ -62,13 +53,12 @@ public class Absence {
 	}
 
 
-	public Absence(Long id, String ref, String justification, Etudiant etudiant, Module module, Séance séance) {
+	public Absence(Long id, String ref, String justification, Etudiant etudiant, Séance séance) {
 		super();
 		this.id = id;
 		this.ref = ref;
 		this.justification = justification;
 		this.etudiant = etudiant;
-		this.module = module;
 		this.séance = séance;
 	}
 	public Absence() {
@@ -101,7 +91,7 @@ public class Absence {
 	@Override
 	public String toString() {
 		return "Absence [id=" + id + ", ref=" + ref + ", justification=" + justification + ", etudiant=" + etudiant
-				+ ", module=" + module + ", séance=" + séance + "]";
+				+ ", séance=" + séance + "]";
 	}
 
 
