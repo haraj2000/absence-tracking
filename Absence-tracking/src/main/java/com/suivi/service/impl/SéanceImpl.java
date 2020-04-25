@@ -1,5 +1,6 @@
 package com.suivi.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -40,6 +41,38 @@ public class SéanceImpl implements SéanceService {
 	@Override
 	public List<Séance> findAll() {
 		return séanceDao.findAll();
+	}
+
+	@Override
+	public Séance findByDate(Date date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Séance findByHourStart(Date hourStart) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Séance findByHourStop(Date hourStop) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int update(Séance séance) {
+		Séance séanceFounded = findByLibelle(séance.getLibelle());
+		if(séanceFounded!= null) {
+			séanceFounded.setLibelle(séance.getLibelle());
+			séanceFounded.setTypeFormation(séance.getTypeFormation());
+			séanceFounded.setDate(séance.getDate());
+			séanceFounded.setHourStart(séance.getHourStart());
+			séanceFounded.setHourStop(séance.getHourStop());
+			return 1;
+		}
+		else return -1;
 	}
 
 }

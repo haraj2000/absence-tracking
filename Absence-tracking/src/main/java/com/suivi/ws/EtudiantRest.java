@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.suivi.bean.Absence;
 import com.suivi.bean.Etudiant;
+import com.suivi.bean.Filière;
 import com.suivi.bean.Groupe;
 import com.suivi.service.facade.EtudiantService;
 
@@ -78,6 +80,22 @@ public class EtudiantRest {
 	public int deleteByCne(@PathVariable String cne) {
 		return etudiantService.deleteByCne(cne);
 	}
+
+	@GetMapping("/")
+	public List<Etudiant> findByFiliere(@RequestBody Filière filière) {
+		return etudiantService.findByFiliere(filière);
+	}
+
+	@GetMapping("/")
+	public Etudiant findByAbsence(@RequestBody Absence absence) {
+		return etudiantService.findByAbsence(absence);
+	}
+
+	@GetMapping("/codeApogee/{codeApogee}")
+	public Etudiant findByCodeApogee(@PathVariable String codeApogee) {
+		return etudiantService.findByCodeApogee(codeApogee);
+	}
+	
 	
 	
 	
