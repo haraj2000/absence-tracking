@@ -50,6 +50,7 @@ public class CompteImpl implements CompteService {
 		if(compteFounded != null) {
 			compteFounded.setPassword(compte.getPassword());
 			compteFounded.setRole(compte.getRole());
+			compteDao.save(compteFounded);
 			return 1;
 		}
 		else return -1;

@@ -78,6 +78,7 @@ public class EtudiantImpl implements EtudiantService {
 			etudiantFounded.setTel(etudiant.getTel());
 			etudiantFounded.setFirstName(etudiant.getFirstName());
 			etudiantFounded.setLastName(etudiant.getLastName());
+			etudiantDao.save(etudiantFounded);
 			return 1;
 		}
 		else return -1;

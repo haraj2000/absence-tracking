@@ -81,6 +81,7 @@ public class EnseignantImpl implements EnseignantService{
 			enseignantFounded.setTel(enseignant.getTel());
 			enseignantFounded.setFirstName(enseignant.getFirstName());
 			enseignantFounded.setLastName(enseignant.getLastName());
+			enseignantDao.save(enseignantFounded);
 			return 1;
 		}
 		else return -1;

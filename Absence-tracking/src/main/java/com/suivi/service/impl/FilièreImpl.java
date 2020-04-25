@@ -49,6 +49,7 @@ public class FilièreImpl implements FilièreService{
 		Filière filièreFounded = findByLibelle(filière.getLibelle());
 		if(filièreFounded != null) {
 			filièreFounded.setCycle(filière.getCycle());
+			filièreDao.save(filièreFounded);
 			return 1;
 		}
 		else return -1;

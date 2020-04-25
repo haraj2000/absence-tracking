@@ -47,6 +47,7 @@ public class GroupeImpl implements GroupeService {
 		Groupe groupeFouded = findByLibelle(groupe.getLibelle());
 		if(groupeFouded != null) {
 			groupeFouded.setEtudiants(groupe.getEtudiants());
+			groupeDao.save(groupeFouded);
 			return 1;
 		}
 		else return -1;

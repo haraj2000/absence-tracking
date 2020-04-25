@@ -63,6 +63,7 @@ public class ResponsableImpl implements ResponsableFilièreService{
 			compteService.update(responsableFilière.getEnseignant().getCompte());
 			enseignantService.update(responsableFilière.getEnseignant());
 			responsableFilièreFounded.setEnseignant(responsableFilière.getEnseignant());
+			responsableFilièreDao.save(responsableFilièreFounded);
 			return 1;
 		}
 		else return -1;

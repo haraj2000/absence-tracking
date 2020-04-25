@@ -46,6 +46,7 @@ public class AbsenceImpl implements AbsenceService{
 		Absence absenceFounded = findByRef(absence.getRef());
 		if(absenceFounded!= null) {
 			absenceFounded.setJustification(absence.getJustification());
+			absenceDao.save(absenceFounded);
 			return 1;
 		}
 		else return -1;

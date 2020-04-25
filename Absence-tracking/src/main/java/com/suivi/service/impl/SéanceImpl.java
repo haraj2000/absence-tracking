@@ -55,6 +55,7 @@ public class SéanceImpl implements SéanceService {
 			séanceFounded.setDate(séance.getDate());
 			séanceFounded.setHourStart(séance.getHourStart());
 			séanceFounded.setHourStop(séance.getHourStop());
+			séanceDao.save(séanceFounded);
 			return 1;
 		}
 		else return -1;

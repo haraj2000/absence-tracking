@@ -61,6 +61,7 @@ public class TypeSéanceImpl implements TypeSéanceService{
 		TypeSéance typeFormationFounded = findByLibelle(typeSéance.getLibelle());
 		if(typeFormationFounded != null) {
 			typeFormationFounded.setEnseignant(typeSéance.getEnseignant());
+			typeSéanceDao.save(typeFormationFounded);
 			return 1;
 		}
 		else return -1;

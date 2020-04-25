@@ -62,6 +62,7 @@ public class SemestreImpl implements SemestreService{
 		if(semestreFounded != null) {	
 			semestreFounded.setGroupes(semestre.getGroupes());
 			semestreFounded.setModules(semestre.getModules());
+			semestreDao.save(semestreFounded);
 			return 1;
 		}else return -1;
 	}
