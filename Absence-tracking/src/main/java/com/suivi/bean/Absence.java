@@ -52,11 +52,8 @@ public class Absence {
 		this.ref = ref;
 	}
 
-
-	public Absence(Long id, String ref, String justification, Etudiant etudiant, Séance séance) {
+	public Absence(String justification, Etudiant etudiant, Séance séance) {
 		super();
-		this.id = id;
-		this.ref = ref;
 		this.justification = justification;
 		this.etudiant = etudiant;
 		this.séance = séance;

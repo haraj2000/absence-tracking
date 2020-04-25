@@ -1,6 +1,5 @@
 package com.suivi.ws;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Etudiant;
-import com.suivi.bean.Module;
 import com.suivi.bean.Séance;
 import com.suivi.service.facade.AbsenceService;
 
@@ -29,11 +27,11 @@ public class AbsenceRest {
 	private AbsenceService absenceService;
 
 
+
 	@GetMapping("/etudiant")
-	public Absence findByEtudiant(@RequestBody Etudiant etudiant) {
+	public List<Absence> findByEtudiant(@RequestBody Etudiant etudiant) {
 		return absenceService.findByEtudiant(etudiant);
 	}
-
 
 	@PostMapping("/")
 	public int save(@RequestBody Absence absence) {
@@ -55,10 +53,6 @@ public class AbsenceRest {
 		return absenceService.findByRef(ref);
 	}
 
-	@GetMapping("/")
-	public List<Absence> findByModule(@RequestBody Module module) {
-		return absenceService.findByModule(module);
-	}
 
 	@DeleteMapping("/ref/{ref}")
 	public int deleteByRef(@PathVariable String ref) {

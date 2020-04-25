@@ -2,6 +2,7 @@ package com.suivi.service.facade;
 
 import java.util.List;
 
+import com.suivi.bean.Département;
 import com.suivi.bean.Enseignant;
 
 public interface EnseignantService {
@@ -10,7 +11,8 @@ public interface EnseignantService {
 	public List<Enseignant> findByLastName(String lastName);
 	public Enseignant findByMatricule(String matricule);
 	public Enseignant findByCin(String cin);
-	public Enseignant findByMail(String mail);
+	public List<Enseignant> findByDépartement(Département département);
+	public Enseignant findByCompteMail(String mail);
 	public int deleteByMatricule(String matricule);
 	public int deleteByCin(String cin);
 	public int save(Enseignant enseignant);

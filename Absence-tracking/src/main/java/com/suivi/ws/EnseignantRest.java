@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.suivi.bean.Département;
 import com.suivi.bean.Enseignant;
 import com.suivi.service.facade.EnseignantService;
 
@@ -40,9 +41,13 @@ public class EnseignantRest {
 	public Enseignant findByCin(@PathVariable String cin) {
 		return enseignantService.findByCin(cin);
 	}
+	@GetMapping("/département")
+	public List<Enseignant> findByDépartement(@RequestBody Département département) {
+		return enseignantService.findByDépartement(département);
+	}
 	@GetMapping("/mail/{mail}")
-	public Enseignant findByMail(@PathVariable String mail) {
-		return enseignantService.findByMail(mail);
+	public Enseignant findByCompteMail(@PathVariable String mail) {
+		return enseignantService.findByCompteMail(mail);
 	}
 	@DeleteMapping("/matricule/{matricule}")
 	public int deleteByMatricule(@PathVariable String matricule) {

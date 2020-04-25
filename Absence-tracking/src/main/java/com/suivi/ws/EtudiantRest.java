@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.suivi.bean.Absence;
 import com.suivi.bean.Etudiant;
 import com.suivi.bean.Filière;
 import com.suivi.bean.Groupe;
@@ -46,13 +45,23 @@ public class EtudiantRest {
 		return etudiantService.findByCin(cin);
 	}
 
+	@GetMapping("/nbrAbsence/{nbrAbsence}")
+	public List<Etudiant> findByNbrAbsence(@PathVariable int nbrAbsence) {
+		return etudiantService.findByNbrAbsence(nbrAbsence);
+	}
+
 	@GetMapping("/mail/{mail}")
-	public Etudiant findByMail(@PathVariable String mail) {
-		return etudiantService.findByMail(mail);
+	public Etudiant findByCompteMail(@PathVariable String mail) {
+		return etudiantService.findByCompteMail(mail);
+	}
+
+	@DeleteMapping("/codeApogee/{codeApogee}")
+	public int deleteByCodeApogee(@PathVariable int codeApogee) {
+		return etudiantService.deleteByCodeApogee(codeApogee);
 	}
 
 	@DeleteMapping("/cin/{cin}")
-	public int deleteByCin(String cin) {
+	public int deleteByCin(@PathVariable String cin) {
 		return etudiantService.deleteByCin(cin);
 	}
 
@@ -82,14 +91,10 @@ public class EtudiantRest {
 	}
 
 	@GetMapping("/")
-	public List<Etudiant> findByFiliere(@RequestBody Filière filière) {
-		return etudiantService.findByFiliere(filière);
+	public List<Etudiant> findByFilière(@RequestBody Filière filière) {
+		return etudiantService.findByFilière(filière);
 	}
 
-	@GetMapping("/")
-	public Etudiant findByAbsence(@RequestBody Absence absence) {
-		return etudiantService.findByAbsence(absence);
-	}
 
 	@GetMapping("/codeApogee/{codeApogee}")
 	public Etudiant findByCodeApogee(@PathVariable String codeApogee) {

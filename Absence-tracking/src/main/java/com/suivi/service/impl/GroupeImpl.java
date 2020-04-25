@@ -42,4 +42,14 @@ public class GroupeImpl implements GroupeService {
 		return groupeDao.findAll();
 	}
 
+	@Override
+	public int update(Groupe groupe) {
+		Groupe groupeFouded = findByLibelle(groupe.getLibelle());
+		if(groupeFouded != null) {
+			groupeFouded.setEtudiants(groupe.getEtudiants());
+			return 1;
+		}
+		else return -1;
+	}
+
 }

@@ -7,18 +7,22 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.suivi.bean.Absence;
+import com.suivi.bean.Compte;
 import com.suivi.bean.Etudiant;
 import com.suivi.bean.Filière;
 import com.suivi.bean.Groupe;
 import com.suivi.dao.EtudiantDao;
+import com.suivi.service.facade.CompteService;
 import com.suivi.service.facade.EtudiantService;
+import com.suivi.service.facade.GroupeService;
 
 @Service
 public class EtudiantImpl implements EtudiantService {
 	
 	@Autowired
 	private EtudiantDao etudiantDao;
+	private CompteService compteService;
+	private GroupeService groupeService;
 
 	@Override
 	public List<Etudiant> findByFirstName(String firstName) {
@@ -40,10 +44,6 @@ public class EtudiantImpl implements EtudiantService {
 		return etudiantDao.findByCin(cin);
 	}
 
-	@Override
-	public Etudiant findByMail(String mail) {
-		return etudiantDao.findByMail(mail);
-	}
 
 	@Override
 	@Transactional
@@ -55,6 +55,12 @@ public class EtudiantImpl implements EtudiantService {
 	public int save(Etudiant etudiant) {
 		Etudiant etudiantFounded = findByCin(etudiant.getCin());
 		if(etudiantFounded == null) {
+			String mail = etudiant.getFirstName()+"."+etudiant.getLastName()+"@edu.uca.ma";
+			Compte compte = new Compte(mail, etudiant.getCin(), 4);
+			compteService.save(compte);
+			etudiant.setCompte(compte);
+			etudiant.getGroupe().getEtudiants().add(etudiant);
+			groupeService.update(etudiant.getGroupe());
 			etudiantDao.save(etudiant);
 			return 1;
 		}
@@ -65,7 +71,10 @@ public class EtudiantImpl implements EtudiantService {
 	public int update(Etudiant etudiant) {
 		Etudiant etudiantFounded = findByCin(etudiant.getCin());
 		if(etudiantFounded != null) {
-			etudiantFounded.setMail(etudiant.getMail());
+			int r = compteService.update(etudiant.getCompte());
+			if (r==1) {
+				etudiantFounded.setCompte(etudiant.getCompte());
+			}
 			etudiantFounded.setTel(etudiant.getTel());
 			etudiantFounded.setFirstName(etudiant.getFirstName());
 			etudiantFounded.setLastName(etudiant.getLastName());
@@ -90,14 +99,10 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
-	public List<Etudiant> findByFiliere(Filière filière) {
-		return etudiantDao.findByFiliere(filière);
+	public List<Etudiant> findByFilière(Filière filière) {
+		return etudiantDao.findByFilière(filière);
 	}
 
-	@Override
-	public Etudiant findByAbsence(Absence absence) {
-		return etudiantDao.findByAbsence(absence);
-	}
 
 	@Override
 	public Etudiant findByCodeApogee(String codeApogee) {
@@ -105,8 +110,19 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
-	public Etudiant findBynCne(String cne) {
-		return etudiantDao.findByCne(cne);
+	public List<Etudiant> findByNbrAbsence(int nbrAbsence) {
+		return etudiantDao.findByNbrAbsence(nbrAbsence);
 	}
+
+	@Override
+	public Etudiant findByCompteMail(String mail) {
+		return etudiantDao.findByCompteMail(mail);
+	}
+
+	@Override
+	public int deleteByCodeApogee(int codeApogee) {
+		return etudiantDao.deleteByCodeApogee(codeApogee);
+	}
+
 
 }

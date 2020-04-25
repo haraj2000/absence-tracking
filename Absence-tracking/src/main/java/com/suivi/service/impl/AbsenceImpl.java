@@ -1,6 +1,5 @@
 package com.suivi.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -10,21 +9,18 @@ import org.springframework.stereotype.Service;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Etudiant;
-import com.suivi.bean.Module;
 import com.suivi.bean.Séance;
 import com.suivi.dao.AbsenceDao;
 import com.suivi.service.facade.AbsenceService;
+import com.suivi.service.facade.EtudiantService;
 
 @Service
 public class AbsenceImpl implements AbsenceService{
 
 	@Autowired
 	private AbsenceDao absenceDao;
+	private EtudiantService etudiantService;
 
-	@Override
-	public Absence findByEtudiant(Etudiant etudiant) {
-		return absenceDao.findByEtudiant(etudiant);
-	}
 
 	@Override
 	public List<Absence> findBySéance(Séance séance) {
@@ -33,8 +29,12 @@ public class AbsenceImpl implements AbsenceService{
 
 	@Override
 	public int save(Absence absence) {
-		Absence absenceFounded = findByEtudiant(absence.getEtudiant());
+		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant le "+absence.getSéance().getLibelle();
+		absence.setRef(ref);
+		Absence absenceFounded = findByRef(absence.getRef());
+		Etudiant etudiantFounded = etudiantService.findByCne(absence.getEtudiant().getCne());
 		if(absenceFounded == null) {
+			etudiantFounded.setNbrAbsence(etudiantFounded.getNbrAbsence()+1);
 			absenceDao.save(absence);
 			return 1;
 		}
@@ -43,11 +43,9 @@ public class AbsenceImpl implements AbsenceService{
 
 	@Override
 	public int update(Absence absence) {
-		Absence absenceFounded = findByEtudiant(absence.getEtudiant());
+		Absence absenceFounded = findByRef(absence.getRef());
 		if(absenceFounded!= null) {
-			absenceFounded.setEtudiant(absence.getEtudiant());
-			absenceFounded.setModule(absence.getModule());
-			absenceFounded.setSéance(absence.getSéance());
+			absenceFounded.setJustification(absence.getJustification());
 			return 1;
 		}
 		else return -1;
@@ -64,13 +62,14 @@ public class AbsenceImpl implements AbsenceService{
 	}
 
 	@Override
-	public List<Absence> findByModule(Module module) {
-		return absenceDao.findByModule(module);
+	@Transactional
+	public int deleteByRef(String ref) {
+		return absenceDao.deleteByRef(ref);
 	}
 
 	@Override
-	public int deleteByRef(String ref) {
-		return absenceDao.deleteByRef(ref);
+	public List<Absence> findByEtudiant(Etudiant etudiant) {
+		return absenceDao.findByEtudiant(etudiant);
 	}
 
 

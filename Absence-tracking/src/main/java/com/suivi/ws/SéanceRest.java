@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.suivi.bean.Séance;
+import com.suivi.bean.TypeSéance;
 import com.suivi.service.facade.SéanceService;
 
 @RestController
@@ -23,6 +24,23 @@ import com.suivi.service.facade.SéanceService;
 public class SéanceRest {
 	@Autowired
 	private SéanceService séanceService;
+
+	@GetMapping("/date/{date}")
+	public List<Séance> findByDate(@PathVariable Date date) {
+		return séanceService.findByDate(date);
+	}
+	@GetMapping("hourStart/{hourStart}")
+	public List<Séance> findByHourStart(@PathVariable Date hourStart) {
+		return séanceService.findByHourStart(hourStart);
+	}
+	@GetMapping("hourStop/{hourStop}")
+	public List<Séance> findByHourStop(@PathVariable Date hourStop) {
+		return séanceService.findByHourStop(hourStop);
+	}
+	@GetMapping("/typeSéance")
+	public List<Séance> findByTypeSéance(@RequestBody TypeSéance typeSéance) {
+		return séanceService.findByTypeSéance(typeSéance);
+	}
 
 	@GetMapping("/libelle/{libelle}")
 	public Séance findByLibelle(@PathVariable String libelle) {
@@ -44,20 +62,6 @@ public class SéanceRest {
 		return séanceService.findAll();
 	}
 
-	@GetMapping("/date/{date}")
-	public Séance findByDate(@PathVariable Date date) {
-		return séanceService.findByDate(date);
-	}
-
-	@GetMapping("/hourStart/{hourStart}")
-	public Séance findByHourStart(@PathVariable Date hourStart) {
-		return séanceService.findByHourStart(hourStart);
-	}
-
-	@GetMapping("/hourStop/{hourStop}")
-	public Séance findByHourStop(@PathVariable Date hourStop) {
-		return séanceService.findByHourStop(hourStop);
-	}
 
 	@PutMapping("/")
 	public int update(@RequestBody Séance séance) {

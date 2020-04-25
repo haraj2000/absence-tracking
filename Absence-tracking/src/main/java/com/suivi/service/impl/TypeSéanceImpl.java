@@ -12,10 +12,10 @@ import com.suivi.bean.Matière;
 import com.suivi.bean.Module;
 import com.suivi.bean.TypeSéance;
 import com.suivi.dao.TypeSéanceDao;
-import com.suivi.service.facade.TypeFormationService;
+import com.suivi.service.facade.TypeSéanceService;
 
 @Service
-public class TypeFormationImpl implements TypeFormationService{
+public class TypeSéanceImpl implements TypeSéanceService{
 
 	@Autowired
 	private TypeSéanceDao typeSéanceDao;

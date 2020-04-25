@@ -10,5 +10,5 @@ public interface GroupeService {
 	public int deleteByLibelle(String libelle);
 	public int save(Groupe groupe);
 	public List<Groupe> findAll();
-
+	public int update(Groupe groupe);
 }

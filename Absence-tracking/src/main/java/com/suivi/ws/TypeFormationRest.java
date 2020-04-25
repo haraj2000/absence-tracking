@@ -17,7 +17,7 @@ import com.suivi.bean.Enseignant;
 import com.suivi.bean.Matière;
 import com.suivi.bean.Module;
 import com.suivi.bean.TypeSéance;
-import com.suivi.service.facade.TypeFormationService;
+import com.suivi.service.facade.TypeSéanceService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -25,7 +25,7 @@ import com.suivi.service.facade.TypeFormationService;
 public class TypeFormationRest {
 	
 	@Autowired
-	private TypeFormationService formationService;
+	private TypeSéanceService formationService;
 
 	@GetMapping("/libelle/{libelle}")
 	public TypeSéance findByLibelle(@PathVariable String libelle) {

@@ -23,6 +23,11 @@ public class CompteRest {
 	@Autowired
 	private CompteService compteService;
 
+	@GetMapping("/role/{role}")
+	public List<Compte> findByRole(int role) {
+		return compteService.findByRole(role);
+	}
+
 	@GetMapping("/mail/{mail}")
 	public Compte findByMail(@PathVariable String mail) {
 		return compteService.findByMail(mail);
@@ -41,11 +46,6 @@ public class CompteRest {
 	@GetMapping("/")
 	public List<Compte> findAll() {
 		return compteService.findAll();
-	}
-
-	@GetMapping("/role/{role}")
-	public Compte findByRole(@PathVariable String role) {
-		return compteService.findByRole(role);
 	}
 
 	@PutMapping("/")

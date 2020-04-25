@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.suivi.bean.Séance;
+import com.suivi.bean.TypeSéance;
 import com.suivi.dao.SéanceDao;
 import com.suivi.service.facade.SéanceService;
 
@@ -30,8 +31,10 @@ public class SéanceImpl implements SéanceService {
 
 	@Override
 	public int save(Séance séance) {
-		Séance séanceFounded = findByLibelle(séance.getLibelle());
+		String libelle = séance.getTypeSéance().getLibelle()+" "+ séance.getDate()+" "+ séance.getHourStart();
+		Séance séanceFounded = findByLibelle(libelle);
 		if(séanceFounded == null) {
+			séance.setLibelle(libelle);
 			séanceDao.save(séance);
 			return 1;
 		}
@@ -44,35 +47,37 @@ public class SéanceImpl implements SéanceService {
 	}
 
 	@Override
-	public Séance findByDate(Date date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Séance findByHourStart(Date hourStart) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Séance findByHourStop(Date hourStop) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public int update(Séance séance) {
 		Séance séanceFounded = findByLibelle(séance.getLibelle());
 		if(séanceFounded!= null) {
-			séanceFounded.setLibelle(séance.getLibelle());
-			séanceFounded.setTypeFormation(séance.getTypeFormation());
+			String libelle = séance.getTypeSéance().getLibelle()+" "+ séance.getDate()+" "+ séance.getHourStart();
+			séanceFounded.setLibelle(libelle);
 			séanceFounded.setDate(séance.getDate());
 			séanceFounded.setHourStart(séance.getHourStart());
 			séanceFounded.setHourStop(séance.getHourStop());
 			return 1;
 		}
 		else return -1;
+	}
+
+	@Override
+	public List<Séance> findByDate(Date date) {
+		return séanceDao.findByDate(date);
+	}
+
+	@Override
+	public List<Séance> findByHourStart(Date hourStart) {
+		return séanceDao.findByHourStart(hourStart);
+	}
+
+	@Override
+	public List<Séance> findByHourStop(Date hourStop) {
+		return séanceDao.findByHourStop(hourStop);
+	}
+
+	@Override
+	public List<Séance> findByTypeSéance(TypeSéance typeSéance) {
+		return séanceDao.findByTypeSéance(typeSéance);
 	}
 
 }

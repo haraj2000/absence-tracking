@@ -108,7 +108,7 @@ public class Etudiant {
 	}
 
 	public Etudiant(Long id, String cin, String cne, int codeApogee, String firstName, String lastName,
-			Date birthDay, int tel, int nbrAbsence, Compte compte, Groupe groupe, Filière filière) {
+			Date birthDay, int tel, int nbrAbsence, Groupe groupe, Filière filière) {
 		super();
 		this.id = id;
 		this.cin = cin;
@@ -119,7 +119,6 @@ public class Etudiant {
 		this.birthDay = birthDay;
 		this.tel = tel;
 		this.nbrAbsence = nbrAbsence;
-		this.compte = compte;
 		this.groupe = groupe;
 		this.filière = filière;
 	}

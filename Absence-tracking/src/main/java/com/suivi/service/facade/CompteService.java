@@ -7,7 +7,7 @@ import com.suivi.bean.Compte;
 public interface CompteService {
 	
 	public Compte findByMail(String mail);
-	public Compte findByRole(String role);
+	public List<Compte> findByRole(int role);
 	public int deleteByMail(String mail);
 	public int update(Compte compte);
 	public int save(Compte compte);

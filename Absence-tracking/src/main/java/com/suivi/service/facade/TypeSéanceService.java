@@ -7,13 +7,13 @@ import com.suivi.bean.Matière;
 import com.suivi.bean.Module;
 import com.suivi.bean.TypeSéance;
 
-public interface TypeFormationService {
+public interface TypeSéanceService {
 
 	public TypeSéance  findByLibelle(String libelle);
 	public List<TypeSéance> findByEnseignant(Enseignant enseignant);
 	public List<TypeSéance> findByMatière(Matière matière);
 	public List<TypeSéance> findByModule(Module module);
-	public int deleteByLibelle(String libelle);	
+	public int deleteByLibelle(String libelle);		
 	public int save(TypeSéance typeSéance);
 	public int update(TypeSéance typeSéance);
 	public List<TypeSéance> findAll();

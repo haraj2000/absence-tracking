@@ -43,21 +43,21 @@ public class CompteImpl implements CompteService {
 		return compteDao.findAll();
 	}
 
-	@Override
-	public Compte findByRole(String role) {
-		return compteDao.findByRole(role);
-	}
 
 	@Override
 	public int update(Compte compte) {
 		Compte compteFounded = findByMail(compte.getMail());
 		if(compteFounded != null) {
-			compteFounded.setMail(compte.getMail());
-			compteFounded.setRole(compte.getRole());
 			compteFounded.setPassword(compte.getPassword());
+			compteFounded.setRole(compte.getRole());
 			return 1;
 		}
 		else return -1;
+	}
+
+	@Override
+	public List<Compte> findByRole(int role) {
+		return compteDao.findByRole(role);
 	}
 
 }

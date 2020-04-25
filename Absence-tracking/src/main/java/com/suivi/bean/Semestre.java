@@ -23,9 +23,9 @@ public class Semestre {
 	private Date annéeUniversitaire;
 	@ManyToOne
 	private Filière filière;
-	@OneToMany(mappedBy = "semestre")
+	@OneToMany
 	private List<Module> modules;
-	@OneToMany(mappedBy = "semestre")
+	@OneToMany
 	private List<Groupe> groupes;
 	public Long getId() {
 		return id;

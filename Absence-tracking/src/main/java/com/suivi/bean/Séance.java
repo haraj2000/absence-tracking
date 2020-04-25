@@ -64,9 +64,8 @@ public class Séance {
 		this.libelle = libelle;
 	}
 
-	public Séance(String libelle, Date date, Date hourStart, Date hourStop, TypeSéance typeSéance) {
+	public Séance( Date date, Date hourStart, Date hourStop, TypeSéance typeSéance) {
 		super();
-		this.libelle = libelle;
 		this.date = date;
 		this.hourStart = hourStart;
 		this.hourStop = hourStop;
