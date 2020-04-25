@@ -2,6 +2,8 @@ package com.suivi.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +41,7 @@ public class TypeFormationImpl implements TypeFormationService{
 	}
 
 	@Override
+	@Transactional
 	public int deleteByLibelle(String libelle) {
 		return typeFormationDao.deleteByLibelle(libelle);
 	}
@@ -47,7 +50,7 @@ public class TypeFormationImpl implements TypeFormationService{
 	public int save(TypeFormation typeFormation) {
 		TypeFormation typeFormationFounded = findByLibelle(typeFormation.getLibelle());
 		if(typeFormationFounded == null) {
-			typeFormationDao.save(typeFormationFounded);
+			typeFormationDao.save(typeFormation);
 			return 1;
 		}
 		else return -1;

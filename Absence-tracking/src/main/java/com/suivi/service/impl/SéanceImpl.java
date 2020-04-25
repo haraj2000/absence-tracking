@@ -3,6 +3,8 @@ package com.suivi.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,7 @@ public class SéanceImpl implements SéanceService {
 	}
 
 	@Override
+	@Transactional
 	public int deleteByLibelle(String libelle) {
 		return séanceDao.deleteByLibelle(libelle);
 	}
@@ -29,7 +32,7 @@ public class SéanceImpl implements SéanceService {
 	public int save(Séance séance) {
 		Séance séanceFounded = findByLibelle(séance.getLibelle());
 		if(séanceFounded == null) {
-			séanceDao.save(séanceFounded);
+			séanceDao.save(séance);
 			return 1;
 		}
 		else return -1;

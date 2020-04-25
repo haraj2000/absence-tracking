@@ -2,6 +2,8 @@ package com.suivi.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,7 @@ public class DépartementImpl implements DépartementService{
 	}
 
 	@Override
+	@Transactional
 	public int deleteByLibelle(String libelle) {
 		return départementDao.deleteByLibelle(libelle);
 	}
@@ -29,7 +32,7 @@ public class DépartementImpl implements DépartementService{
 	public int save(Département département) {
 		Département départementFounded = findByLibelle(département.getLibelle());
 		if(départementFounded == null) {
-			départementDao.save(départementFounded);
+			départementDao.save(département);
 			return 1;
 		}
 		else return -1;

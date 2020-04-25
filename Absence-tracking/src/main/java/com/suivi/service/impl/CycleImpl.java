@@ -2,6 +2,8 @@ package com.suivi.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,7 @@ public class CycleImpl implements CycleService{
 	}
 
 	@Override
+	@Transactional
 	public int deleteByLibelle(String libelle) {
 		return cycleDao.deleteByLibelle(libelle);
 	}
@@ -29,7 +32,7 @@ public class CycleImpl implements CycleService{
 	public int save(Cycle cycle) {
 		Cycle cycleFounded = findByLibelle(cycle.getLibelle());
 				if(cycleFounded == null) {
-					cycleDao.save(cycleFounded);
+					cycleDao.save(cycle);
 					return 1;
 				}
 				else return -1;

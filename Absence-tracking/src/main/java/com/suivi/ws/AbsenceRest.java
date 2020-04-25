@@ -24,18 +24,16 @@ import com.suivi.service.facade.AbsenceService;
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RequestMapping("absence-tracking/absence")
 public class AbsenceRest {
+	
 	@Autowired
 	private AbsenceService absenceService;
 
-	@GetMapping("/")
+
+	@GetMapping("/etudiant")
 	public Absence findByEtudiant(@RequestBody Etudiant etudiant) {
 		return absenceService.findByEtudiant(etudiant);
 	}
 
-	@GetMapping("/")
-	public List<Absence> findBySéance(@RequestBody Séance séance) {
-		return absenceService.findBySéance(séance);
-	}
 
 	@PostMapping("/")
 	public int save(@RequestBody Absence absence) {
@@ -65,6 +63,12 @@ public class AbsenceRest {
 	@DeleteMapping("/ref/{ref}")
 	public int deleteByRef(@PathVariable String ref) {
 		return absenceService.deleteByRef(ref);
+	}
+
+
+	@GetMapping("/")
+	public List<Absence> findBySéance(@RequestBody Séance séance) {
+		return absenceService.findBySéance(séance);
 	}
 	
 	

@@ -3,6 +3,8 @@ package com.suivi.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,12 +26,16 @@ public class AbsenceImpl implements AbsenceService{
 		return absenceDao.findByEtudiant(etudiant);
 	}
 
+	@Override
+	public List<Absence> findBySéance(Séance séance) {
+		return absenceDao.findBySéance(séance);
+	}
 
 	@Override
 	public int save(Absence absence) {
 		Absence absenceFounded = findByEtudiant(absence.getEtudiant());
 		if(absenceFounded == null) {
-			absenceDao.save(absenceFounded);
+			absenceDao.save(absence);
 			return 1;
 		}
 		else return -1;
@@ -67,11 +73,6 @@ public class AbsenceImpl implements AbsenceService{
 		return absenceDao.deleteByRef(ref);
 	}
 
-
-	@Override
-	public List<Absence> findBySéance(Séance séance) {
-		return absenceDao.findBySéance(séance);
-	}
 
 
 

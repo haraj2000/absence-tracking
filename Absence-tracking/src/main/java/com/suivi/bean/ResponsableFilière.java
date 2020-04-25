@@ -13,7 +13,7 @@ public class ResponsableFilière {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@OneToOne(mappedBy = "responsableFilière")
+	@OneToOne
 	private Filière filière;
 	@ManyToOne
 	private Enseignant enseignant;

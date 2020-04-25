@@ -2,6 +2,8 @@ package com.suivi.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,7 @@ public class MatièreImpl implements MatièreService{
 	}
 
 	@Override
+	@Transactional
 	public int deleteByLibelle(String libelle) {
 		return matièreDao.deleteByLibelle(libelle);
 	}
@@ -29,7 +32,7 @@ public class MatièreImpl implements MatièreService{
 	public int save(Matière matière) {
 		Matière matièreFounded = findByLibelle(matière.getLibelle());
 		if(matièreFounded == null) {
-			matièreDao.save(matièreFounded);
+			matièreDao.save(matière);
 			return 1;
 		}
 		else return -1;

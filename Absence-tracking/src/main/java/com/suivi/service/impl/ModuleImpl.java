@@ -2,6 +2,8 @@ package com.suivi.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,7 @@ public class ModuleImpl implements ModuleService{
 	}
 
 	@Override
+	@Transactional
 	public int deleteByLibelle(String libelle) {
 		return moduleDao.deleteByLibelle(libelle);
 	}
@@ -28,7 +31,7 @@ public class ModuleImpl implements ModuleService{
 	public int save(Module module) {
 		Module moduleFounded = findByLibelle(module.getLibelle());
 		if(moduleFounded == null) {
-			moduleDao.save(moduleFounded);
+			moduleDao.save(module);
 			return 1;
 		}
 		else return -1;

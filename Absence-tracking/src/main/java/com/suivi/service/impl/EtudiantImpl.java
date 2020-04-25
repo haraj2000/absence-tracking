@@ -2,6 +2,8 @@ package com.suivi.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +46,7 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
+	@Transactional
 	public int deleteByCin(String cin) {
 		return etudiantDao.deleteByCin(cin);
 	}
@@ -52,7 +55,7 @@ public class EtudiantImpl implements EtudiantService {
 	public int save(Etudiant etudiant) {
 		Etudiant etudiantFounded = findByCin(etudiant.getCin());
 		if(etudiantFounded == null) {
-			etudiantDao.save(etudiantFounded);
+			etudiantDao.save(etudiant);
 			return 1;
 		}
 		else return -1;
@@ -77,7 +80,7 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
-	public Etudiant findBynCne(String cne) {
+	public Etudiant findByCne(String cne) {
 		return etudiantDao.findByCne(cne);
 	}
 
@@ -99,6 +102,11 @@ public class EtudiantImpl implements EtudiantService {
 	@Override
 	public Etudiant findByCodeApogee(String codeApogee) {
 		return etudiantDao.findByCodeApogee(codeApogee);
+	}
+
+	@Override
+	public Etudiant findBynCne(String cne) {
+		return etudiantDao.findByCne(cne);
 	}
 
 }

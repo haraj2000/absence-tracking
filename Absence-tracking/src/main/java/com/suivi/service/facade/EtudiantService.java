@@ -18,6 +18,7 @@ public interface EtudiantService {
 	public Etudiant findBynCne(String cne);
 	public Etudiant findByAbsence(Absence absence);
 	public Etudiant findByCodeApogee(String codeApogee);
+	public Etudiant findByCne(String cne);
 	public int deleteByCne(String cne);
 	public int deleteByCin(String cin);
 	public int save(Etudiant etudiant);
