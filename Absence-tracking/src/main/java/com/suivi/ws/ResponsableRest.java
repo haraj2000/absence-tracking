@@ -25,7 +25,7 @@ public class ResponsableRest {
 	@Autowired
 	private ResponsableFilièreService responsableFilièreService;
 
-	@GetMapping("/filière")
+	@GetMapping("/filiere")
 	public ResponsableFilière findByFilière(@RequestBody Filière filière) {
 		return responsableFilièreService.findByFilière(filière);
 	}

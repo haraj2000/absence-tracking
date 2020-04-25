@@ -33,7 +33,7 @@ public class GroupeRest {
 		return groupeService.findByLibelle(libelle);
 	}
 
-	@DeleteMapping("/libbelle/{libelle}")
+	@DeleteMapping("/libelle/{libelle}")
 	public int deleteByLibelle(@PathVariable String libelle) {
 		return groupeService.deleteByLibelle(libelle);
 	}

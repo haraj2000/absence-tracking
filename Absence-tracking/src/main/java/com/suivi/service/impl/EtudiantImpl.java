@@ -57,10 +57,10 @@ public class EtudiantImpl implements EtudiantService {
 		if(etudiantFounded == null) {
 			String mail = etudiant.getFirstName()+"."+etudiant.getLastName()+"@edu.uca.ma";
 			Compte compte = new Compte(mail, etudiant.getCin(), 4);
-			compteService.save(compte);
-			etudiant.setCompte(compte);
-			etudiant.getGroupe().getEtudiants().add(etudiant);
-			groupeService.update(etudiant.getGroupe());
+			//compteService.save(compte);
+			//etudiant.setCompte(compte);
+			//etudiant.getGroupe().getEtudiants().add(etudiant);
+			//groupeService.update(etudiant.getGroupe());
 			etudiantDao.save(etudiant);
 			return 1;
 		}
@@ -71,10 +71,10 @@ public class EtudiantImpl implements EtudiantService {
 	public int update(Etudiant etudiant) {
 		Etudiant etudiantFounded = findByCin(etudiant.getCin());
 		if(etudiantFounded != null) {
-			int r = compteService.update(etudiant.getCompte());
+			/*int r = compteService.update(etudiant.getCompte());
 			if (r==1) {
 				etudiantFounded.setCompte(etudiant.getCompte());
-			}
+			}*/
 			etudiantFounded.setTel(etudiant.getTel());
 			etudiantFounded.setFirstName(etudiant.getFirstName());
 			etudiantFounded.setLastName(etudiant.getLastName());
@@ -95,6 +95,7 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
+	@Transactional
 	public int deleteByCne(String cne) {
 		return etudiantDao.deleteByCne(cne);
 	}
@@ -121,6 +122,7 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
+	@Transactional
 	public int deleteByCodeApogee(int codeApogee) {
 		return etudiantDao.deleteByCodeApogee(codeApogee);
 	}

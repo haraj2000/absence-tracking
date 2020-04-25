@@ -21,43 +21,43 @@ import com.suivi.service.facade.TypeSéanceService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/typeFormation")
-public class TypeFormationRest {
+@RequestMapping("absence-tracking/typeSeance")
+public class TypeSéanceRest {
 	
 	@Autowired
-	private TypeSéanceService formationService;
+	private TypeSéanceService typeSéanceService;
 
 	@GetMapping("/libelle/{libelle}")
 	public TypeSéance findByLibelle(@PathVariable String libelle) {
-		return formationService.findByLibelle(libelle);
+		return typeSéanceService.findByLibelle(libelle);
 	}
 	@GetMapping("/enseignant")
 	public List<TypeSéance> findByEnseignant(@RequestBody Enseignant enseignant) {
-		return formationService.findByEnseignant(enseignant);
+		return typeSéanceService.findByEnseignant(enseignant);
 	}
-	@GetMapping("/matière")
+	@GetMapping("/matiere")
 	public List<TypeSéance> findByMatière(@RequestBody Matière matière) {
-		return formationService.findByMatière(matière);
+		return typeSéanceService.findByMatière(matière);
 	}
 	@GetMapping("/module")
 	public List<TypeSéance> findByModule(@RequestBody Module module) {
-		return formationService.findByModule(module);
+		return typeSéanceService.findByModule(module);
 	}
 	@DeleteMapping("/libelle/{libelle}")
 	public int deleteByLibelle(@PathVariable String libelle) {
-		return formationService.deleteByLibelle(libelle);
+		return typeSéanceService.deleteByLibelle(libelle);
 	}
 	@PostMapping("/")
 	public int save(@RequestBody TypeSéance typeSéance) {
-		return formationService.save(typeSéance);
+		return typeSéanceService.save(typeSéance);
 	}
 	@PutMapping("/")
 	public int update(@RequestBody TypeSéance typeSéance) {
-		return formationService.update(typeSéance);
+		return typeSéanceService.update(typeSéance);
 	}
 	@GetMapping("/")
 	public List<TypeSéance> findAll() {
-		return formationService.findAll();
+		return typeSéanceService.findAll();
 	}
 	
 

@@ -17,7 +17,7 @@ import com.suivi.service.facade.DépartementService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/département")
+@RequestMapping("absence-tracking/departement")
 public class DépartementRest {
 
 	@Autowired 

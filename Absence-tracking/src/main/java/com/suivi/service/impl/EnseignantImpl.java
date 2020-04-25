@@ -60,8 +60,8 @@ public class EnseignantImpl implements EnseignantService{
 		if(enseignantFounded == null) {
 			String mail = enseignant.getFirstName()+"."+enseignant.getLastName()+"@edu.uca.ma";
 			Compte compte = new Compte(mail, enseignant.getCin(), 3);
-			compteService.save(compte);
-			enseignant.setCompte(compte);
+			//compteService.save(compte);
+			//enseignant.setCompte(compte);
 			enseignantDao.save(enseignant);
 			return 1;
 		}
@@ -72,14 +72,18 @@ public class EnseignantImpl implements EnseignantService{
 	public int update(Enseignant enseignant) {
 		Enseignant enseignantFounded = findByMatricule(enseignant.getMatricule());
 		if(enseignantFounded != null) {
-			int r = compteService.update(enseignant.getCompte());
+			/*int r = compteService.update(enseignant.getCompte());
 			if (r==1) {
 				enseignantFounded.setCompte(enseignant.getCompte());
-			}
+			}*/
+			if(enseignant.getDépartement()!=null)
 			enseignantFounded.setDépartement(enseignant.getDépartement());
+			if(enseignant.getMatière()!=null)
 			enseignantFounded.setMatière(enseignant.getMatière());
 			enseignantFounded.setTel(enseignant.getTel());
+			if(enseignant.getFirstName()!=null)
 			enseignantFounded.setFirstName(enseignant.getFirstName());
+			if(enseignant.getLastName()!=null)
 			enseignantFounded.setLastName(enseignant.getLastName());
 			enseignantDao.save(enseignantFounded);
 			return 1;

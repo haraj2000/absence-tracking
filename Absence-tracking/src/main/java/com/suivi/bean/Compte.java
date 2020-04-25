@@ -13,14 +13,15 @@ public class Compte {
 	private Long id;
 	private String mail;
 	private String password;
-	private int role;
+	private Integer role;
 	
 	
 	
-	public int getRole() {
+	
+	public Integer getRole() {
 		return role;
 	}
-	public void setRole(int role) {
+	public void setRole(Integer role) {
 		this.role = role;
 	}
 	public Long getId() {
@@ -46,7 +47,7 @@ public class Compte {
 	
 
 	
-	public Compte(String mail, String password, int role) {
+	public Compte(String mail, String password, Integer role) {
 		super();
 		this.mail = mail;
 		this.password = password;

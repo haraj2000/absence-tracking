@@ -17,7 +17,7 @@ import com.suivi.service.facade.MatièreService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/matière")
+@RequestMapping("absence-tracking/matiere")
 public class MatièreRest {
 
 	@Autowired

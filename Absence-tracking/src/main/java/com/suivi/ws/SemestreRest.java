@@ -38,7 +38,7 @@ public class SemestreRest {
 	public List<Semestre> findByAnnéeUniversitaire(@PathVariable Date annéeUniversitaire) {
 		return semestreService.findByAnnéeUniversitaire(annéeUniversitaire);
 	}
-	@GetMapping("/filière")
+	@GetMapping("/filiere")
 	public List<Semestre> findByFilière(@RequestBody Filière filière) {
 		return semestreService.findByFilière(filière);
 	}

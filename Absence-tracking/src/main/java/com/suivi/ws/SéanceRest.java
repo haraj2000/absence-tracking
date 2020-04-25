@@ -20,7 +20,7 @@ import com.suivi.service.facade.SéanceService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/séance")
+@RequestMapping("absence-tracking/seance")
 public class SéanceRest {
 	@Autowired
 	private SéanceService séanceService;
@@ -37,7 +37,7 @@ public class SéanceRest {
 	public List<Séance> findByHourStop(@PathVariable Date hourStop) {
 		return séanceService.findByHourStop(hourStop);
 	}
-	@GetMapping("/typeSéance")
+	@GetMapping("/typeSeance")
 	public List<Séance> findByTypeSéance(@RequestBody TypeSéance typeSéance) {
 		return séanceService.findByTypeSéance(typeSéance);
 	}

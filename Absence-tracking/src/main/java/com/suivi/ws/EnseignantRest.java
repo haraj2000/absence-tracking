@@ -41,7 +41,7 @@ public class EnseignantRest {
 	public Enseignant findByCin(@PathVariable String cin) {
 		return enseignantService.findByCin(cin);
 	}
-	@GetMapping("/département")
+	@GetMapping("/departement")
 	public List<Enseignant> findByDépartement(@RequestBody Département département) {
 		return enseignantService.findByDépartement(département);
 	}

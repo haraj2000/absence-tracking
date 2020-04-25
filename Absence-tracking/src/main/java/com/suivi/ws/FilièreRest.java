@@ -19,7 +19,7 @@ import com.suivi.service.facade.FilièreService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/filière")
+@RequestMapping("absence-tracking/filiere")
 public class FilièreRest {
 
 	@Autowired

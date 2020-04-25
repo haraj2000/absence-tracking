@@ -44,8 +44,8 @@ public class ResponsableImpl implements ResponsableFilièreService{
 		ResponsableFilière responsableFilièreFounded = findByFilière(responsableFilière.getFilière());
 		if(responsableFilièreFounded == null) {
 			responsableFilière.getEnseignant().getCompte().setRole(2);
-			compteService.update(responsableFilière.getEnseignant().getCompte());
-			enseignantService.update(responsableFilière.getEnseignant());
+			//compteService.update(responsableFilière.getEnseignant().getCompte());
+			//enseignantService.update(responsableFilière.getEnseignant());
 			responsableFilièreDao.save(responsableFilière);
 			return 1;
 		}
