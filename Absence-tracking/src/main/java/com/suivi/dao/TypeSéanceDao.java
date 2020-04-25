@@ -11,7 +11,7 @@ import com.suivi.bean.Module;
 import com.suivi.bean.TypeSéance;
 
 @Repository
-public interface TypeFormationDao extends JpaRepository<TypeSéance, Long>{
+public interface TypeSéanceDao extends JpaRepository<TypeSéance, Long>{
 
 	public TypeSéance  findByLibelle(String libelle);
 	public List<TypeSéance> findByEnseignant(Enseignant enseignant);

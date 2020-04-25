@@ -11,46 +11,46 @@ import com.suivi.bean.Enseignant;
 import com.suivi.bean.Matière;
 import com.suivi.bean.Module;
 import com.suivi.bean.TypeSéance;
-import com.suivi.dao.TypeFormationDao;
+import com.suivi.dao.TypeSéanceDao;
 import com.suivi.service.facade.TypeFormationService;
 
 @Service
 public class TypeFormationImpl implements TypeFormationService{
 
 	@Autowired
-	private TypeFormationDao typeFormationDao;
+	private TypeSéanceDao typeSéanceDao;
 	
 	@Override
 	public TypeSéance findByLibelle(String libelle) {
-		return typeFormationDao.findByLibelle(libelle);
+		return typeSéanceDao.findByLibelle(libelle);
 	}
 
 	@Override
 	public List<TypeSéance> findByEnseignant(Enseignant enseignant) {
-		return typeFormationDao.findByEnseignant(enseignant);
+		return typeSéanceDao.findByEnseignant(enseignant);
 	}
 
 	@Override
 	public List<TypeSéance> findByMatière(Matière matière) {
-		return typeFormationDao.findByMatière(matière);
+		return typeSéanceDao.findByMatière(matière);
 	}
 
 	@Override
 	public List<TypeSéance> findByModule(Module module) {
-		return typeFormationDao.findByModule(module);
+		return typeSéanceDao.findByModule(module);
 	}
 
 	@Override
 	@Transactional
 	public int deleteByLibelle(String libelle) {
-		return typeFormationDao.deleteByLibelle(libelle);
+		return typeSéanceDao.deleteByLibelle(libelle);
 	}
 
 	@Override
 	public int save(TypeSéance typeSéance) {
 		TypeSéance typeFormationFounded = findByLibelle(typeSéance.getLibelle());
 		if(typeFormationFounded == null) {
-			typeFormationDao.save(typeSéance);
+			typeSéanceDao.save(typeSéance);
 			return 1;
 		}
 		else return -1;
@@ -68,7 +68,7 @@ public class TypeFormationImpl implements TypeFormationService{
 
 	@Override
 	public List<TypeSéance> findAll() {
-		return typeFormationDao.findAll();
+		return typeSéanceDao.findAll();
 	}
 
 }
