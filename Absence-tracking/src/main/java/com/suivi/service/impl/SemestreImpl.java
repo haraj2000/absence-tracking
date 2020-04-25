@@ -6,12 +6,14 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.suivi.bean.Filière;
 import com.suivi.bean.Semestre;
 import com.suivi.dao.SemestreDao;
 import com.suivi.service.facade.SemestreService;
 
+@Service
 public class SemestreImpl implements SemestreService{
 
 	@Autowired

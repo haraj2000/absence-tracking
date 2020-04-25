@@ -90,7 +90,7 @@ public class EtudiantRest {
 		return etudiantService.deleteByCne(cne);
 	}
 
-	@GetMapping("/")
+	@GetMapping("/filière")
 	public List<Etudiant> findByFilière(@RequestBody Filière filière) {
 		return etudiantService.findByFilière(filière);
 	}

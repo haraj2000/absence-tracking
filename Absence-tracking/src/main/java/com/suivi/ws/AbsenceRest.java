@@ -60,7 +60,7 @@ public class AbsenceRest {
 	}
 
 
-	@GetMapping("/")
+	@GetMapping("/séance")
 	public List<Absence> findBySéance(@RequestBody Séance séance) {
 		return absenceService.findBySéance(séance);
 	}
