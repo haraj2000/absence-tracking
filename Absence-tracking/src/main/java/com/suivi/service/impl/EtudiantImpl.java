@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.suivi.bean.Absence;
 import com.suivi.bean.Etudiant;
+import com.suivi.bean.Filière;
 import com.suivi.bean.Groupe;
 import com.suivi.dao.EtudiantDao;
 import com.suivi.service.facade.EtudiantService;
@@ -76,12 +78,27 @@ public class EtudiantImpl implements EtudiantService {
 
 	@Override
 	public Etudiant findBynCne(String cne) {
-		return etudiantDao.findBynCne(cne);
+		return etudiantDao.findByCne(cne);
 	}
 
 	@Override
 	public int deleteByCne(String cne) {
 		return etudiantDao.deleteByCne(cne);
+	}
+
+	@Override
+	public List<Etudiant> findByFiliere(Filière filière) {
+		return etudiantDao.findByFiliere(filière);
+	}
+
+	@Override
+	public Etudiant findByAbsence(Absence absence) {
+		return etudiantDao.findByAbsence(absence);
+	}
+
+	@Override
+	public Etudiant findByCodeApogee(String codeApogee) {
+		return etudiantDao.findByCodeApogee(codeApogee);
 	}
 
 }

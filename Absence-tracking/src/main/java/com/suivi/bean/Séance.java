@@ -1,9 +1,13 @@
 package com.suivi.bean;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Séance {
@@ -12,6 +16,39 @@ public class Séance {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
+	@Temporal(TemporalType.DATE)
+	private Date date;
+	@Temporal(TemporalType.TIME)
+	private Date hourStart;
+	@Temporal(TemporalType.TIME)
+	private Date hourStop;
+	private String typeFormation;
+	
+	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public Date getHourStart() {
+		return hourStart;
+	}
+	public void setHourStart(Date hourStart) {
+		this.hourStart = hourStart;
+	}
+	public Date getHourStop() {
+		return hourStop;
+	}
+	public void setHourStop(Date hourStop) {
+		this.hourStop = hourStop;
+	}
+	public String getTypeFormation() {
+		return typeFormation;
+	}
+	public void setTypeFormation(String typeFormation) {
+		this.typeFormation = typeFormation;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -24,10 +61,15 @@ public class Séance {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Séance(Long id, String libelle) {
+
+	public Séance(Long id, String libelle, Date date, Date hourStart, Date hourStop, String typeFormation) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
+		this.date = date;
+		this.hourStart = hourStart;
+		this.hourStop = hourStop;
+		this.typeFormation = typeFormation;
 	}
 	public Séance() {
 		super();
@@ -57,9 +99,9 @@ public class Séance {
 	}
 	@Override
 	public String toString() {
-		return "Séance [id=" + id + ", libelle=" + libelle + "]";
+		return "Séance [id=" + id + ", libelle=" + libelle + ", date=" + date + ", hourStart=" + hourStart
+				+ ", hourStop=" + hourStop + ", typeFormation=" + typeFormation + "]";
 	}
-	
-	
+
 	
 }

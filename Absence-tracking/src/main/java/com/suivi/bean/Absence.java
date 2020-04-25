@@ -14,7 +14,7 @@ public class Absence {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Date date;
+	private String ref;
 	private String justification;
 	@ManyToOne
 	private Etudiant etudiant;
@@ -28,12 +28,7 @@ public class Absence {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
+
 	public String getJustification() {
 		return justification;
 	}
@@ -58,10 +53,19 @@ public class Absence {
 	public void setSéance(Séance séance) {
 		this.séance = séance;
 	}
-	public Absence(Long id, Date date, String justification, Etudiant etudiant, Module module, Séance séance) {
+	
+	public String getRef() {
+		return ref;
+	}
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+
+
+	public Absence(Long id, String ref, String justification, Etudiant etudiant, Module module, Séance séance) {
 		super();
 		this.id = id;
-		this.date = date;
+		this.ref = ref;
 		this.justification = justification;
 		this.etudiant = etudiant;
 		this.module = module;
@@ -70,11 +74,12 @@ public class Absence {
 	public Absence() {
 		super();
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 	@Override
@@ -86,19 +91,20 @@ public class Absence {
 		if (getClass() != obj.getClass())
 			return false;
 		Absence other = (Absence) obj;
-		if (date == null) {
-			if (other.date != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!date.equals(other.date))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Absence [id=" + id + ", date=" + date + ", justification=" + justification + ", etudiant=" + etudiant
+		return "Absence [id=" + id + ", ref=" + ref + ", justification=" + justification + ", etudiant=" + etudiant
 				+ ", module=" + module + ", séance=" + séance + "]";
 	}
-	
+
+
 	
 	
 	

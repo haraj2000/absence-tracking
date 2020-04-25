@@ -13,7 +13,15 @@ public class Compte {
 	private Long id;
 	private String mail;
 	private String password;
+	private String role;
 	
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -33,11 +41,13 @@ public class Compte {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Compte(Long id, String mail, String password) {
+
+	public Compte(Long id, String mail, String password, String role) {
 		super();
 		this.id = id;
 		this.mail = mail;
 		this.password = password;
+		this.role = role;
 	}
 	public Compte() {
 		super();
@@ -67,8 +77,9 @@ public class Compte {
 	}
 	@Override
 	public String toString() {
-		return "Compte [id=" + id + ", mail=" + mail + ", password=" + password + "]";
+		return "Compte [id=" + id + ", mail=" + mail + ", password=" + password + ", role=" + role + "]";
 	}
+
 	
 	
 	
