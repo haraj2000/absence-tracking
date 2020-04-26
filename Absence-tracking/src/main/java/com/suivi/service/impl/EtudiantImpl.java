@@ -107,7 +107,7 @@ public class EtudiantImpl implements EtudiantService {
 
 
 	@Override
-	public Etudiant findByCodeApogee(String codeApogee) {
+	public Etudiant findByCodeApogee(int codeApogee) {
 		return etudiantDao.findByCodeApogee(codeApogee);
 	}
 

@@ -10,6 +10,6 @@ import com.suivi.bean.Compte;
 public interface CompteDao extends JpaRepository<Compte, Long> {
 
 	public Compte findByMail(String mail);
-	public List<Compte> findByRole(Integer role);
+	public List<Compte> findByRole(int role);
 	public int deleteByMail(String mail);
 }

@@ -97,7 +97,7 @@ public class EtudiantRest {
 
 
 	@GetMapping("/codeApogee/{codeApogee}")
-	public Etudiant findByCodeApogee(@PathVariable String codeApogee) {
+	public Etudiant findByCodeApogee(@PathVariable int codeApogee) {
 		return etudiantService.findByCodeApogee(codeApogee);
 	}
 	

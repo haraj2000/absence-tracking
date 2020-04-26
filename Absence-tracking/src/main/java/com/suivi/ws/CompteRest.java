@@ -24,7 +24,7 @@ public class CompteRest {
 	private CompteService compteService;
 
 	@GetMapping("/role/{role}")
-	public List<Compte> findByRole(Integer role) {
+	public List<Compte> findByRole(@PathVariable int role) {
 		return compteService.findByRole(role);
 	}
 

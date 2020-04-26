@@ -59,9 +59,11 @@ public class EnseignantImpl implements EnseignantService{
 		Enseignant enseignantFounded = findByMatricule(enseignant.getMatricule());
 		if(enseignantFounded == null) {
 			String mail = enseignant.getFirstName()+"."+enseignant.getLastName()+"@edu.uca.ma";
-			Compte compte = new Compte(mail, enseignant.getCin(), 3);
-			//compteService.save(compte);
-			//enseignant.setCompte(compte);
+			/*Compte compte = new Compte(mail, enseignant.getCin(), 3);
+			System.out.println(compte);
+			compteService.save(compte);
+			enseignant.setCompte(compte);
+			System.out.println(compte);*/
 			enseignantDao.save(enseignant);
 			return 1;
 		}

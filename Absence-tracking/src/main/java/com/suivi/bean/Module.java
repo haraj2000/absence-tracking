@@ -30,6 +30,10 @@ public class Module {
 		this.id = id;
 		this.libelle = libelle;
 	}
+	public Module(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
 	public Module() {
 		super();
 	}

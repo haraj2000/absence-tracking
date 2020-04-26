@@ -57,7 +57,7 @@ public class CompteImpl implements CompteService {
 	}
 
 	@Override
-	public List<Compte> findByRole(Integer role) {
+	public List<Compte> findByRole(int role) {
 		return compteDao.findByRole(role);
 	}
 
