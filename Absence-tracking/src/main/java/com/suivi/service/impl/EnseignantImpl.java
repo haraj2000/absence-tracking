@@ -7,11 +7,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.suivi.bean.Compte;
 import com.suivi.bean.Département;
 import com.suivi.bean.Enseignant;
 import com.suivi.dao.EnseignantDao;
-import com.suivi.service.facade.CompteService;
 import com.suivi.service.facade.EnseignantService;
 
 @Service
@@ -19,7 +17,6 @@ public class EnseignantImpl implements EnseignantService{
 
 	@Autowired
 	private EnseignantDao enseignantDao;
-	private CompteService compteService;
 	
 	@Override
 	public List<Enseignant> findByFirstName(String firstName) {
@@ -59,11 +56,10 @@ public class EnseignantImpl implements EnseignantService{
 		Enseignant enseignantFounded = findByMatricule(enseignant.getMatricule());
 		if(enseignantFounded == null) {
 			String mail = enseignant.getFirstName()+"."+enseignant.getLastName()+"@edu.uca.ma";
-			/*Compte compte = new Compte(mail, enseignant.getCin(), 3);
-			System.out.println(compte);
-			compteService.save(compte);
-			enseignant.setCompte(compte);
-			System.out.println(compte);*/
+			String password = enseignant.getCin();
+			enseignant.setMail(mail);
+			enseignant.setPassword(password);
+			enseignant.setRole(3);
 			enseignantDao.save(enseignant);
 			return 1;
 		}
@@ -74,19 +70,12 @@ public class EnseignantImpl implements EnseignantService{
 	public int update(Enseignant enseignant) {
 		Enseignant enseignantFounded = findByMatricule(enseignant.getMatricule());
 		if(enseignantFounded != null) {
-			/*int r = compteService.update(enseignant.getCompte());
-			if (r==1) {
-				enseignantFounded.setCompte(enseignant.getCompte());
-			}*/
-			if(enseignant.getDépartement()!=null)
 			enseignantFounded.setDépartement(enseignant.getDépartement());
-			if(enseignant.getMatière()!=null)
 			enseignantFounded.setMatière(enseignant.getMatière());
 			enseignantFounded.setTel(enseignant.getTel());
-			if(enseignant.getFirstName()!=null)
 			enseignantFounded.setFirstName(enseignant.getFirstName());
-			if(enseignant.getLastName()!=null)
 			enseignantFounded.setLastName(enseignant.getLastName());
+			enseignantFounded.setPassword(enseignant.getPassword());
 			enseignantDao.save(enseignantFounded);
 			return 1;
 		}
@@ -104,8 +93,13 @@ public class EnseignantImpl implements EnseignantService{
 	}
 
 	@Override
-	public Enseignant findByCompteMail(String mail) {
-		return enseignantDao.findByCompteMail(mail);
+	public Enseignant findByMail(String mail) {
+		return enseignantDao.findByMail(mail);
+	}
+
+	@Override
+	public List<Enseignant> findByRole(int role) {
+		return enseignantDao.findByRole(role);
 	}
 
 }

@@ -16,10 +16,11 @@ public interface EtudiantService {
 	public Etudiant findByCne(String cne);
 	public List<Etudiant> findByNbrAbsence(int nbrAbsence);
 	public Etudiant findByCodeApogee(int codeApogee);
-	public Etudiant findByCompteMail(String mail);
+	public Etudiant findByMail(String mail);
 	public int deleteByCin(String cin);
 	public int deleteByCne(String cne);
 	public int deleteByCodeApogee(int codeApogee);
+	public List<Etudiant> findByRole(int role);
 	public int save(Etudiant etudiant);
 	public int update(Etudiant etudiant);
 	public List<Etudiant> findAll();

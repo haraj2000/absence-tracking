@@ -11,7 +11,6 @@ import com.suivi.bean.Enseignant;
 import com.suivi.bean.Filière;
 import com.suivi.bean.ResponsableFilière;
 import com.suivi.dao.ResponsableFilièreDao;
-import com.suivi.service.facade.CompteService;
 import com.suivi.service.facade.EnseignantService;
 import com.suivi.service.facade.ResponsableFilièreService;
 
@@ -20,7 +19,6 @@ public class ResponsableImpl implements ResponsableFilièreService{
 
 	@Autowired
 	private ResponsableFilièreDao responsableFilièreDao;
-	private CompteService compteService;
 	private EnseignantService enseignantService;
 	
 	@Override
@@ -43,9 +41,8 @@ public class ResponsableImpl implements ResponsableFilièreService{
 	public int save(ResponsableFilière responsableFilière) {
 		ResponsableFilière responsableFilièreFounded = findByFilière(responsableFilière.getFilière());
 		if(responsableFilièreFounded == null) {
-			responsableFilière.getEnseignant().getCompte().setRole(2);
-			//compteService.update(responsableFilière.getEnseignant().getCompte());
-			//enseignantService.update(responsableFilière.getEnseignant());
+			responsableFilière.getEnseignant().setRole(2);
+			enseignantService.update(responsableFilière.getEnseignant());
 			responsableFilièreDao.save(responsableFilière);
 			return 1;
 		}
@@ -56,11 +53,9 @@ public class ResponsableImpl implements ResponsableFilièreService{
 	public int update(ResponsableFilière responsableFilière) {
 		ResponsableFilière responsableFilièreFounded = findByFilière(responsableFilière.getFilière());
 		if(responsableFilièreFounded != null) {
-			responsableFilièreFounded.getEnseignant().getCompte().setRole(3);
+			responsableFilièreFounded.getEnseignant().setRole(3);
 			enseignantService.update(responsableFilièreFounded.getEnseignant());
-			compteService.update(responsableFilièreFounded.getEnseignant().getCompte());
-			responsableFilière.getEnseignant().getCompte().setRole(2);
-			compteService.update(responsableFilière.getEnseignant().getCompte());
+			responsableFilière.getEnseignant().setRole(2);
 			enseignantService.update(responsableFilière.getEnseignant());
 			responsableFilièreFounded.setEnseignant(responsableFilière.getEnseignant());
 			responsableFilièreDao.save(responsableFilièreFounded);

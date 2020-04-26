@@ -7,22 +7,17 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.suivi.bean.Compte;
 import com.suivi.bean.Etudiant;
 import com.suivi.bean.Filière;
 import com.suivi.bean.Groupe;
 import com.suivi.dao.EtudiantDao;
-import com.suivi.service.facade.CompteService;
 import com.suivi.service.facade.EtudiantService;
-import com.suivi.service.facade.GroupeService;
 
 @Service
 public class EtudiantImpl implements EtudiantService {
 	
 	@Autowired
 	private EtudiantDao etudiantDao;
-	private CompteService compteService;
-	private GroupeService groupeService;
 
 	@Override
 	public List<Etudiant> findByFirstName(String firstName) {
@@ -56,11 +51,10 @@ public class EtudiantImpl implements EtudiantService {
 		Etudiant etudiantFounded = findByCin(etudiant.getCin());
 		if(etudiantFounded == null) {
 			String mail = etudiant.getFirstName()+"."+etudiant.getLastName()+"@edu.uca.ma";
-			Compte compte = new Compte(mail, etudiant.getCin(), 4);
-			//compteService.save(compte);
-			//etudiant.setCompte(compte);
-			//etudiant.getGroupe().getEtudiants().add(etudiant);
-			//groupeService.update(etudiant.getGroupe());
+			String password = etudiant.getCin();
+			etudiant.setMail(mail);
+			etudiant.setPassword(password);
+			etudiant.setRole(4);
 			etudiantDao.save(etudiant);
 			return 1;
 		}
@@ -71,13 +65,10 @@ public class EtudiantImpl implements EtudiantService {
 	public int update(Etudiant etudiant) {
 		Etudiant etudiantFounded = findByCin(etudiant.getCin());
 		if(etudiantFounded != null) {
-			/*int r = compteService.update(etudiant.getCompte());
-			if (r==1) {
-				etudiantFounded.setCompte(etudiant.getCompte());
-			}*/
 			etudiantFounded.setTel(etudiant.getTel());
 			etudiantFounded.setFirstName(etudiant.getFirstName());
 			etudiantFounded.setLastName(etudiant.getLastName());
+			etudiantFounded.setPassword(etudiant.getPassword());
 			etudiantDao.save(etudiantFounded);
 			return 1;
 		}
@@ -117,14 +108,19 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
-	public Etudiant findByCompteMail(String mail) {
-		return etudiantDao.findByCompteMail(mail);
+	public Etudiant findByMail(String mail) {
+		return etudiantDao.findByMail(mail);
 	}
 
 	@Override
 	@Transactional
 	public int deleteByCodeApogee(int codeApogee) {
 		return etudiantDao.deleteByCodeApogee(codeApogee);
+	}
+
+	@Override
+	public List<Etudiant> findByRole(int role) {
+		return etudiantDao.findByRole(role);
 	}
 
 

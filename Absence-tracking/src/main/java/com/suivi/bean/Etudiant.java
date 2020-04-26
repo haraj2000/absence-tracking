@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,8 +25,9 @@ public class Etudiant {
 	private Date birthDay;
 	private int tel;
 	private int nbrAbsence;
-	@OneToOne
-	private Compte compte;
+	private String mail;
+	private String password;
+	private int role;
 	@ManyToOne
 	private Groupe groupe;
 	@ManyToOne
@@ -68,11 +68,23 @@ public class Etudiant {
 	public void setTel(int tel) {
 		this.tel = tel;
 	}
-	public Compte getCompte() {
-		return compte;
+	public String getMail() {
+		return mail;
 	}
-	public void setCompte(Compte compte) {
-		this.compte = compte;
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public int getRole() {
+		return role;
+	}
+	public void setRole(int role) {
+		this.role = role;
 	}
 	public Groupe getGroupe() {
 		return groupe;
@@ -86,8 +98,6 @@ public class Etudiant {
 	public void setFilière(Filière filière) {
 		this.filière = filière;
 	}
-	
-	
 	public String getCne() {
 		return cne;
 	}
@@ -107,10 +117,9 @@ public class Etudiant {
 		this.nbrAbsence = nbrAbsence;
 	}
 
-	public Etudiant(Long id, String cin, String cne, int codeApogee, String firstName, String lastName,
-			Date birthDay, int tel, int nbrAbsence, Groupe groupe, Filière filière) {
+	public Etudiant(String cin, String cne, int codeApogee, String firstName, String lastName, Date birthDay, int tel,
+			int nbrAbsence, Groupe groupe, Filière filière) {
 		super();
-		this.id = id;
 		this.cin = cin;
 		this.cne = cne;
 		this.codeApogee = codeApogee;
@@ -152,7 +161,7 @@ public class Etudiant {
 	public String toString() {
 		return "Etudiant [id=" + id + ", cin=" + cin + ", cne=" + cne + ", codeApogee=" + codeApogee + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel
-				+ ", nbrAbsence=" + nbrAbsence + ", compte=" + compte + ", groupe=" + groupe + ", filière=" + filière
+				+ ", nbrAbsence=" + nbrAbsence + ", groupe=" + groupe + ", filière=" + filière
 				+ "]";
 	}
 

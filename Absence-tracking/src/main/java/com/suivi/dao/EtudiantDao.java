@@ -18,9 +18,9 @@ public interface EtudiantDao extends JpaRepository<Etudiant, Long>{
 	public List<Etudiant> findByNbrAbsence(int nbrAbsence);
 	public Etudiant findByCne(String cne);
 	public Etudiant findByCodeApogee(int codeApogee);
-	public Etudiant findByCompteMail(String mail);
+	public Etudiant findByMail(String mail);
 	public int deleteByCin(String cin);
 	public int deleteByCne(String cne);
 	public int deleteByCodeApogee(int codeApogee);
-
+	public List<Etudiant> findByRole(int role);
 }

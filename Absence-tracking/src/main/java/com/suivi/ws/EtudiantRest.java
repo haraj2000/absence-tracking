@@ -25,6 +25,11 @@ public class EtudiantRest {
 	@Autowired
 	private EtudiantService etudiantService;
 
+	@GetMapping("/role/{role}")
+	public List<Etudiant> findByRole(@PathVariable int role) {
+		return etudiantService.findByRole(role);
+	}
+
 	@GetMapping("/firstName/{firstName}")
 	public List<Etudiant> findByFirstName(@PathVariable String firstName) {
 		return etudiantService.findByFirstName(firstName);
@@ -51,8 +56,8 @@ public class EtudiantRest {
 	}
 
 	@GetMapping("/mail/{mail}")
-	public Etudiant findByCompteMail(@PathVariable String mail) {
-		return etudiantService.findByCompteMail(mail);
+	public Etudiant findByMail(@PathVariable String mail) {
+		return etudiantService.findByMail(mail);
 	}
 
 	@DeleteMapping("/codeApogee/{codeApogee}")

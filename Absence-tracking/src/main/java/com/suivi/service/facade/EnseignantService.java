@@ -12,9 +12,10 @@ public interface EnseignantService {
 	public Enseignant findByMatricule(String matricule);
 	public Enseignant findByCin(String cin);
 	public List<Enseignant> findByDépartement(Département département);
-	public Enseignant findByCompteMail(String mail);
+	public Enseignant findByMail(String mail);
 	public int deleteByMatricule(String matricule);
 	public int deleteByCin(String cin);
+	public List<Enseignant> findByRole(int role);
 	public int save(Enseignant enseignant);
 	public int update(Enseignant enseignant);
 	public List<Enseignant> findAll();

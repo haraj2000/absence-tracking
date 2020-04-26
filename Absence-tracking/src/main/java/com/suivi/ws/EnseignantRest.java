@@ -24,7 +24,11 @@ public class EnseignantRest {
 	
 	@Autowired
 	private EnseignantService enseignantService;
-
+	
+	@GetMapping("role/{role}")
+	public List<Enseignant> findByRole(int role) {
+		return enseignantService.findByRole(role);
+	}
 	@GetMapping("firstName/{firstName}")
 	public List<Enseignant> findByFirstName(@PathVariable String firstName) {
 		return enseignantService.findByFirstName(firstName);
@@ -46,8 +50,8 @@ public class EnseignantRest {
 		return enseignantService.findByDépartement(département);
 	}
 	@GetMapping("/mail/{mail}")
-	public Enseignant findByCompteMail(@PathVariable String mail) {
-		return enseignantService.findByCompteMail(mail);
+	public Enseignant findByMail(@PathVariable String mail) {
+		return enseignantService.findByMail(mail);
 	}
 	@DeleteMapping("/matricule/{matricule}")
 	public int deleteByMatricule(@PathVariable String matricule) {

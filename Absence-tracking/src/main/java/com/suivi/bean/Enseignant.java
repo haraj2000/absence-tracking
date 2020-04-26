@@ -23,8 +23,9 @@ public class Enseignant {
 	@Temporal(TemporalType.DATE)
 	private Date birthDay;
 	private int tel;
-	@ManyToOne
-	private Compte compte;
+	private String mail;
+	private String password;
+	private int role;
 	@ManyToOne
 	private Département département;
 	@ManyToOne
@@ -84,17 +85,30 @@ public class Enseignant {
 	public void setDépartement(Département département) {
 		this.département = département;
 	}
-	public Compte getCompte() {
-		return compte;
+	public String getMail() {
+		return mail;
 	}
-	public void setCompte(Compte compte) {
-		this.compte = compte;
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public int getRole() {
+		return role;
+	}
+	public void setRole(int role) {
+		this.role = role;
 	}
 	public Enseignant() {
 		super();
 	}
-	public Enseignant(String matricule, String cin, String firstName, String lastName, Date birthDay,
-			int tel, Département département, Matière matière) {
+	
+	public Enseignant(String matricule, String cin, String firstName, String lastName, Date birthDay, int tel,
+			Département département, Matière matière) {
 		super();
 		this.matricule = matricule;
 		this.cin = cin;
@@ -131,7 +145,7 @@ public class Enseignant {
 	@Override
 	public String toString() {
 		return "Enseignant [id=" + id + ", matricule=" + matricule + ", cin=" + cin + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel + ", compte=" + compte
+				+ ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel
 				+ ", département=" + département + ", matière=" + matière + "]";
 	}
 	
