@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.suivi.bean.Enseignant;
-import com.suivi.bean.Matière;
 import com.suivi.bean.Module;
 import com.suivi.bean.Séance;
 import com.suivi.bean.TypeSéance;

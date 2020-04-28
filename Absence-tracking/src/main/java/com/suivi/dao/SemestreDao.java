@@ -15,6 +15,6 @@ public interface SemestreDao extends JpaRepository<Semestre, Long>{
 	public Semestre findByLibelle(String libelle);
 	public List<Semestre> findByAnnéeUniversitaire(Date annéeUniversitaire);
 	public List<Semestre> findByFilière(Filière filière);
-	public List<Semestre> findByNombre(int nombre);
+	public List<Semestre> findByNumber(int number);
 	public int deleteByLibelle(String libelle);
 }

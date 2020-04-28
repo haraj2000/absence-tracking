@@ -71,7 +71,6 @@ public class EnseignantImpl implements EnseignantService{
 		Enseignant enseignantFounded = findByMatricule(enseignant.getMatricule());
 		if(enseignantFounded != null) {
 			enseignantFounded.setDépartement(enseignant.getDépartement());
-			enseignantFounded.setMatière(enseignant.getMatière());
 			enseignantFounded.setTel(enseignant.getTel());
 			enseignantFounded.setFirstName(enseignant.getFirstName());
 			enseignantFounded.setLastName(enseignant.getLastName());

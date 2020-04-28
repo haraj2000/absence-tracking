@@ -23,6 +23,18 @@ public class Groupe {
 	
 	
 	
+	public List<Etudiant> getEtudiants() {
+		return etudiants;
+	}
+	public void setEtudiants(List<Etudiant> etudiants) {
+		this.etudiants = etudiants;
+	}
+	public Semestre getSemestre() {
+		return semestre;
+	}
+	public void setSemestre(Semestre semestre) {
+		this.semestre = semestre;
+	}
 	public Long getId() {
 		return id;
 	}

@@ -71,8 +71,8 @@ public class SemestreImpl implements SemestreService{
 	}
 
 	@Override
-	public List<Semestre> findByNombre(int nombre) {
-		return semestreDao.findByNombre(nombre);
+	public List<Semestre> findByNumber(int number) {
+		return semestreDao.findByNumber(number);
 	}
 
 }
