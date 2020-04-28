@@ -13,12 +13,7 @@ public class TypeSéance {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
-	@ManyToOne
-	private Module module;
-	@ManyToOne
-	private Enseignant enseignant;
-	@ManyToOne 
-	private Matière matière;
+	
 	
 	public Long getId() {
 		return id;
@@ -33,33 +28,12 @@ public class TypeSéance {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Module getModule() {
-		return module;
-	}
-	public void setModule(Module module) {
-		this.module = module;
-	}
-	public Enseignant getEnseignant() {
-		return enseignant;
-	}
-	public void setEnseignant(Enseignant enseignant) {
-		this.enseignant = enseignant;
-	}
-	public Matière getMatière() {
-		return matière;
-	}
-	public void setMatière(Matière matière) {
-		this.matière = matière;
-	}
 	public TypeSéance() {
 		super();
 	}
-	public TypeSéance(String libelle, Module module, Enseignant enseignant, Matière matière) {
+	public TypeSéance(String libelle) {
 		super();
 		this.libelle = libelle;
-		this.module = module;
-		this.enseignant = enseignant;
-		this.matière = matière;
 	}
 	@Override
 	public int hashCode() {
@@ -86,8 +60,7 @@ public class TypeSéance {
 	}
 	@Override
 	public String toString() {
-		return "TypeSéance [id=" + id + ", libelle=" + libelle + ", module=" + module + ", enseignant=" + enseignant
-				+ ", matière=" + matière + "]";
+		return "TypeSéance [id=" + id + ", libelle=" + libelle +"]";
 	}
 	
 }

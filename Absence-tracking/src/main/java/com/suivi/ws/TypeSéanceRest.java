@@ -31,18 +31,6 @@ public class TypeSéanceRest {
 	public TypeSéance findByLibelle(@PathVariable String libelle) {
 		return typeSéanceService.findByLibelle(libelle);
 	}
-	@GetMapping("/enseignant")
-	public List<TypeSéance> findByEnseignant(@RequestBody Enseignant enseignant) {
-		return typeSéanceService.findByEnseignant(enseignant);
-	}
-	@GetMapping("/matiere")
-	public List<TypeSéance> findByMatière(@RequestBody Matière matière) {
-		return typeSéanceService.findByMatière(matière);
-	}
-	@GetMapping("/module")
-	public List<TypeSéance> findByModule(@RequestBody Module module) {
-		return typeSéanceService.findByModule(module);
-	}
 	@DeleteMapping("/libelle/{libelle}")
 	public int deleteByLibelle(@PathVariable String libelle) {
 		return typeSéanceService.deleteByLibelle(libelle);
@@ -50,10 +38,6 @@ public class TypeSéanceRest {
 	@PostMapping("/")
 	public int save(@RequestBody TypeSéance typeSéance) {
 		return typeSéanceService.save(typeSéance);
-	}
-	@PutMapping("/")
-	public int update(@RequestBody TypeSéance typeSéance) {
-		return typeSéanceService.update(typeSéance);
 	}
 	@GetMapping("/")
 	public List<TypeSéance> findAll() {

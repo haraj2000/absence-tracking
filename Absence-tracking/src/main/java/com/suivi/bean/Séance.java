@@ -1,12 +1,14 @@
 package com.suivi.bean;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,14 +19,18 @@ public class Séance {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
-	@Temporal(TemporalType.DATE)
-	private Date date;
-	@Temporal(TemporalType.TIME)
-	private Date hourStart;
-	@Temporal(TemporalType.TIME)
-	private Date hourStop;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateStart;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateStop;
 	@ManyToOne
 	private TypeSéance typeSéance;
+	@ManyToOne
+	private Module module;
+	@ManyToOne
+	private Enseignant enseignant;
+	@OneToMany
+	private List<Groupe> groupes;
 	
 	
 	public TypeSéance getTypeSéance() {
@@ -32,24 +38,6 @@ public class Séance {
 	}
 	public void setTypeSéance(TypeSéance typeSéance) {
 		this.typeSéance = typeSéance;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	public Date getHourStart() {
-		return hourStart;
-	}
-	public void setHourStart(Date hourStart) {
-		this.hourStart = hourStart;
-	}
-	public Date getHourStop() {
-		return hourStop;
-	}
-	public void setHourStop(Date hourStop) {
-		this.hourStop = hourStop;
 	}
 	public Long getId() {
 		return id;
@@ -63,16 +51,49 @@ public class Séance {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-
-	public Séance( Date date, Date hourStart, Date hourStop, TypeSéance typeSéance) {
-		super();
-		this.date = date;
-		this.hourStart = hourStart;
-		this.hourStop = hourStop;
-		this.typeSéance = typeSéance;
+	public Date getDateStart() {
+		return dateStart;
+	}
+	public void setDateStart(Date dateStart) {
+		this.dateStart = dateStart;
+	}
+	public Date getDateStop() {
+		return dateStop;
+	}
+	public void setDateStop(Date dateStop) {
+		this.dateStop = dateStop;
+	}
+	public Module getModule() {
+		return module;
+	}
+	public void setModule(Module module) {
+		this.module = module;
+	}
+	public Enseignant getEnseignant() {
+		return enseignant;
+	}
+	public void setEnseignant(Enseignant enseignant) {
+		this.enseignant = enseignant;
+	}
+	public List<Groupe> getGroupes() {
+		return groupes;
+	}
+	public void setGroupes(List<Groupe> groupes) {
+		this.groupes = groupes;
 	}
 	public Séance() {
 		super();
+	}
+	public Séance(String libelle, Date dateStart, Date dateStop, TypeSéance typeSéance, Module module,
+			Enseignant enseignant, List<Groupe> groupes) {
+		super();
+		this.libelle = libelle;
+		this.dateStart = dateStart;
+		this.dateStop = dateStop;
+		this.typeSéance = typeSéance;
+		this.module = module;
+		this.enseignant = enseignant;
+		this.groupes = groupes;
 	}
 	@Override
 	public int hashCode() {
@@ -99,10 +120,8 @@ public class Séance {
 	}
 	@Override
 	public String toString() {
-		return "Séance [id=" + id + ", libelle=" + libelle + ", date=" + date + ", hourStart=" + hourStart
-				+ ", hourStop=" + hourStop + ", typeSéance=" + typeSéance + "]";
+		return "Séance [id=" + id + ", libelle=" + libelle + ", dateStart=" + dateStart + ", dateStop=" + dateStop
+				+ ", typeSéance=" + typeSéance + ", module=" + module + ", enseignant=" + enseignant + ", groupes="
+				+ groupes + "]";
 	}
-
-
-	
 }

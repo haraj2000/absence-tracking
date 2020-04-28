@@ -11,6 +11,7 @@ public interface SemestreService {
 	public Semestre findByLibelle(String libelle);
 	public List<Semestre> findByAnnéeUniversitaire(Date annéeUniversitaire);
 	public List<Semestre> findByFilière(Filière filière);
+	public List<Semestre> findByNombre(int nombre);
 	public int deleteByLibelle(String libelle);
 	public int save(Semestre semestre);
 	public int update(Semestre semestre);

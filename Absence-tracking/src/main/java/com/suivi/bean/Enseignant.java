@@ -28,8 +28,7 @@ public class Enseignant {
 	private int role;
 	@ManyToOne
 	private Département département;
-	@ManyToOne
-	private Matière matière;
+	
 	
 	public Long getId() {
 		return id;
@@ -76,12 +75,6 @@ public class Enseignant {
 	public Département getDépartement() {
 		return département;
 	}
-	public Matière getMatière() {
-		return matière;
-	}
-	public void setMatière(Matière matière) {
-		this.matière = matière;
-	}
 	public void setDépartement(Département département) {
 		this.département = département;
 	}
@@ -108,7 +101,7 @@ public class Enseignant {
 	}
 	
 	public Enseignant(String matricule, String cin, String firstName, String lastName, Date birthDay, int tel,
-			Département département, Matière matière) {
+			Département département) {
 		super();
 		this.matricule = matricule;
 		this.cin = cin;
@@ -117,7 +110,6 @@ public class Enseignant {
 		this.birthDay = birthDay;
 		this.tel = tel;
 		this.département = département;
-		this.matière = matière;
 	}
 	@Override
 	public int hashCode() {
@@ -146,7 +138,7 @@ public class Enseignant {
 	public String toString() {
 		return "Enseignant [id=" + id + ", matricule=" + matricule + ", cin=" + cin + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel
-				+ ", département=" + département + ", matière=" + matière + "]";
+				+ ", département=" + département + "]";
 	}
 	
 	

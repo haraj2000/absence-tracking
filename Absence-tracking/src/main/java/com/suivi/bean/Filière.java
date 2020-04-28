@@ -15,8 +15,7 @@ public class Filière {
 	private String libelle;
 	@ManyToOne
 	private Cycle cycle;
-	@ManyToOne
-	private Département département;
+	
 
 	public Long getId() {
 		return id;

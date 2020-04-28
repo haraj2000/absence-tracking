@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.suivi.bean.Enseignant;
+import com.suivi.bean.Module;
 import com.suivi.bean.Séance;
 import com.suivi.bean.TypeSéance;
 import com.suivi.service.facade.SéanceService;
@@ -25,47 +27,45 @@ public class SéanceRest {
 	@Autowired
 	private SéanceService séanceService;
 
-	@GetMapping("/date/{date}")
-	public List<Séance> findByDate(@PathVariable Date date) {
-		return séanceService.findByDate(date);
+	@GetMapping("/dateStart/{dateStart}")
+	public List<Séance> findByDateStart(@PathVariable Date date) {
+		return séanceService.findByDateStart(date);
 	}
-	@GetMapping("hourStart/{hourStart}")
-	public List<Séance> findByHourStart(@PathVariable Date hourStart) {
-		return séanceService.findByHourStart(hourStart);
-	}
-	@GetMapping("hourStop/{hourStop}")
-	public List<Séance> findByHourStop(@PathVariable Date hourStop) {
-		return séanceService.findByHourStop(hourStop);
+	@GetMapping("dateStop/{dateStop}")
+	public List<Séance> findByDateStop(@PathVariable Date hourStop) {
+		return séanceService.findByDateStop(hourStop);
 	}
 	@GetMapping("/typeSeance")
 	public List<Séance> findByTypeSéance(@RequestBody TypeSéance typeSéance) {
 		return séanceService.findByTypeSéance(typeSéance);
 	}
-
 	@GetMapping("/libelle/{libelle}")
 	public Séance findByLibelle(@PathVariable String libelle) {
 		return séanceService.findByLibelle(libelle);
 	}
-
 	@DeleteMapping("/libelle/{libelle}")
 	public int deleteByLibelle(@PathVariable String libelle) {
 		return séanceService.deleteByLibelle(libelle);
 	}
-
 	@PostMapping("/")
 	public int save(@RequestBody Séance séance) {
 		return séanceService.save(séance);
 	}
-
 	@GetMapping("/")
 	public List<Séance> findAll() {
 		return séanceService.findAll();
 	}
-
-
 	@PutMapping("/")
 	public int update(@RequestBody Séance séance) {
 		return séanceService.update(séance);
+	}
+	@GetMapping("/enseignant")
+	public List<Séance> findByEnseignant(Enseignant enseignant) {
+		return séanceService.findByEnseignant(enseignant);
+	}
+	@GetMapping("/module")
+	public List<Séance> findByModule(Module module) {
+		return séanceService.findByModule(module);
 	}
 	
 

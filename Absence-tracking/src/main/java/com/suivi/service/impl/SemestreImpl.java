@@ -42,8 +42,10 @@ public class SemestreImpl implements SemestreService{
 
 	@Override
 	public int save(Semestre semestre) {
-		Semestre semestreFounded = findByLibelle(semestre.getLibelle());
+		String libelle = "S "+semestre.getNumber()+" de filière"+semestre.getFilière();
+		Semestre semestreFounded = findByLibelle(libelle);
 		if(semestreFounded == null) {
+			semestre.setLibelle(libelle);
 			semestreDao.save(semestre);
 			return 1;
 		}
@@ -58,13 +60,19 @@ public class SemestreImpl implements SemestreService{
 
 	@Override
 	public int update(Semestre semestre) {
-		Semestre semestreFounded = findByLibelle(semestre.getLibelle());
+		String libelle = "S "+semestre.getNumber()+" de filière"+semestre.getFilière();
+		Semestre semestreFounded = findByLibelle(libelle);
 		if(semestreFounded != null) {	
 			semestreFounded.setGroupes(semestre.getGroupes());
 			semestreFounded.setModules(semestre.getModules());
 			semestreDao.save(semestreFounded);
 			return 1;
 		}else return -1;
+	}
+
+	@Override
+	public List<Semestre> findByNombre(int nombre) {
+		return semestreDao.findByNombre(nombre);
 	}
 
 }

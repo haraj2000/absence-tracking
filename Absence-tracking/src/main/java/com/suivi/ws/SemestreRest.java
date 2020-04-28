@@ -54,6 +54,9 @@ public class SemestreRest {
 	public List<Semestre> findAll() {
 		return semestreService.findAll();
 	}
-	
+	@GetMapping("/nombre/{nombre}")
+	public List<Semestre> findByNombre(int nombre) {
+		return semestreService.findByNombre(nombre);
+	}
 	
 }

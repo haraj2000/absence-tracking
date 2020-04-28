@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -17,14 +18,11 @@ public class Groupe {
 	private String libelle;
 	@OneToMany(mappedBy = "groupe")
 	private List<Etudiant> etudiants;
+	@ManyToOne
+	private Semestre semestre;
 	
 	
-	public List<Etudiant> getEtudiants() {
-		return etudiants;
-	}
-	public void setEtudiants(List<Etudiant> etudiants) {
-		this.etudiants = etudiants;
-	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -70,7 +68,7 @@ public class Groupe {
 	}
 	@Override
 	public String toString() {
-		return "Groupe [id=" + id + ", libelle=" + libelle + ", etudiants=" + etudiants + "]";
+		return "Groupe [id=" + id + ", libelle=" + libelle + "]";
 	}
 	
 	
