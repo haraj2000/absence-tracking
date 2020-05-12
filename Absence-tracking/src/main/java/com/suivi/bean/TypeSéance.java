@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class TypeSéance {
@@ -11,9 +12,26 @@ public class TypeSéance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String reference;
 	private String libelle;
+	@ManyToOne
+	private Module module;
+	@ManyToOne
+	private Enseignant enseignant;
 	
 	
+	public Module getModule() {
+		return module;
+	}
+	public void setModule(Module module) {
+		this.module = module;
+	}
+	public Enseignant getEnseignant() {
+		return enseignant;
+	}
+	public void setEnseignant(Enseignant enseignant) {
+		this.enseignant = enseignant;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -27,12 +45,23 @@ public class TypeSéance {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+	
+	public String getReference() {
+		return reference;
+	}
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
 	public TypeSéance() {
 		super();
 	}
-	public TypeSéance(String libelle) {
+
+	public TypeSéance(String reference, String libelle, Module module, Enseignant enseignant) {
 		super();
+		this.reference = reference;
 		this.libelle = libelle;
+		this.module = module;
+		this.enseignant = enseignant;
 	}
 	@Override
 	public int hashCode() {
@@ -56,10 +85,10 @@ public class TypeSéance {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
+}
 	@Override
 	public String toString() {
-		return "TypeSéance [id=" + id + ", libelle=" + libelle +"]";
+		return "TypeSéance [id=" + id + ", reference=" + reference + ", libelle=" + libelle + ", module=" + module
+				+ ", enseignant=" + enseignant + "]";
 	}
-	
 }

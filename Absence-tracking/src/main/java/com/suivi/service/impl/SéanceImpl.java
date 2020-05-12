@@ -8,8 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.suivi.bean.Enseignant;
-import com.suivi.bean.Module;
 import com.suivi.bean.Séance;
 import com.suivi.bean.TypeSéance;
 import com.suivi.dao.SéanceDao;
@@ -27,14 +25,14 @@ public class SéanceImpl implements SéanceService {
 
 	@Override
 	@Transactional
-	public int deleteByLibelle(String libelle) {
-		return séanceDao.deleteByLibelle(libelle);
+	public int deleteByReference(String reference) {
+		return séanceDao.deleteByReference(reference);
 	}
 
 	@Override
 	public int save(Séance séance) {
-		String libelle = séance.getTypeSéance().getLibelle()+" de"+séance.getModule()+" "+ séance.getDateStart();
-		Séance séanceFounded = findByLibelle(libelle);
+		String libelle = séance.getTypeSéance().getLibelle()+" "+ séance.getTypeSéance().getModule().getLibelle();
+		Séance séanceFounded = findByReference(séance.getReference());
 		if(séanceFounded == null) {
 			séance.setLibelle(libelle);
 			séanceDao.save(séance);
@@ -50,14 +48,12 @@ public class SéanceImpl implements SéanceService {
 
 	@Override
 	public int update(Séance séance) {
-		Séance séanceFounded = findByLibelle(séance.getLibelle());
+		Séance séanceFounded = findByReference(séance.getReference());
 		if(séanceFounded!= null) {
-			String libelle = séance.getTypeSéance().getLibelle()+" "+ séance.getDateStart();
+			String libelle = séance.getTypeSéance().getLibelle()+" "+ séance.getTypeSéance().getModule().getLibelle();
 			séanceFounded.setLibelle(libelle);
 			séanceFounded.setDateStart(séance.getDateStart());
 			séanceFounded.setDateStop(séance.getDateStop());
-			séanceFounded.setEnseignant(séance.getEnseignant());
-			séanceFounded.setModule(séance.getModule());
 			séanceFounded.setGroupes(séance.getGroupes());
 			séanceDao.save(séanceFounded);
 			return 1;
@@ -78,13 +74,10 @@ public class SéanceImpl implements SéanceService {
 	public List<Séance> findByTypeSéance(TypeSéance typeSéance) {
 		return séanceDao.findByTypeSéance(typeSéance);
 	}
-	@Override
-	public List<Séance> findByEnseignant(Enseignant enseignant) {
-		return séanceDao.findByEnseignant(enseignant);
-	}
-	@Override
-	public List<Séance> findByModule(Module module) {
-		return séanceDao.findByModule(module);
-	}
 
+	@Override
+	public Séance findByReference(String reference) {
+		return séanceDao.findByReference(reference);
+	}
 }
+

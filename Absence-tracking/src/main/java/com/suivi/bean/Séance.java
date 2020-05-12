@@ -19,16 +19,13 @@ public class Séance {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
+	private String reference;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateStart;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateStop;
 	@ManyToOne
 	private TypeSéance typeSéance;
-	@ManyToOne
-	private Module module;
-	@ManyToOne
-	private Enseignant enseignant;
 	@OneToMany
 	private List<Groupe> groupes;
 	
@@ -63,36 +60,29 @@ public class Séance {
 	public void setDateStop(Date dateStop) {
 		this.dateStop = dateStop;
 	}
-	public Module getModule() {
-		return module;
-	}
-	public void setModule(Module module) {
-		this.module = module;
-	}
-	public Enseignant getEnseignant() {
-		return enseignant;
-	}
-	public void setEnseignant(Enseignant enseignant) {
-		this.enseignant = enseignant;
-	}
 	public List<Groupe> getGroupes() {
 		return groupes;
 	}
 	public void setGroupes(List<Groupe> groupes) {
 		this.groupes = groupes;
 	}
+	public String getReference() {
+		return reference;
+	}
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
 	public Séance() {
 		super();
 	}
-	public Séance(String libelle, Date dateStart, Date dateStop, TypeSéance typeSéance, Module module,
-			Enseignant enseignant, List<Groupe> groupes) {
+	public Séance(String libelle, String reference, Date dateStart, Date dateStop, TypeSéance typeSéance,
+			List<Groupe> groupes) {
 		super();
 		this.libelle = libelle;
+		this.reference = reference;
 		this.dateStart = dateStart;
 		this.dateStop = dateStop;
 		this.typeSéance = typeSéance;
-		this.module = module;
-		this.enseignant = enseignant;
 		this.groupes = groupes;
 	}
 	@Override
@@ -120,8 +110,8 @@ public class Séance {
 	}
 	@Override
 	public String toString() {
-		return "Séance [id=" + id + ", libelle=" + libelle + ", dateStart=" + dateStart + ", dateStop=" + dateStop
-				+ ", typeSéance=" + typeSéance + ", module=" + module + ", enseignant=" + enseignant + ", groupes="
-				+ groupes + "]";
+		return "Séance [id=" + id + ", libelle=" + libelle + ", reference=" + reference + ", dateStart=" + dateStart
+				+ ", dateStop=" + dateStop + ", typeSéance=" + typeSéance + ", groupes=" + groupes + "]";
 	}
+	
 }

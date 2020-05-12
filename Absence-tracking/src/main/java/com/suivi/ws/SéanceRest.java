@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.suivi.bean.Enseignant;
-import com.suivi.bean.Module;
 import com.suivi.bean.Séance;
 import com.suivi.bean.TypeSéance;
 import com.suivi.service.facade.SéanceService;
@@ -43,9 +41,9 @@ public class SéanceRest {
 	public Séance findByLibelle(@PathVariable String libelle) {
 		return séanceService.findByLibelle(libelle);
 	}
-	@DeleteMapping("/libelle/{libelle}")
-	public int deleteByLibelle(@PathVariable String libelle) {
-		return séanceService.deleteByLibelle(libelle);
+	@DeleteMapping("/reference/{reference}")
+	public int deleteByReference(@PathVariable String reference) {
+		return séanceService.deleteByReference(reference);
 	}
 	@PostMapping("/")
 	public int save(@RequestBody Séance séance) {
@@ -59,14 +57,9 @@ public class SéanceRest {
 	public int update(@RequestBody Séance séance) {
 		return séanceService.update(séance);
 	}
-	@GetMapping("/enseignant")
-	public List<Séance> findByEnseignant(Enseignant enseignant) {
-		return séanceService.findByEnseignant(enseignant);
-	}
-	@GetMapping("/module")
-	public List<Séance> findByModule(Module module) {
-		return séanceService.findByModule(module);
+	@GetMapping("/reference/{reference}")
+	public Séance findByReference(@PathVariable String reference) {
+		return séanceService.findByReference(reference);
 	}
 	
-
 }

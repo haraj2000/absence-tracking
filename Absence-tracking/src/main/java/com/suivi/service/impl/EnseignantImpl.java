@@ -70,11 +70,13 @@ public class EnseignantImpl implements EnseignantService{
 	public int update(Enseignant enseignant) {
 		Enseignant enseignantFounded = findByMatricule(enseignant.getMatricule());
 		if(enseignantFounded != null) {
+			String mail = enseignant.getFirstName()+"."+enseignant.getLastName()+"@edu.uca.ma";
 			enseignantFounded.setDépartement(enseignant.getDépartement());
 			enseignantFounded.setTel(enseignant.getTel());
 			enseignantFounded.setFirstName(enseignant.getFirstName());
 			enseignantFounded.setLastName(enseignant.getLastName());
 			enseignantFounded.setPassword(enseignant.getPassword());
+			enseignantFounded.setMail(mail);
 			enseignantDao.save(enseignantFounded);
 			return 1;
 		}
