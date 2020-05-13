@@ -20,6 +20,11 @@ public class SemestreImpl implements SemestreService{
 	private SemestreDao semestreDao;
 	
 	@Override
+	public Semestre findByReference(String reference) {
+		return semestreDao.findByReference(reference);
+	}
+	
+	@Override
 	public Semestre findByLibelle(String libelle) {
 		return semestreDao.findByLibelle(libelle);
 	}
@@ -36,14 +41,14 @@ public class SemestreImpl implements SemestreService{
 
 	@Override
 	@Transactional
-	public int deleteByLibelle(String libelle) {
-		return semestreDao.deleteByLibelle(libelle);
+	public int deleteByReference(String reference) {
+		return semestreDao.deleteByReference(reference);
 	}
 
 	@Override
 	public int save(Semestre semestre) {
 		String libelle = "S "+semestre.getNumber()+" de filière"+semestre.getFilière();
-		Semestre semestreFounded = findByLibelle(libelle);
+		Semestre semestreFounded = findByReference(semestre.getReference());
 		if(semestreFounded == null) {
 			semestre.setLibelle(libelle);
 			semestreDao.save(semestre);
@@ -61,9 +66,10 @@ public class SemestreImpl implements SemestreService{
 	@Override
 	public int update(Semestre semestre) {
 		String libelle = "S "+semestre.getNumber()+" de filière"+semestre.getFilière();
-		Semestre semestreFounded = findByLibelle(libelle);
+		Semestre semestreFounded = findByReference(semestre.getReference());
 		if(semestreFounded != null) {	
 			semestreFounded.setGroupes(semestre.getGroupes());
+			semestreFounded.setLibelle(libelle);
 			semestreFounded.setModules(semestre.getModules());
 			semestreDao.save(semestreFounded);
 			return 1;

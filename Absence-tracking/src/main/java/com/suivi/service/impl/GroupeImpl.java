@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.suivi.bean.Groupe;
+import com.suivi.bean.Semestre;
 import com.suivi.dao.GroupeDao;
 import com.suivi.service.facade.GroupeService;
 
@@ -15,7 +16,12 @@ import com.suivi.service.facade.GroupeService;
 public class GroupeImpl implements GroupeService {
 	@Autowired
 	private GroupeDao groupeDao;
-
+	
+	
+	@Override
+	public Groupe findByReference(String reference) {
+		return groupeDao.findByReference(reference);
+	}
 	@Override
 	public Groupe findByLibelle(String libelle) {
 		return groupeDao.findByLibelle(libelle);
@@ -23,13 +29,13 @@ public class GroupeImpl implements GroupeService {
 
 	@Override
 	@Transactional
-	public int deleteByLibelle(String libelle) {
-		return groupeDao.deleteByLibelle(libelle);
+	public int deleteByReference(String reference) {
+		return groupeDao.deleteByReference(reference);
 	}
 
 	@Override
 	public int save(Groupe groupe) {
-		Groupe groupeFouded = findByLibelle(groupe.getLibelle());
+		Groupe groupeFouded = findByReference(groupe.getReference());
 		if(groupeFouded == null) {
 			groupeDao.save(groupe);
 			return 1;
@@ -44,13 +50,19 @@ public class GroupeImpl implements GroupeService {
 
 	@Override
 	public int update(Groupe groupe) {
-		Groupe groupeFouded = findByLibelle(groupe.getLibelle());
+		Groupe groupeFouded = findByReference(groupe.getReference());
 		if(groupeFouded != null) {
 			groupeFouded.setEtudiants(groupe.getEtudiants());
+			groupeFouded.setLibelle(groupe.getLibelle());
+			groupeFouded.setSemestre(groupe.getSemestre());
 			groupeDao.save(groupeFouded);
 			return 1;
 		}
 		else return -1;
+	}
+	@Override
+	public List<Groupe> findBySemestre(Semestre semestre) {
+		return groupeDao.findBySemestre(semestre);
 	}
 
 }

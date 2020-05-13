@@ -14,6 +14,7 @@ public class Absence {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String ref;
+	private boolean absent;
 	private String justification;
 	@ManyToOne
 	private Etudiant etudiant;
@@ -26,6 +27,12 @@ public class Absence {
 		this.id = id;
 	}
 
+	public boolean isAbsent() {
+		return absent;
+	}
+	public void setAbsent(boolean absent) {
+		this.absent = absent;
+	}
 	public String getJustification() {
 		return justification;
 	}
@@ -51,13 +58,14 @@ public class Absence {
 	public void setRef(String ref) {
 		this.ref = ref;
 	}
-
-	public Absence(String justification, Etudiant etudiant, Séance séance) {
-		super();
-		this.justification = justification;
-		this.etudiant = etudiant;
-		this.séance = séance;
-	}
+	public Absence(String ref, boolean absent, String justification, Etudiant etudiant, Séance séance) {
+	super();
+	this.ref = ref;
+	this.absent = absent;
+	this.justification = justification;
+	this.etudiant = etudiant;
+	this.séance = séance;
+}
 	public Absence() {
 		super();
 	}
@@ -87,10 +95,10 @@ public class Absence {
 	}
 	@Override
 	public String toString() {
-		return "Absence [id=" + id + ", ref=" + ref + ", justification=" + justification + ", etudiant=" + etudiant
-				+ ", séance=" + séance + "]";
+		return "Absence [id=" + id + ", ref=" + ref + ", absent=" + absent + ", justification=" + justification
+				+ ", etudiant=" + etudiant + ", séance=" + séance + "]";
 	}
-
+	
 
 	
 	

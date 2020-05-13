@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.suivi.bean.Groupe;
+import com.suivi.bean.Semestre;
 import com.suivi.service.facade.GroupeService;
 
 @RestController
@@ -27,15 +28,20 @@ public class GroupeRest {
 	public int update(@RequestBody Groupe groupe) {
 		return groupeService.update(groupe);
 	}
+	
+	@GetMapping("/reference/{reference}")
+	public Groupe findByReference(@PathVariable String reference) {
+		return groupeService.findByReference(reference);
+	}
 
 	@GetMapping("/libelle/{libelle}")
 	public Groupe findByLibelle(@PathVariable String libelle) {
 		return groupeService.findByLibelle(libelle);
 	}
 
-	@DeleteMapping("/libelle/{libelle}")
-	public int deleteByLibelle(@PathVariable String libelle) {
-		return groupeService.deleteByLibelle(libelle);
+	@DeleteMapping("/reference/{reference}")
+	public int deleteByReference(@PathVariable String reference) {
+		return groupeService.deleteByReference(reference);
 	}
 
 	@PostMapping("/")
@@ -46,6 +52,10 @@ public class GroupeRest {
 	@GetMapping("/")
 	public List<Groupe> findAll() {
 		return groupeService.findAll();
+	}
+	@GetMapping("/semestre")
+	public List<Groupe> findBySemestre(@RequestBody Semestre semestre) {
+		return groupeService.findBySemestre(semestre);
 	}
 	
 

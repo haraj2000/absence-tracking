@@ -15,6 +15,7 @@ public class Groupe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String reference;
 	private String libelle;
 	@OneToMany(mappedBy = "groupe")
 	private List<Etudiant> etudiants;
@@ -23,6 +24,12 @@ public class Groupe {
 	
 	
 	
+	public String getReference() {
+		return reference;
+	}
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
 	public List<Etudiant> getEtudiants() {
 		return etudiants;
 	}
@@ -47,10 +54,13 @@ public class Groupe {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Groupe(Long id, String libelle) {
+	
+	public Groupe(String reference, String libelle, List<Etudiant> etudiants, Semestre semestre) {
 		super();
-		this.id = id;
+		this.reference = reference;
 		this.libelle = libelle;
+		this.etudiants = etudiants;
+		this.semestre = semestre;
 	}
 	public Groupe() {
 		super();
@@ -80,8 +90,10 @@ public class Groupe {
 	}
 	@Override
 	public String toString() {
-		return "Groupe [id=" + id + ", libelle=" + libelle + "]";
+		return "Groupe [id=" + id + ", reference=" + reference + ", libelle=" + libelle + ", etudiants=" + etudiants
+				+ ", semestre=" + semestre + "]";
 	}
+	
 	
 	
 }

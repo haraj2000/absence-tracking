@@ -18,6 +18,7 @@ public class Semestre {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String reference;
 	private String libelle;
 	private int number;
 	@Temporal(TemporalType.DATE)
@@ -29,6 +30,13 @@ public class Semestre {
 	@OneToMany
 	private List<Groupe> groupes;
 	
+	
+	public String getReference() {
+		return reference;
+	}
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -74,12 +82,17 @@ public class Semestre {
 	public Semestre() {
 		super();
 	}
-	public Semestre(String libelle, int number, Date annéeUniversitaire, Filière filière) {
+	
+	public Semestre(String reference, String libelle, int number, Date annéeUniversitaire, Filière filière,
+			List<Module> modules, List<Groupe> groupes) {
 		super();
+		this.reference = reference;
 		this.libelle = libelle;
 		this.number = number;
 		this.annéeUniversitaire = annéeUniversitaire;
 		this.filière = filière;
+		this.modules = modules;
+		this.groupes = groupes;
 	}
 	@Override
 	public int hashCode() {
@@ -106,8 +119,9 @@ public class Semestre {
 	}
 	@Override
 	public String toString() {
-		return "Semestre [id=" + id + ", libelle=" + libelle + ", number=" + number + ", annéeUniversitaire="
-				+ annéeUniversitaire + ", filière=" + filière + ", modules=" + modules + ", groupes=" + groupes + "]";
+		return "Semestre [id=" + id + ", reference=" + reference + ", libelle=" + libelle + ", number=" + number
+				+ ", annéeUniversitaire=" + annéeUniversitaire + ", filière=" + filière + ", modules=" + modules
+				+ ", groupes=" + groupes + "]";
 	}
 	
 	

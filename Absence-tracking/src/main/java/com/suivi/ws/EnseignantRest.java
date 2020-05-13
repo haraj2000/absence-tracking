@@ -37,9 +37,9 @@ public class EnseignantRest {
 	public List<Enseignant> findByLastName(@PathVariable String lastName) {
 		return enseignantService.findByLastName(lastName);
 	}
-	@GetMapping("/matricule/{matricule}")
-	public Enseignant findByMatricule(@PathVariable String matricule) {
-		return enseignantService.findByMatricule(matricule);
+	@GetMapping("/numeroSOM/{numeroSOM}")
+	public Enseignant findByNumeroSOM(@PathVariable int numeroSOM) {
+		return enseignantService.findByNumeroSOM(numeroSOM);
 	}
 	@GetMapping("/cin/{cin}")
 	public Enseignant findByCin(@PathVariable String cin) {
@@ -53,9 +53,9 @@ public class EnseignantRest {
 	public Enseignant findByMail(@PathVariable String mail) {
 		return enseignantService.findByMail(mail);
 	}
-	@DeleteMapping("/matricule/{matricule}")
-	public int deleteByMatricule(@PathVariable String matricule) {
-		return enseignantService.deleteByMatricule(matricule);
+	@DeleteMapping("/numeroSOM/{numeroSOM}")
+	public int deleteByNumeroSOM(@PathVariable int numeroSOM) {
+		return enseignantService.deleteByNumeroSOM(numeroSOM);
 	}
 	@DeleteMapping("/cin/{cin}")
 	public int deleteByCin(@PathVariable String cin) {

@@ -29,8 +29,8 @@ public class EnseignantImpl implements EnseignantService{
 	}
 
 	@Override
-	public Enseignant findByMatricule(String matricule) {
-		return enseignantDao.findByMatricule(matricule);
+	public Enseignant findByNumeroSOM(int numeroSOM) {
+		return enseignantDao.findByNumeroSOM(numeroSOM);
 	}
 
 	@Override
@@ -41,8 +41,8 @@ public class EnseignantImpl implements EnseignantService{
 
 	@Override
 	@Transactional
-	public int deleteByMatricule(String matricule) {
-		return enseignantDao.deleteByMatricule(matricule);
+	public int deleteByNumeroSOM(int numeroSOM) {
+		return enseignantDao.deleteByNumeroSOM(numeroSOM);
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class EnseignantImpl implements EnseignantService{
 
 	@Override
 	public int save(Enseignant enseignant) {
-		Enseignant enseignantFounded = findByMatricule(enseignant.getMatricule());
+		Enseignant enseignantFounded = findByNumeroSOM(enseignant.getNumeroSOM());
 		if(enseignantFounded == null) {
 			String mail = enseignant.getFirstName()+"."+enseignant.getLastName()+"@edu.uca.ma";
 			String password = enseignant.getCin();
@@ -68,7 +68,7 @@ public class EnseignantImpl implements EnseignantService{
 
 	@Override
 	public int update(Enseignant enseignant) {
-		Enseignant enseignantFounded = findByMatricule(enseignant.getMatricule());
+		Enseignant enseignantFounded = findByNumeroSOM(enseignant.getNumeroSOM());
 		if(enseignantFounded != null) {
 			String mail = enseignant.getFirstName()+"."+enseignant.getLastName()+"@edu.uca.ma";
 			enseignantFounded.setDépartement(enseignant.getDépartement());

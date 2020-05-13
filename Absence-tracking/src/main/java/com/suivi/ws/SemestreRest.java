@@ -30,6 +30,10 @@ public class SemestreRest {
 	public int update(@RequestBody Semestre semestre) {
 		return semestreService.update(semestre);
 	}
+	@GetMapping("/reference/{reference}")
+	public Semestre findByReference(@PathVariable String reference) {
+		return semestreService.findByReference(reference);
+	}
 	@GetMapping("/libelle/{libelle}")
 	public Semestre findByLibelle(@PathVariable String libelle) {
 		return semestreService.findByLibelle(libelle);
@@ -42,9 +46,9 @@ public class SemestreRest {
 	public List<Semestre> findByFilière(@RequestBody Filière filière) {
 		return semestreService.findByFilière(filière);
 	}
-	@DeleteMapping("/libelle/{libelle}")
-	public int deleteByLibelle(@PathVariable String libelle) {
-		return semestreService.deleteByLibelle(libelle);
+	@DeleteMapping("/reference/{reference}")
+	public int deleteByReference(@PathVariable String reference) {
+		return semestreService.deleteByReference(reference);
 	}
 	@PostMapping("/")
 	public int save(@RequestBody Semestre semestre) {

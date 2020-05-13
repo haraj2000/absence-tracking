@@ -16,7 +16,7 @@ public class Enseignant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String matricule;
+	private int numeroSOM;
 	private String cin;
 	private String firstName;
 	private String lastName;
@@ -36,11 +36,11 @@ public class Enseignant {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getMatricule() {
-		return matricule;
+	public int getNumeroSOM() {
+		return numeroSOM;
 	}
-	public void setMatricule(String matricule) {
-		this.matricule = matricule;
+	public void setNumeroSOM(int numeroSOM) {
+		this.numeroSOM = numeroSOM;
 	}
 	public String getCin() {
 		return cin;
@@ -100,10 +100,10 @@ public class Enseignant {
 		super();
 	}
 	
-	public Enseignant(String matricule, String cin, String firstName, String lastName, Date birthDay, int tel,
+	public Enseignant(int numeroSOM, String cin, String firstName, String lastName, Date birthDay, int tel,
 			Département département) {
 		super();
-		this.matricule = matricule;
+		this.numeroSOM = numeroSOM;
 		this.cin = cin;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -136,7 +136,7 @@ public class Enseignant {
 	}
 	@Override
 	public String toString() {
-		return "Enseignant [id=" + id + ", matricule=" + matricule + ", cin=" + cin + ", firstName=" + firstName
+		return "Enseignant [id=" + id + ", numeroSOM=" + numeroSOM + ", cin=" + cin + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel
 				+ ", département=" + département + "]";
 	}

@@ -9,10 +9,11 @@ import com.suivi.bean.Semestre;
 public interface SemestreService {
 
 	public Semestre findByLibelle(String libelle);
+	public Semestre findByReference(String reference);
 	public List<Semestre> findByAnnéeUniversitaire(Date annéeUniversitaire);
 	public List<Semestre> findByFilière(Filière filière);
 	public List<Semestre> findByNumber(int number);
-	public int deleteByLibelle(String libelle);
+	public int deleteByReference(String reference);
 	public int save(Semestre semestre);
 	public int update(Semestre semestre);
 	public List<Semestre> findAll();
