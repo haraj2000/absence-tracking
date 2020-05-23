@@ -1,6 +1,10 @@
 package com.suivi.service.facade;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.http.ResponseEntity.BodyBuilder;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Département;
 import com.suivi.bean.Enseignant;
@@ -19,4 +23,6 @@ public interface EnseignantService {
 	public int save(Enseignant enseignant);
 	public int update(Enseignant enseignant);
 	public List<Enseignant> findAll();
+	public BodyBuilder uplaodImage(MultipartFile file) throws IOException;
+	public Enseignant getImage(String cin) throws IOException;
 }

@@ -96,8 +96,8 @@ public class EtudiantRest {
 	}
 
 	@GetMapping("/filiere")
-	public List<Etudiant> findByFilière(@RequestBody Filière filière) {
-		return etudiantService.findByFilière(filière);
+	public List<Etudiant> findByFiliere(@RequestBody Filière filiere) {
+		return etudiantService.findByFiliere(filiere);
 	}
 
 

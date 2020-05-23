@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 public class Groupe {
 
@@ -18,6 +21,7 @@ public class Groupe {
 	private String reference;
 	private String libelle;
 	@OneToMany(mappedBy = "groupe")
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<Etudiant> etudiants;
 	@ManyToOne
 	private Semestre semestre;

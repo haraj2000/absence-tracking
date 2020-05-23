@@ -51,7 +51,7 @@ public class EtudiantImpl implements EtudiantService {
 		Etudiant etudiantFounded = findByCin(etudiant.getCin());
 		if(etudiantFounded == null) {
 			String mail = etudiant.getFirstName()+"."+etudiant.getLastName()+"@edu.uca.ma";
-			String password = etudiant.getCin();
+			String password = etudiant.getCne();
 			etudiant.setMail(mail);
 			etudiant.setPassword(password);
 			etudiant.setRole(4);
@@ -64,11 +64,17 @@ public class EtudiantImpl implements EtudiantService {
 	@Override
 	public int update(Etudiant etudiant) {
 		Etudiant etudiantFounded = findByCin(etudiant.getCin());
+		String mail2 = etudiant.getFirstName()+"."+etudiant.getLastName()+"@edu.uca.ma";
 		if(etudiantFounded != null) {
+			String mail = etudiantFounded.getFirstName()+"."+etudiantFounded.getLastName()+"@edu.uca.ma";
 			etudiantFounded.setTel(etudiant.getTel());
 			etudiantFounded.setFirstName(etudiant.getFirstName());
 			etudiantFounded.setLastName(etudiant.getLastName());
 			etudiantFounded.setPassword(etudiant.getPassword());
+			etudiantFounded.setBirthDay(etudiant.getBirthDay());
+			if (etudiantFounded.getMail() == mail) {
+				etudiantFounded.setMail(mail2);
+			} else { etudiantFounded.setMail(etudiant.getMail());}
 			etudiantDao.save(etudiantFounded);
 			return 1;
 		}
@@ -92,8 +98,8 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
-	public List<Etudiant> findByFilière(Filière filière) {
-		return etudiantDao.findByFilière(filière);
+	public List<Etudiant> findByFiliere(Filière filiere) {
+		return etudiantDao.findByFiliere(filiere);
 	}
 
 

@@ -42,12 +42,11 @@ public class FilièreRest {
 		return filièreService.save(filière);
 	}
 	@PutMapping("/")
-	public int update(@RequestBody Filière filière) {
-		return filièreService.update(filière);
+	public int update(@RequestBody Filière filiere) {
+		return filièreService.update(filiere);
 	}
 	@GetMapping("/")
 	public List<Filière> findAll() {
 		return filièreService.findAll();
 	}
-	
 }

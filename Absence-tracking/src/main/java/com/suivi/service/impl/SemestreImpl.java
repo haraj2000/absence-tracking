@@ -47,7 +47,7 @@ public class SemestreImpl implements SemestreService{
 
 	@Override
 	public int save(Semestre semestre) {
-		String libelle = "S "+semestre.getNumber()+" de filière"+semestre.getFilière();
+		String libelle = "S "+semestre.getNumber();
 		Semestre semestreFounded = findByReference(semestre.getReference());
 		if(semestreFounded == null) {
 			semestre.setLibelle(libelle);

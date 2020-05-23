@@ -29,9 +29,9 @@ public class Etudiant {
 	private String password;
 	private int role;
 	@ManyToOne
-	private Groupe groupe;
+	private Filière filiere;
 	@ManyToOne
-	private Filière filière;
+	private Groupe groupe;
 	public Long getId() {
 		return id;
 	}
@@ -93,10 +93,10 @@ public class Etudiant {
 		this.groupe = groupe;
 	}
 	public Filière getFilière() {
-		return filière;
+		return filiere;
 	}
 	public void setFilière(Filière filière) {
-		this.filière = filière;
+		this.filiere = filière;
 	}
 	public String getCne() {
 		return cne;
@@ -129,7 +129,7 @@ public class Etudiant {
 		this.tel = tel;
 		this.nbrAbsence = nbrAbsence;
 		this.groupe = groupe;
-		this.filière = filière;
+		this.filiere = filière;
 	}
 	public Etudiant() {
 		super();
@@ -161,7 +161,7 @@ public class Etudiant {
 	public String toString() {
 		return "Etudiant [id=" + id + ", cin=" + cin + ", cne=" + cne + ", codeApogee=" + codeApogee + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel
-				+ ", nbrAbsence=" + nbrAbsence + ", groupe=" + groupe + ", filière=" + filière
+				+ ", nbrAbsence=" + nbrAbsence + ", groupe=" + groupe + ", filière=" + filiere
 				+ "]";
 	}
 

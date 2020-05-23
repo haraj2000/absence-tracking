@@ -31,10 +31,10 @@ public class SéanceImpl implements SéanceService {
 
 	@Override
 	public int save(Séance séance) {
-		String libelle = séance.getTypeSéance().getLibelle()+" "+ séance.getTypeSéance().getModule().getLibelle();
+		//String libelle = séance.getTypeSéance().getLibelle()+" "+ séance.getTypeSéance().getModule().getLibelle();
 		Séance séanceFounded = findByReference(séance.getReference());
 		if(séanceFounded == null) {
-			séance.setLibelle(libelle);
+			//séance.setLibelle(libelle);
 			séanceDao.save(séance);
 			return 1;
 		}

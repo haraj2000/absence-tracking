@@ -2,6 +2,7 @@ package com.suivi.bean;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,8 @@ public class Enseignant {
 	private String mail;
 	private String password;
 	private int role;
+	@Column(name = "picByte", length = 400000000)
+	private byte[] image;
 	@ManyToOne
 	private Département département;
 	
@@ -35,6 +38,12 @@ public class Enseignant {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public byte[] getImage() {
+		return image;
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 	public int getNumeroSOM() {
 		return numeroSOM;
@@ -100,8 +109,18 @@ public class Enseignant {
 		super();
 	}
 	
-	public Enseignant(int numeroSOM, String cin, String firstName, String lastName, Date birthDay, int tel,
-			Département département) {
+	
+	public Enseignant(String cin, byte[] image) {
+		super();
+		this.cin = cin;
+		this.image = image;
+	}
+	public Enseignant(byte[] image) {
+		super();
+		this.image = image;
+	}
+	public Enseignant(int numeroSOM, String cin, String firstName, String lastName, Date birthDay, int tel, String mail,
+			String password, int role, byte[] image, Département département) {
 		super();
 		this.numeroSOM = numeroSOM;
 		this.cin = cin;
@@ -109,6 +128,10 @@ public class Enseignant {
 		this.lastName = lastName;
 		this.birthDay = birthDay;
 		this.tel = tel;
+		this.mail = mail;
+		this.password = password;
+		this.role = role;
+		this.image = image;
 		this.département = département;
 	}
 	@Override
