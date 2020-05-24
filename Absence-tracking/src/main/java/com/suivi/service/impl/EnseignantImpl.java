@@ -118,8 +118,10 @@ public class EnseignantImpl implements EnseignantService{
 	}
 
 	@Override
-	public BodyBuilder uplaodImage(MultipartFile file) throws IOException {
-		Enseignant enseignant = new Enseignant(compressBytes(file.getBytes()));
+	public BodyBuilder uplaodImage(MultipartFile file, int numeroSOM) throws IOException {
+		Enseignant enseignant = enseignantDao.findByNumeroSOM(numeroSOM);
+			//	new Enseignant(compressBytes(file.getBytes()));
+				enseignant.setImage(compressBytes(file.getBytes()));
 		enseignantDao.save(enseignant);
 		return ResponseEntity.status(HttpStatus.OK);
 	}
@@ -162,7 +164,8 @@ public class EnseignantImpl implements EnseignantService{
 		@Override
 		public Enseignant getImage(String cin) throws IOException {
 			final Enseignant image= enseignantDao.findByCin(cin);
-			Enseignant img = new Enseignant(cin,decompressBytes(image.getImage()));
-			return img;
+			//Enseignant img = new Enseignant(cin,decompressBytes(image.getImage()));
+			image.setImage(decompressBytes(image.getImage()));
+			return image;
 		}
 }

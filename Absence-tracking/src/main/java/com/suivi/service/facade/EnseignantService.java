@@ -23,6 +23,6 @@ public interface EnseignantService {
 	public int save(Enseignant enseignant);
 	public int update(Enseignant enseignant);
 	public List<Enseignant> findAll();
-	public BodyBuilder uplaodImage(MultipartFile file) throws IOException;
+	public BodyBuilder uplaodImage(MultipartFile file, int numeroSOM) throws IOException;
 	public Enseignant getImage(String cin) throws IOException;
 }
