@@ -1,7 +1,9 @@
 package com.suivi.bean;
 
+import java.util.Arrays;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,6 +30,8 @@ public class Etudiant {
 	private String mail;
 	private String password;
 	private int role;
+	@Column(name = "picByte", length = 400000000)
+	private byte[] image;
 	@ManyToOne
 	private Filière filiere;
 	@ManyToOne
@@ -116,9 +120,20 @@ public class Etudiant {
 	public void setNbrAbsence(int nbrAbsence) {
 		this.nbrAbsence = nbrAbsence;
 	}
-
+	public byte[] getImage() {
+		return image;
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+	public Filière getFiliere() {
+		return filiere;
+	}
+	public void setFiliere(Filière filiere) {
+		this.filiere = filiere;
+	}
 	public Etudiant(String cin, String cne, int codeApogee, String firstName, String lastName, Date birthDay, int tel,
-			int nbrAbsence, Groupe groupe, Filière filière) {
+			int nbrAbsence, String mail, String password, int role, byte[] image, Filière filiere, Groupe groupe) {
 		super();
 		this.cin = cin;
 		this.cne = cne;
@@ -128,8 +143,12 @@ public class Etudiant {
 		this.birthDay = birthDay;
 		this.tel = tel;
 		this.nbrAbsence = nbrAbsence;
+		this.mail = mail;
+		this.password = password;
+		this.role = role;
+		this.image = image;
+		this.filiere = filiere;
 		this.groupe = groupe;
-		this.filiere = filière;
 	}
 	public Etudiant() {
 		super();
@@ -160,9 +179,9 @@ public class Etudiant {
 	@Override
 	public String toString() {
 		return "Etudiant [id=" + id + ", cin=" + cin + ", cne=" + cne + ", codeApogee=" + codeApogee + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel
-				+ ", nbrAbsence=" + nbrAbsence + ", groupe=" + groupe + ", filière=" + filiere
-				+ "]";
+				+ firstName + ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel + ", nbrAbsence="
+				+ nbrAbsence + ", mail=" + mail + ", password=" + password + ", role=" + role + ", image="
+				+ Arrays.toString(image) + ", filiere=" + filiere + ", groupe=" + groupe + "]";
 	}
 
 	

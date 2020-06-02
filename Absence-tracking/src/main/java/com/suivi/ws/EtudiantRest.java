@@ -1,8 +1,10 @@
 package com.suivi.ws;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Etudiant;
 import com.suivi.bean.Filière;
@@ -105,10 +109,13 @@ public class EtudiantRest {
 	public Etudiant findByCodeApogee(@PathVariable int codeApogee) {
 		return etudiantService.findByCodeApogee(codeApogee);
 	}
-	
-	
-	
-	
-	
+	@PostMapping("/upload/{cne}")
+	public BodyBuilder uplaodImage(@RequestParam("imageFile") MultipartFile file, @PathVariable String cne) throws IOException {
+		return etudiantService.uplaodImage(file, cne);
+	}
+	@GetMapping("/get/{cin}")
+	public Etudiant getImage(@PathVariable String cin) throws IOException {
+		return etudiantService.getImage(cin);
+	}
 
 }
