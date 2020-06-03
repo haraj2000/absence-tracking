@@ -43,6 +43,8 @@ public class AbsenceImpl implements AbsenceService{
 
 	@Override
 	public int update(Absence absence) {
+		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant le "+absence.getSéance().getLibelle();
+		absence.setRef(ref);
 		Absence absenceFounded = findByRef(absence.getRef());
 		if(absenceFounded!= null) {
 			absenceFounded.setJustification(absence.getJustification());
