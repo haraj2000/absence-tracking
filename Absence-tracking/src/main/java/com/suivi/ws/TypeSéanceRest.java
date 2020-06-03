@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,7 +54,7 @@ public class TypeSéanceRest {
 	public TypeSéance findByReference(@PathVariable String reference) {
 		return typeSéanceService.findByReference(reference);
 	}
-	@PutMapping("/")
+	@PostMapping("/update")
 	public int update(@RequestBody TypeSéance typeSéance) {
 		return typeSéanceService.update(typeSéance);
 	}

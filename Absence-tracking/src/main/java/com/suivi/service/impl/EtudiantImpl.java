@@ -81,6 +81,8 @@ public class EtudiantImpl implements EtudiantService {
 			etudiantFounded.setLastName(etudiant.getLastName());
 			etudiantFounded.setPassword(etudiant.getPassword());
 			etudiantFounded.setBirthDay(etudiant.getBirthDay());
+			etudiantFounded.setGroupe(etudiant.getGroupe());
+			etudiantFounded.setFiliere(etudiant.getFiliere());
 			if (etudiantFounded.getMail() == mail) {
 				etudiantFounded.setMail(mail2);
 			} else { etudiantFounded.setMail(etudiant.getMail());}

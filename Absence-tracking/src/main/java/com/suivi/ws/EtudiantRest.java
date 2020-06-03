@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,7 +43,7 @@ public class EtudiantRest {
 		return etudiantService.findByLastName(lastName);
 	}
 
-	@GetMapping("/groupe")
+	@PostMapping("/groupe")
 	public List<Etudiant> findByGroupe(@RequestBody Groupe groupe) {
 		return etudiantService.findByGroupe(groupe);
 	}
@@ -79,7 +78,7 @@ public class EtudiantRest {
 		return etudiantService.save(etudiant);
 	}
 
-	@PutMapping("/")
+	@PostMapping("/update")
 	public int update(@RequestBody Etudiant etudiant) {
 		return etudiantService.update(etudiant);
 	}
@@ -99,7 +98,7 @@ public class EtudiantRest {
 		return etudiantService.deleteByCne(cne);
 	}
 
-	@GetMapping("/filiere")
+	@PostMapping("/filiere")
 	public List<Etudiant> findByFiliere(@RequestBody Filière filiere) {
 		return etudiantService.findByFiliere(filiere);
 	}
