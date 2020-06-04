@@ -1,5 +1,6 @@
 package com.suivi.bean;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -29,10 +30,18 @@ public class Enseignant {
 	private int role;
 	@Column(name = "picByte", length = 400000000)
 	private byte[] image;
+	@Column(name = "src", length = 400000000)
+	private byte[] src;
 	@ManyToOne
 	private Département département;
 	
 	
+	public byte[] getSrc() {
+		return src;
+	}
+	public void setSrc(byte[] src) {
+		this.src = src;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -119,8 +128,9 @@ public class Enseignant {
 		super();
 		this.image = image;
 	}
+	
 	public Enseignant(int numeroSOM, String cin, String firstName, String lastName, Date birthDay, int tel, String mail,
-			String password, int role, byte[] image, Département département) {
+			String password, int role, byte[] image, byte[] src, Département département) {
 		super();
 		this.numeroSOM = numeroSOM;
 		this.cin = cin;
@@ -132,6 +142,7 @@ public class Enseignant {
 		this.password = password;
 		this.role = role;
 		this.image = image;
+		this.src = src;
 		this.département = département;
 	}
 	@Override
@@ -160,9 +171,11 @@ public class Enseignant {
 	@Override
 	public String toString() {
 		return "Enseignant [id=" + id + ", numeroSOM=" + numeroSOM + ", cin=" + cin + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel
-				+ ", département=" + département + "]";
+				+ ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel + ", mail=" + mail
+				+ ", password=" + password + ", role=" + role + ", image=" + Arrays.toString(image) + ", src="
+				+ Arrays.toString(src) + ", département=" + département + "]";
 	}
+	
 	
 	
 }

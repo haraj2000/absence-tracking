@@ -1,6 +1,5 @@
 package com.suivi.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.suivi.bean.Filière;
 import com.suivi.bean.Semestre;
 import com.suivi.dao.SemestreDao;
+import com.suivi.service.facade.FilièreService;
 import com.suivi.service.facade.SemestreService;
 
 @Service
@@ -18,6 +18,8 @@ public class SemestreImpl implements SemestreService{
 
 	@Autowired
 	private SemestreDao semestreDao;
+	@Autowired
+	private FilièreService filiereService;
 	
 	@Override
 	public Semestre findByReference(String reference) {
@@ -30,13 +32,13 @@ public class SemestreImpl implements SemestreService{
 	}
 
 	@Override
-	public List<Semestre> findByAnnéeUniversitaire(Date annéeUniversitaire) {
-		return semestreDao.findByAnnéeUniversitaire(annéeUniversitaire);
+	public List<Semestre> findByAnneeUniversitaire(String anneeUniversitaire) {
+		return semestreDao.findByAnneeUniversitaire(anneeUniversitaire);
 	}
 
 	@Override
-	public List<Semestre> findByFilière(Filière filière) {
-		return semestreDao.findByFilière(filière);
+	public List<Semestre> findByFiliere(Filière filiere) {
+		return semestreDao.findByFiliere(filiere);
 	}
 
 	@Override
@@ -46,10 +48,14 @@ public class SemestreImpl implements SemestreService{
 	}
 
 	@Override
-	public int save(Semestre semestre) {
+	public int save(Semestre semestre, String filiere) {
+		Filière filière = filiereService.findByLibelle(filiere);
+		String reference = "S "+semestre.getNumber()+" "+ filière.getLibelle() + " " + semestre.getAnneeUniversitaire();
 		String libelle = "S "+semestre.getNumber();
-		Semestre semestreFounded = findByReference(semestre.getReference());
+		Semestre semestreFounded = findByReference(reference);
 		if(semestreFounded == null) {
+			semestre.setReference(reference);
+			semestre.setFiliere(filière);
 			semestre.setLibelle(libelle);
 			semestreDao.save(semestre);
 			return 1;
@@ -65,11 +71,10 @@ public class SemestreImpl implements SemestreService{
 
 	@Override
 	public int update(Semestre semestre) {
-		String libelle = "S "+semestre.getNumber()+" de filière"+semestre.getFilière();
-		Semestre semestreFounded = findByReference(semestre.getReference());
+		String reference = "S "+semestre.getNumber()+" "+semestre.getFiliere() + " " + semestre.getAnneeUniversitaire();
+		Semestre semestreFounded = findByReference(reference);
 		if(semestreFounded != null) {	
 			semestreFounded.setGroupes(semestre.getGroupes());
-			semestreFounded.setLibelle(libelle);
 			semestreFounded.setModules(semestre.getModules());
 			semestreDao.save(semestreFounded);
 			return 1;

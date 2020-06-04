@@ -12,6 +12,7 @@ import com.suivi.bean.Filière;
 import com.suivi.bean.ResponsableFilière;
 import com.suivi.dao.ResponsableFilièreDao;
 import com.suivi.service.facade.EnseignantService;
+import com.suivi.service.facade.FilièreService;
 import com.suivi.service.facade.ResponsableFilièreService;
 
 @Service
@@ -19,7 +20,10 @@ public class ResponsableImpl implements ResponsableFilièreService{
 
 	@Autowired
 	private ResponsableFilièreDao responsableFilièreDao;
+	@Autowired
 	private EnseignantService enseignantService;
+	@Autowired
+	private FilièreService filiereService;
 	
 	@Override
 	public ResponsableFilière findByFilière(Filière filière) {
@@ -38,10 +42,12 @@ public class ResponsableImpl implements ResponsableFilièreService{
 	}
 
 	@Override
-	public int save(ResponsableFilière responsableFilière) {
-		ResponsableFilière responsableFilièreFounded = findByFilière(responsableFilière.getFilière());
+	public int save(ResponsableFilière responsableFilière, String libelle) {
+		Filière filière = filiereService.findByLibelle(libelle);
+		ResponsableFilière responsableFilièreFounded = findByFilière(filière);
 		if(responsableFilièreFounded == null) {
 			responsableFilière.getEnseignant().setRole(2);
+			responsableFilière.setFilière(filière);
 			enseignantService.update(responsableFilière.getEnseignant());
 			responsableFilièreDao.save(responsableFilière);
 			return 1;

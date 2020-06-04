@@ -21,12 +21,15 @@ import com.suivi.bean.Filière;
 import com.suivi.bean.Groupe;
 import com.suivi.dao.EtudiantDao;
 import com.suivi.service.facade.EtudiantService;
+import com.suivi.service.facade.GroupeService;
 
 @Service
 public class EtudiantImpl implements EtudiantService {
 	
 	@Autowired
 	private EtudiantDao etudiantDao;
+	@Autowired
+	private GroupeService GroupeService;
 
 	@Override
 	public List<Etudiant> findByFirstName(String firstName) {

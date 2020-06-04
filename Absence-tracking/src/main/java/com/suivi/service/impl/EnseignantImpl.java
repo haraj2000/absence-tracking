@@ -88,6 +88,8 @@ public class EnseignantImpl implements EnseignantService{
 			enseignantFounded.setBirthDay(enseignant.getBirthDay());
 			enseignantFounded.setLastName(enseignant.getLastName());
 			enseignantFounded.setPassword(enseignant.getPassword());
+			enseignantFounded.setRole(enseignant.getRole());
+			enseignantFounded.setSrc(enseignant.getSrc());
 			if (enseignantFounded.getMail() == mail) {
 				enseignantFounded.setMail(mail2);
 			} else { enseignantFounded.setMail(enseignant.getMail());}
@@ -122,6 +124,7 @@ public class EnseignantImpl implements EnseignantService{
 		Enseignant enseignant = enseignantDao.findByNumeroSOM(numeroSOM);
 			//	new Enseignant(compressBytes(file.getBytes()));
 				enseignant.setImage(compressBytes(file.getBytes()));
+				enseignant.setSrc(decompressBytes(enseignant.getImage()));
 		enseignantDao.save(enseignant);
 		return ResponseEntity.status(HttpStatus.OK);
 	}

@@ -1,6 +1,5 @@
 package com.suivi.ws;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,21 +36,21 @@ public class SemestreRest {
 	public Semestre findByLibelle(@PathVariable String libelle) {
 		return semestreService.findByLibelle(libelle);
 	}
-	@GetMapping("/annéeUniversitaire/{annéeUniversitaire}")
-	public List<Semestre> findByAnnéeUniversitaire(@PathVariable Date annéeUniversitaire) {
-		return semestreService.findByAnnéeUniversitaire(annéeUniversitaire);
+	@GetMapping("/anneeUniversitaire/{anneeUniversitaire}")
+	public List<Semestre> findByAnneeUniversitaire(@PathVariable String anneeUniversitaire) {
+		return semestreService.findByAnneeUniversitaire(anneeUniversitaire);
 	}
 	@GetMapping("/filiere")
-	public List<Semestre> findByFilière(@RequestBody Filière filière) {
-		return semestreService.findByFilière(filière);
+	public List<Semestre> findByFiliere(@RequestBody Filière filiere) {
+		return semestreService.findByFiliere(filiere);
 	}
 	@DeleteMapping("/reference/{reference}")
 	public int deleteByReference(@PathVariable String reference) {
 		return semestreService.deleteByReference(reference);
 	}
-	@PostMapping("/")
-	public int save(@RequestBody Semestre semestre) {
-		return semestreService.save(semestre);
+	@PostMapping("/{filiere}")
+	public int save(@RequestBody Semestre semestre, @PathVariable String filiere) {
+		return semestreService.save(semestre,filiere);
 	}
 	@GetMapping("/")
 	public List<Semestre> findAll() {

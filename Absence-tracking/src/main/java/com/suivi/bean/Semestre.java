@@ -1,6 +1,5 @@
 package com.suivi.bean;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,8 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Semestre {
@@ -21,10 +18,9 @@ public class Semestre {
 	private String reference;
 	private String libelle;
 	private int number;
-	@Temporal(TemporalType.DATE)
-	private Date annéeUniversitaire;
+	private String anneeUniversitaire;
 	@ManyToOne
-	private Filière filière;
+	private Filière filiere;
 	@OneToMany
 	private List<Module> modules;
 	@OneToMany
@@ -49,17 +45,18 @@ public class Semestre {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Date getAnnéeUniversitaire() {
-		return annéeUniversitaire;
+	public Filière getFiliere() {
+		return filiere;
 	}
-	public void setAnnéeUniversitaire(Date annéeUniversitaire) {
-		this.annéeUniversitaire = annéeUniversitaire;
+	public void setFiliere(Filière filiere) {
+		this.filiere = filiere;
 	}
-	public Filière getFilière() {
-		return filière;
+	
+	public String getAnneeUniversitaire() {
+		return anneeUniversitaire;
 	}
-	public void setFilière(Filière filière) {
-		this.filière = filière;
+	public void setAnneeUniversitaire(String anneeUniversitaire) {
+		this.anneeUniversitaire = anneeUniversitaire;
 	}
 	public List<Module> getModules() {
 		return modules;
@@ -83,14 +80,14 @@ public class Semestre {
 		super();
 	}
 	
-	public Semestre(String reference, String libelle, int number, Date annéeUniversitaire, Filière filière,
+	public Semestre(String reference, String libelle, int number, String anneeUniversitaire, Filière filiere,
 			List<Module> modules, List<Groupe> groupes) {
 		super();
 		this.reference = reference;
 		this.libelle = libelle;
 		this.number = number;
-		this.annéeUniversitaire = annéeUniversitaire;
-		this.filière = filière;
+		this.anneeUniversitaire = anneeUniversitaire;
+		this.filiere = filiere;
 		this.modules = modules;
 		this.groupes = groupes;
 	}
@@ -120,7 +117,7 @@ public class Semestre {
 	@Override
 	public String toString() {
 		return "Semestre [id=" + id + ", reference=" + reference + ", libelle=" + libelle + ", number=" + number
-				+ ", annéeUniversitaire=" + annéeUniversitaire + ", filière=" + filière + ", modules=" + modules
+				+ ", anneeUniversitaire=" + anneeUniversitaire + ", filiere=" + filiere + ", modules=" + modules
 				+ ", groupes=" + groupes + "]";
 	}
 	
