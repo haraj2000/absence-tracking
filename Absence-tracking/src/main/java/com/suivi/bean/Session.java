@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Séance {
+public class Session {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,16 +25,16 @@ public class Séance {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateStop;
 	@ManyToOne
-	private TypeSéance typeSéance;
+	private TypeSession typeSession;
 	@OneToMany
 	private List<Groupe> groupes;
 	
 	
-	public TypeSéance getTypeSéance() {
-		return typeSéance;
+	public TypeSession getTypeSéance() {
+		return typeSession;
 	}
-	public void setTypeSéance(TypeSéance typeSéance) {
-		this.typeSéance = typeSéance;
+	public void setTypeSéance(TypeSession typeSession) {
+		this.typeSession = typeSession;
 	}
 	public Long getId() {
 		return id;
@@ -72,17 +72,17 @@ public class Séance {
 	public void setReference(String reference) {
 		this.reference = reference;
 	}
-	public Séance() {
+	public Session() {
 		super();
 	}
-	public Séance(String libelle, String reference, Date dateStart, Date dateStop, TypeSéance typeSéance,
+	public Session(String libelle, String reference, Date dateStart, Date dateStop, TypeSession typeSession,
 			List<Groupe> groupes) {
 		super();
 		this.libelle = libelle;
 		this.reference = reference;
 		this.dateStart = dateStart;
 		this.dateStop = dateStop;
-		this.typeSéance = typeSéance;
+		this.typeSession = typeSession;
 		this.groupes = groupes;
 	}
 	@Override
@@ -100,7 +100,7 @@ public class Séance {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Séance other = (Séance) obj;
+		Session other = (Session) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -110,8 +110,8 @@ public class Séance {
 	}
 	@Override
 	public String toString() {
-		return "Séance [id=" + id + ", libelle=" + libelle + ", reference=" + reference + ", dateStart=" + dateStart
-				+ ", dateStop=" + dateStop + ", typeSéance=" + typeSéance + ", groupes=" + groupes + "]";
+		return "Session [id=" + id + ", libelle=" + libelle + ", reference=" + reference + ", dateStart=" + dateStart
+				+ ", dateStop=" + dateStop + ", typeSession=" + typeSession + ", groupes=" + groupes + "]";
 	}
 	
 }

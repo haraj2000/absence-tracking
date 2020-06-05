@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.suivi.bean.Etudiant;
-import com.suivi.bean.Filière;
+import com.suivi.bean.Sector;
 import com.suivi.bean.Groupe;
 
 public interface EtudiantDao extends JpaRepository<Etudiant, Long>{
@@ -13,7 +13,7 @@ public interface EtudiantDao extends JpaRepository<Etudiant, Long>{
 	public List<Etudiant> findByFirstName(String firstName);
 	public List<Etudiant> findByLastName(String lastName);
 	public List<Etudiant> findByGroupe(Groupe groupe);
-	public List<Etudiant> findByFiliere(Filière filiere);
+	public List<Etudiant> findByFiliere(Sector filiere);
 	public Etudiant findByCin(String cin);
 	public List<Etudiant> findByNbrAbsence(int nbrAbsence);
 	public Etudiant findByCne(String cne);

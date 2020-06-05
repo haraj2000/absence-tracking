@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Etudiant;
-import com.suivi.bean.Filière;
+import com.suivi.bean.Sector;
 import com.suivi.bean.Groupe;
 import com.suivi.service.facade.EtudiantService;
 
@@ -98,8 +98,8 @@ public class EtudiantRest {
 		return etudiantService.deleteByCne(cne);
 	}
 
-	@PostMapping("/filiere")
-	public List<Etudiant> findByFiliere(@RequestBody Filière filiere) {
+	@PostMapping("/sector")
+	public List<Etudiant> findByFiliere(@RequestBody Sector filiere) {
 		return etudiantService.findByFiliere(filiere);
 	}
 

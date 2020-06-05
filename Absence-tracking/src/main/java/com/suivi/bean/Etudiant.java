@@ -33,7 +33,7 @@ public class Etudiant {
 	@Column(name = "picByte", length = 400000000)
 	private byte[] image;
 	@ManyToOne
-	private Filière filiere;
+	private Sector filiere;
 	@ManyToOne
 	private Groupe groupe;
 	public Long getId() {
@@ -96,11 +96,11 @@ public class Etudiant {
 	public void setGroupe(Groupe groupe) {
 		this.groupe = groupe;
 	}
-	public Filière getFilière() {
+	public Sector getFilière() {
 		return filiere;
 	}
-	public void setFilière(Filière filière) {
-		this.filiere = filière;
+	public void setFilière(Sector sector) {
+		this.filiere = sector;
 	}
 	public String getCne() {
 		return cne;
@@ -126,14 +126,14 @@ public class Etudiant {
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
-	public Filière getFiliere() {
+	public Sector getFiliere() {
 		return filiere;
 	}
-	public void setFiliere(Filière filiere) {
+	public void setFiliere(Sector filiere) {
 		this.filiere = filiere;
 	}
 	public Etudiant(String cin, String cne, int codeApogee, String firstName, String lastName, Date birthDay, int tel,
-			int nbrAbsence, String mail, String password, int role, byte[] image, Filière filiere, Groupe groupe) {
+			int nbrAbsence, String mail, String password, int role, byte[] image, Sector filiere, Groupe groupe) {
 		super();
 		this.cin = cin;
 		this.cne = cne;

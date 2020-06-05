@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Etudiant;
-import com.suivi.bean.Séance;
+import com.suivi.bean.Session;
 import com.suivi.dao.AbsenceDao;
 import com.suivi.service.facade.AbsenceService;
 import com.suivi.service.facade.EtudiantService;
@@ -23,8 +23,8 @@ public class AbsenceImpl implements AbsenceService{
 
 
 	@Override
-	public List<Absence> findBySéance(Séance séance) {
-		return absenceDao.findBySéance(séance);
+	public List<Absence> findBySéance(Session session) {
+		return absenceDao.findBySéance(session);
 	}
 
 	@Override

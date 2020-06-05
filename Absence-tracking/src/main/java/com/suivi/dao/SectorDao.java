@@ -6,12 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.suivi.bean.Cycle;
-import com.suivi.bean.Filière;
+import com.suivi.bean.Sector;
 
 @Repository
-public interface FilièreDao extends JpaRepository<Filière, Long>{
+public interface SectorDao extends JpaRepository<Sector, Long>{
 
-	public Filière findByLibelle(String libelle);
-	public List<Filière> findByCycle(Cycle cycle);
+	public Sector findByLibelle(String libelle);
+	public List<Sector> findByCycle(Cycle cycle);
 	public int deleteByLibelle(String libelle);
 }

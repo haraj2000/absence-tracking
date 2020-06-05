@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class TypeSéance {
+public class TypeSession {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,11 +52,11 @@ public class TypeSéance {
 	public void setReference(String reference) {
 		this.reference = reference;
 	}
-	public TypeSéance() {
+	public TypeSession() {
 		super();
 	}
 
-	public TypeSéance(String reference, String libelle, Module module, Enseignant enseignant) {
+	public TypeSession(String reference, String libelle, Module module, Enseignant enseignant) {
 		super();
 		this.reference = reference;
 		this.libelle = libelle;
@@ -78,7 +78,7 @@ public class TypeSéance {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TypeSéance other = (TypeSéance) obj;
+		TypeSession other = (TypeSession) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -88,7 +88,7 @@ public class TypeSéance {
 }
 	@Override
 	public String toString() {
-		return "TypeSéance [id=" + id + ", reference=" + reference + ", libelle=" + libelle + ", module=" + module
+		return "TypeSession [id=" + id + ", reference=" + reference + ", libelle=" + libelle + ", module=" + module
 				+ ", enseignant=" + enseignant + "]";
 	}
 }

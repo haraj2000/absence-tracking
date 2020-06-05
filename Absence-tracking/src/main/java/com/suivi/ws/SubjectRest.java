@@ -12,33 +12,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.suivi.bean.Département;
-import com.suivi.service.facade.DépartementService;
+import com.suivi.bean.Subject;
+import com.suivi.service.facade.SubjectService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/departement")
-public class DépartementRest {
+@RequestMapping("absence-tracking/matiere")
+public class SubjectRest {
 
-	@Autowired 
-	private DépartementService départementService;
+	@Autowired
+	private SubjectService subjectService;
 
 	@GetMapping("/libelle/{libelle}")
-	public Département findByLibelle(@PathVariable String libelle) {
-		return départementService.findByLibelle(libelle);
+	public Subject findByLibelle(@PathVariable String libelle) {
+		return subjectService.findByLibelle(libelle);
 	}
 	@DeleteMapping("/libelle/{libelle}")
 	public int deleteByLibelle(@PathVariable String libelle) {
-		return départementService.deleteByLibelle(libelle);
+		return subjectService.deleteByLibelle(libelle);
 	}
 	@PostMapping("/")
-	public int save(@RequestBody Département département) {
-		return départementService.save(département);
+	public int save(@RequestBody Subject subject) {
+		return subjectService.save(subject);
 	}
 	@GetMapping("/")
-	public List<Département> findAll() {
-		return départementService.findAll();
+	public List<Subject> findAll() {
+		return subjectService.findAll();
 	}
+
 	
 	
 }

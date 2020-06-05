@@ -17,19 +17,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Etudiant;
-import com.suivi.bean.Filière;
+import com.suivi.bean.Sector;
 import com.suivi.bean.Groupe;
 import com.suivi.dao.EtudiantDao;
 import com.suivi.service.facade.EtudiantService;
-import com.suivi.service.facade.GroupeService;
 
 @Service
 public class EtudiantImpl implements EtudiantService {
 	
 	@Autowired
 	private EtudiantDao etudiantDao;
-	@Autowired
-	private GroupeService GroupeService;
 
 	@Override
 	public List<Etudiant> findByFirstName(String firstName) {
@@ -75,7 +72,9 @@ public class EtudiantImpl implements EtudiantService {
 
 	@Override
 	public int update(Etudiant etudiant) {
+		System.out.println(etudiant);
 		Etudiant etudiantFounded = findByCin(etudiant.getCin());
+		System.out.println(etudiantFounded);
 		String mail2 = etudiant.getFirstName()+"."+etudiant.getLastName()+"@edu.uca.ma";
 		if(etudiantFounded != null) {
 			String mail = etudiantFounded.getFirstName()+"."+etudiantFounded.getLastName()+"@edu.uca.ma";
@@ -86,6 +85,7 @@ public class EtudiantImpl implements EtudiantService {
 			etudiantFounded.setBirthDay(etudiant.getBirthDay());
 			etudiantFounded.setGroupe(etudiant.getGroupe());
 			etudiantFounded.setFiliere(etudiant.getFiliere());
+			etudiantFounded.setImage(etudiant.getImage());
 			if (etudiantFounded.getMail() == mail) {
 				etudiantFounded.setMail(mail2);
 			} else { etudiantFounded.setMail(etudiant.getMail());}
@@ -112,7 +112,7 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
-	public List<Etudiant> findByFiliere(Filière filiere) {
+	public List<Etudiant> findByFiliere(Sector filiere) {
 		return etudiantDao.findByFiliere(filiere);
 	}
 

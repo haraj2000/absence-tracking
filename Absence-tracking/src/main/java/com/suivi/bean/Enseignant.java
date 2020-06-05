@@ -30,18 +30,10 @@ public class Enseignant {
 	private int role;
 	@Column(name = "picByte", length = 400000000)
 	private byte[] image;
-	@Column(name = "src", length = 400000000)
-	private byte[] src;
 	@ManyToOne
-	private Département département;
+	private Departement departement;
 	
 	
-	public byte[] getSrc() {
-		return src;
-	}
-	public void setSrc(byte[] src) {
-		this.src = src;
-	}
 	public Long getId() {
 		return id;
 	}
@@ -90,11 +82,11 @@ public class Enseignant {
 	public void setTel(int tel) {
 		this.tel = tel;
 	}
-	public Département getDépartement() {
-		return département;
+	public Departement getDépartement() {
+		return departement;
 	}
-	public void setDépartement(Département département) {
-		this.département = département;
+	public void setDépartement(Departement departement) {
+		this.departement = departement;
 	}
 	public String getMail() {
 		return mail;
@@ -130,7 +122,7 @@ public class Enseignant {
 	}
 	
 	public Enseignant(int numeroSOM, String cin, String firstName, String lastName, Date birthDay, int tel, String mail,
-			String password, int role, byte[] image, byte[] src, Département département) {
+			String password, int role, byte[] image, Departement departement) {
 		super();
 		this.numeroSOM = numeroSOM;
 		this.cin = cin;
@@ -142,8 +134,7 @@ public class Enseignant {
 		this.password = password;
 		this.role = role;
 		this.image = image;
-		this.src = src;
-		this.département = département;
+		this.departement = departement;
 	}
 	@Override
 	public int hashCode() {
@@ -172,8 +163,7 @@ public class Enseignant {
 	public String toString() {
 		return "Enseignant [id=" + id + ", numeroSOM=" + numeroSOM + ", cin=" + cin + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel + ", mail=" + mail
-				+ ", password=" + password + ", role=" + role + ", image=" + Arrays.toString(image) + ", src="
-				+ Arrays.toString(src) + ", département=" + département + "]";
+				+ ", password=" + password + ", role=" + role + ", image=" + Arrays.toString(image) + ", departement=" + departement + "]";
 	}
 	
 	

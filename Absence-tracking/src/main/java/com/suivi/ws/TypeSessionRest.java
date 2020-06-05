@@ -14,49 +14,49 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.suivi.bean.Enseignant;
 import com.suivi.bean.Module;
-import com.suivi.bean.TypeSéance;
-import com.suivi.service.facade.TypeSéanceService;
+import com.suivi.bean.TypeSession;
+import com.suivi.service.facade.TypeSessionService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RequestMapping("absence-tracking/typeSeance")
-public class TypeSéanceRest {
+public class TypeSessionRest {
 	
 	@Autowired
-	private TypeSéanceService typeSéanceService;
+	private TypeSessionService typeSessionService;
 
 	@GetMapping("/libelle/{libelle}")
-	public TypeSéance findByLibelle(@PathVariable String libelle) {
-		return typeSéanceService.findByLibelle(libelle);
+	public TypeSession findByLibelle(@PathVariable String libelle) {
+		return typeSessionService.findByLibelle(libelle);
 	}
 	@DeleteMapping("/reference/{reference}")
 	public int deleteByReference(@PathVariable String reference) {
-		return typeSéanceService.deleteByReference(reference);
+		return typeSessionService.deleteByReference(reference);
 	}
 	@PostMapping("/")
-	public int save(@RequestBody TypeSéance typeSéance) {
-		return typeSéanceService.save(typeSéance);
+	public int save(@RequestBody TypeSession typeSession) {
+		return typeSessionService.save(typeSession);
 	}
 	@GetMapping("/")
-	public List<TypeSéance> findAll() {
-		return typeSéanceService.findAll();
+	public List<TypeSession> findAll() {
+		return typeSessionService.findAll();
 	}
 
 	@GetMapping("/enseignant")
-	public List<TypeSéance> findByEnseignant(@RequestBody Enseignant enseignant) {
-		return typeSéanceService.findByEnseignant(enseignant);
+	public List<TypeSession> findByEnseignant(@RequestBody Enseignant enseignant) {
+		return typeSessionService.findByEnseignant(enseignant);
 	}
 	@GetMapping("/module")
-	public List<TypeSéance> findByModule(@RequestBody Module module) {
-		return typeSéanceService.findByModule(module);
+	public List<TypeSession> findByModule(@RequestBody Module module) {
+		return typeSessionService.findByModule(module);
 	}
 	@GetMapping("/reference/{reference}")
-	public TypeSéance findByReference(@PathVariable String reference) {
-		return typeSéanceService.findByReference(reference);
+	public TypeSession findByReference(@PathVariable String reference) {
+		return typeSessionService.findByReference(reference);
 	}
 	@PostMapping("/update")
-	public int update(@RequestBody TypeSéance typeSéance) {
-		return typeSéanceService.update(typeSéance);
+	public int update(@RequestBody TypeSession typeSession) {
+		return typeSessionService.update(typeSession);
 	}
 	
 }

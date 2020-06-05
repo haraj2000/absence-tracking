@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.suivi.bean.Département;
+import com.suivi.bean.Departement;
 import com.suivi.bean.Enseignant;
 import com.suivi.dao.EnseignantDao;
 import com.suivi.service.facade.EnseignantService;
@@ -89,7 +89,6 @@ public class EnseignantImpl implements EnseignantService{
 			enseignantFounded.setLastName(enseignant.getLastName());
 			enseignantFounded.setPassword(enseignant.getPassword());
 			enseignantFounded.setRole(enseignant.getRole());
-			enseignantFounded.setSrc(enseignant.getSrc());
 			if (enseignantFounded.getMail() == mail) {
 				enseignantFounded.setMail(mail2);
 			} else { enseignantFounded.setMail(enseignant.getMail());}
@@ -105,8 +104,8 @@ public class EnseignantImpl implements EnseignantService{
 	}
 
 	@Override
-	public List<Enseignant> findByDépartement(Département département) {
-		return enseignantDao.findByDépartement(département);
+	public List<Enseignant> findByDépartement(Departement departement) {
+		return enseignantDao.findByDépartement(departement);
 	}
 
 	@Override
@@ -124,7 +123,6 @@ public class EnseignantImpl implements EnseignantService{
 		Enseignant enseignant = enseignantDao.findByNumeroSOM(numeroSOM);
 			//	new Enseignant(compressBytes(file.getBytes()));
 				enseignant.setImage(compressBytes(file.getBytes()));
-				enseignant.setSrc(decompressBytes(enseignant.getImage()));
 		enseignantDao.save(enseignant);
 		return ResponseEntity.status(HttpStatus.OK);
 	}

@@ -1,22 +1,20 @@
 package com.suivi.bean;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
-public class Filière {
+public class Departement {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
-	@ManyToOne
-	private Cycle cycle;
 	
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -29,19 +27,12 @@ public class Filière {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Cycle getCycle() {
-		return cycle;
-	}
-	public void setCycle(Cycle cycle) {
-		this.cycle = cycle;
-	}
-	public Filière() {
+	public Departement() {
 		super();
 	}
-	public Filière(String libelle, Cycle cycle) {
+	public Departement(String libelle) {
 		super();
 		this.libelle = libelle;
-		this.cycle = cycle;
 	}
 	@Override
 	public int hashCode() {
@@ -58,7 +49,7 @@ public class Filière {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Filière other = (Filière) obj;
+		Departement other = (Departement) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -68,7 +59,8 @@ public class Filière {
 	}
 	@Override
 	public String toString() {
-		return "Filière [id=" + id + ", libelle=" + libelle + ", cycle=" + cycle + "]";
+		return "Departement [id=" + id + ", libelle=" + libelle + "]";
 	}
-		
+	
+	
 }

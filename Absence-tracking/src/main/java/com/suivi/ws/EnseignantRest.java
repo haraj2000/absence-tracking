@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.suivi.bean.Département;
+import com.suivi.bean.Departement;
 import com.suivi.bean.Enseignant;
 import com.suivi.service.facade.EnseignantService;
 
@@ -49,8 +49,8 @@ public class EnseignantRest {
 		return enseignantService.findByCin(cin);
 	}
 	@GetMapping("/departement")
-	public List<Enseignant> findByDépartement(@RequestBody Département département) {
-		return enseignantService.findByDépartement(département);
+	public List<Enseignant> findByDépartement(@RequestBody Departement departement) {
+		return enseignantService.findByDépartement(departement);
 	}
 	@GetMapping("/mail/{mail}")
 	public Enseignant findByMail(@PathVariable String mail) {

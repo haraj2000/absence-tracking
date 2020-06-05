@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Etudiant;
-import com.suivi.bean.Filière;
+import com.suivi.bean.Sector;
 import com.suivi.bean.Groupe;
 
 public interface EtudiantService {
@@ -15,7 +15,7 @@ public interface EtudiantService {
 	public List<Etudiant> findByFirstName(String firstName);
 	public List<Etudiant> findByLastName(String lastName);
 	public List<Etudiant> findByGroupe(Groupe groupe);
-	public List<Etudiant> findByFiliere(Filière filiere);
+	public List<Etudiant> findByFiliere(Sector filiere);
 	public Etudiant findByCin(String cin);
 	public Etudiant findByCne(String cne);
 	public List<Etudiant> findByNbrAbsence(int nbrAbsence);

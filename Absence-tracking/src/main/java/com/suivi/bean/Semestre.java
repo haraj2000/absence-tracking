@@ -20,7 +20,7 @@ public class Semestre {
 	private int number;
 	private String anneeUniversitaire;
 	@ManyToOne
-	private Filière filiere;
+	private Sector filiere;
 	@OneToMany
 	private List<Module> modules;
 	@OneToMany
@@ -45,10 +45,10 @@ public class Semestre {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Filière getFiliere() {
+	public Sector getFiliere() {
 		return filiere;
 	}
-	public void setFiliere(Filière filiere) {
+	public void setFiliere(Sector filiere) {
 		this.filiere = filiere;
 	}
 	
@@ -80,7 +80,7 @@ public class Semestre {
 		super();
 	}
 	
-	public Semestre(String reference, String libelle, int number, String anneeUniversitaire, Filière filiere,
+	public Semestre(String reference, String libelle, int number, String anneeUniversitaire, Sector filiere,
 			List<Module> modules, List<Groupe> groupes) {
 		super();
 		this.reference = reference;

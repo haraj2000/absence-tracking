@@ -7,10 +7,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.suivi.bean.Filière;
+import com.suivi.bean.Sector;
 import com.suivi.bean.Semestre;
 import com.suivi.dao.SemestreDao;
-import com.suivi.service.facade.FilièreService;
+import com.suivi.service.facade.SectorService;
 import com.suivi.service.facade.SemestreService;
 
 @Service
@@ -19,7 +19,7 @@ public class SemestreImpl implements SemestreService{
 	@Autowired
 	private SemestreDao semestreDao;
 	@Autowired
-	private FilièreService filiereService;
+	private SectorService filiereService;
 	
 	@Override
 	public Semestre findByReference(String reference) {
@@ -37,7 +37,7 @@ public class SemestreImpl implements SemestreService{
 	}
 
 	@Override
-	public List<Semestre> findByFiliere(Filière filiere) {
+	public List<Semestre> findByFiliere(Sector filiere) {
 		return semestreDao.findByFiliere(filiere);
 	}
 
@@ -49,13 +49,13 @@ public class SemestreImpl implements SemestreService{
 
 	@Override
 	public int save(Semestre semestre, String filiere) {
-		Filière filière = filiereService.findByLibelle(filiere);
-		String reference = "S "+semestre.getNumber()+" "+ filière.getLibelle() + " " + semestre.getAnneeUniversitaire();
+		Sector sector = filiereService.findByLibelle(filiere);
+		String reference = "S "+semestre.getNumber()+" "+ sector.getLibelle() + " " + semestre.getAnneeUniversitaire();
 		String libelle = "S "+semestre.getNumber();
 		Semestre semestreFounded = findByReference(reference);
 		if(semestreFounded == null) {
 			semestre.setReference(reference);
-			semestre.setFiliere(filière);
+			semestre.setFiliere(sector);
 			semestre.setLibelle(libelle);
 			semestreDao.save(semestre);
 			return 1;

@@ -4,11 +4,11 @@ package com.suivi.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.suivi.bean.Département;
+import com.suivi.bean.Departement;
 
 @Repository
-public interface DépartementDao extends JpaRepository<Département, Long>{
+public interface DepartementDao extends JpaRepository<Departement, Long>{
 
-	public Département findByLibelle(String libelle);
+	public Departement findByLibelle(String libelle);
 	public int deleteByLibelle(String libelle);
 }

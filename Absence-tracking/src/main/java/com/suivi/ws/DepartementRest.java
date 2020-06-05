@@ -12,40 +12,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.suivi.bean.Cycle;
-import com.suivi.bean.Filière;
-import com.suivi.service.facade.FilièreService;
+import com.suivi.bean.Departement;
+import com.suivi.service.facade.DepartementService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/filiere")
-public class FilièreRest {
+@RequestMapping("absence-tracking/departement")
+public class DepartementRest {
 
-	@Autowired
-	private FilièreService filièreService;
+	@Autowired 
+	private DepartementService departementService;
 
 	@GetMapping("/libelle/{libelle}")
-	public Filière findByLibelle(@PathVariable String libelle) {
-		return filièreService.findByLibelle(libelle);
-	}
-	@GetMapping("/cycle")
-	public List<Filière> findByCycle(@RequestBody Cycle cycle) {
-		return filièreService.findByCycle(cycle);
+	public Departement findByLibelle(@PathVariable String libelle) {
+		return departementService.findByLibelle(libelle);
 	}
 	@DeleteMapping("/libelle/{libelle}")
 	public int deleteByLibelle(@PathVariable String libelle) {
-		return filièreService.deleteByLibelle(libelle);
+		return departementService.deleteByLibelle(libelle);
 	}
 	@PostMapping("/")
-	public int save(@RequestBody Filière filière) {
-		return filièreService.save(filière);
-	}
-	@PostMapping("/update")
-	public int update(@RequestBody Filière filiere) {
-		return filièreService.update(filiere);
+	public int save(@RequestBody Departement departement) {
+		return departementService.save(departement);
 	}
 	@GetMapping("/")
-	public List<Filière> findAll() {
-		return filièreService.findAll();
+	public List<Departement> findAll() {
+		return departementService.findAll();
 	}
+	
+	
 }

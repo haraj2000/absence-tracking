@@ -1,16 +1,11 @@
 package com.suivi.bean;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 public class Groupe {
@@ -20,9 +15,6 @@ public class Groupe {
 	private Long id;
 	private String reference;
 	private String libelle;
-	@OneToMany(mappedBy = "groupe")
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private List<Etudiant> etudiants;
 	@ManyToOne
 	private Semestre semestre;
 	
@@ -33,12 +25,6 @@ public class Groupe {
 	}
 	public void setReference(String reference) {
 		this.reference = reference;
-	}
-	public List<Etudiant> getEtudiants() {
-		return etudiants;
-	}
-	public void setEtudiants(List<Etudiant> etudiants) {
-		this.etudiants = etudiants;
 	}
 	public Semestre getSemestre() {
 		return semestre;
@@ -59,11 +45,10 @@ public class Groupe {
 		this.libelle = libelle;
 	}
 	
-	public Groupe(String reference, String libelle, List<Etudiant> etudiants, Semestre semestre) {
+	public Groupe(String reference, String libelle, Semestre semestre) {
 		super();
 		this.reference = reference;
 		this.libelle = libelle;
-		this.etudiants = etudiants;
 		this.semestre = semestre;
 	}
 	public Groupe() {
@@ -94,8 +79,7 @@ public class Groupe {
 	}
 	@Override
 	public String toString() {
-		return "Groupe [id=" + id + ", reference=" + reference + ", libelle=" + libelle + ", etudiants=" + etudiants
-				+ ", semestre=" + semestre + "]";
+		return "Groupe [id=" + id + ", reference=" + reference + ", libelle=" + libelle + ", semestre=" + semestre + "]";
 	}
 	
 	

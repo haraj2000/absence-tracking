@@ -56,7 +56,6 @@ public class GroupeImpl implements GroupeService {
 		groupe.setReference(ref);
 		Groupe groupeFouded = findByReference(groupe.getReference());
 		if(groupeFouded != null) {
-			groupeFouded.setEtudiants(groupe.getEtudiants());
 			groupeFouded.setLibelle(groupe.getLibelle());
 			groupeFouded.setSemestre(groupe.getSemestre());
 			groupeDao.save(groupeFouded);

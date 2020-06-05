@@ -8,13 +8,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class ResponsableFilière {
+public class SectorManager {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@OneToOne
-	private Filière filière;
+	private Sector sector;
 	@ManyToOne
 	private Enseignant enseignant;
 	
@@ -24,11 +24,11 @@ public class ResponsableFilière {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Filière getFilière() {
-		return filière;
+	public Sector getFilière() {
+		return sector;
 	}
-	public void setFilière(Filière filière) {
-		this.filière = filière;
+	public void setFilière(Sector sector) {
+		this.sector = sector;
 	}
 	public Enseignant getEnseignant() {
 		return enseignant;
@@ -37,12 +37,12 @@ public class ResponsableFilière {
 		this.enseignant = enseignant;
 	}
 	
-	public ResponsableFilière(Filière filière, Enseignant enseignant) {
+	public SectorManager(Sector sector, Enseignant enseignant) {
 		super();
-		this.filière = filière;
+		this.sector = sector;
 		this.enseignant = enseignant;
 	}
-	public ResponsableFilière() {
+	public SectorManager() {
 		super();
 	}
 	@Override
@@ -60,7 +60,7 @@ public class ResponsableFilière {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ResponsableFilière other = (ResponsableFilière) obj;
+		SectorManager other = (SectorManager) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -70,7 +70,7 @@ public class ResponsableFilière {
 	}
 	@Override
 	public String toString() {
-		return "ResponsableFilière [id=" + id + ", filière=" + filière + ", enseignant=" + enseignant + "]";
+		return "SectorManager [id=" + id + ", sector=" + sector + ", enseignant=" + enseignant + "]";
 	}
 	
 }

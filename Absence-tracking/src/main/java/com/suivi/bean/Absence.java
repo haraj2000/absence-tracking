@@ -19,7 +19,7 @@ public class Absence {
 	@ManyToOne
 	private Etudiant etudiant;
 	@ManyToOne
-	private Séance séance;
+	private Session session;
 	public Long getId() {
 		return id;
 	}
@@ -45,11 +45,11 @@ public class Absence {
 	public void setEtudiant(Etudiant etudiant) {
 		this.etudiant = etudiant;
 	}
-	public Séance getSéance() {
-		return séance;
+	public Session getSéance() {
+		return session;
 	}
-	public void setSéance(Séance séance) {
-		this.séance = séance;
+	public void setSéance(Session session) {
+		this.session = session;
 	}
 	
 	public String getRef() {
@@ -58,13 +58,13 @@ public class Absence {
 	public void setRef(String ref) {
 		this.ref = ref;
 	}
-	public Absence(String ref, boolean absent, String justification, Etudiant etudiant, Séance séance) {
+	public Absence(String ref, boolean absent, String justification, Etudiant etudiant, Session session) {
 	super();
 	this.ref = ref;
 	this.absent = absent;
 	this.justification = justification;
 	this.etudiant = etudiant;
-	this.séance = séance;
+	this.session = session;
 }
 	public Absence() {
 		super();
@@ -96,7 +96,7 @@ public class Absence {
 	@Override
 	public String toString() {
 		return "Absence [id=" + id + ", ref=" + ref + ", absent=" + absent + ", justification=" + justification
-				+ ", etudiant=" + etudiant + ", séance=" + séance + "]";
+				+ ", etudiant=" + etudiant + ", session=" + session + "]";
 	}
 	
 

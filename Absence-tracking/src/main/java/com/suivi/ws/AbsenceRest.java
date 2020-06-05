@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Etudiant;
-import com.suivi.bean.Séance;
+import com.suivi.bean.Session;
 import com.suivi.service.facade.AbsenceService;
 
 @RestController
@@ -60,8 +60,8 @@ public class AbsenceRest {
 
 
 	@GetMapping("/seance")
-	public List<Absence> findBySéance(@RequestBody Séance séance) {
-		return absenceService.findBySéance(séance);
+	public List<Absence> findBySéance(@RequestBody Session session) {
+		return absenceService.findBySéance(session);
 	}
 	
 	

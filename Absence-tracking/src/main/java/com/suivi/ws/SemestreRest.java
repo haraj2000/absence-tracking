@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.suivi.bean.Filière;
+import com.suivi.bean.Sector;
 import com.suivi.bean.Semestre;
 import com.suivi.service.facade.SemestreService;
 
@@ -40,8 +40,8 @@ public class SemestreRest {
 	public List<Semestre> findByAnneeUniversitaire(@PathVariable String anneeUniversitaire) {
 		return semestreService.findByAnneeUniversitaire(anneeUniversitaire);
 	}
-	@GetMapping("/filiere")
-	public List<Semestre> findByFiliere(@RequestBody Filière filiere) {
+	@GetMapping("/sector")
+	public List<Semestre> findByFiliere(@RequestBody Sector filiere) {
 		return semestreService.findByFiliere(filiere);
 	}
 	@DeleteMapping("/reference/{reference}")

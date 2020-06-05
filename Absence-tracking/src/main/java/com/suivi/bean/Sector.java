@@ -4,15 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Matière {
+public class Sector {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
+	@ManyToOne
+	private Cycle cycle;
 	
+
 	public Long getId() {
 		return id;
 	}
@@ -25,12 +29,19 @@ public class Matière {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Matière() {
+	public Cycle getCycle() {
+		return cycle;
+	}
+	public void setCycle(Cycle cycle) {
+		this.cycle = cycle;
+	}
+	public Sector() {
 		super();
 	}
-	public Matière(String libelle) {
+	public Sector(String libelle, Cycle cycle) {
 		super();
 		this.libelle = libelle;
+		this.cycle = cycle;
 	}
 	@Override
 	public int hashCode() {
@@ -47,7 +58,7 @@ public class Matière {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Matière other = (Matière) obj;
+		Sector other = (Sector) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -57,8 +68,7 @@ public class Matière {
 	}
 	@Override
 	public String toString() {
-		return "Matière [id=" + id + ", libelle=" + libelle + "]";
+		return "Sector [id=" + id + ", libelle=" + libelle + ", cycle=" + cycle + "]";
 	}
-
-	
+		
 }
