@@ -15,7 +15,7 @@ public interface EtudiantService {
 	public List<Etudiant> findByFirstName(String firstName);
 	public List<Etudiant> findByLastName(String lastName);
 	public List<Etudiant> findByGroupe(Groupe groupe);
-	public List<Etudiant> findByFiliere(Sector filiere);
+	public List<Etudiant> findBySector(Sector filiere);
 	public Etudiant findByCin(String cin);
 	public Etudiant findByCne(String cne);
 	public List<Etudiant> findByNbrAbsence(int nbrAbsence);

@@ -112,8 +112,8 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
-	public List<Etudiant> findByFiliere(Sector filiere) {
-		return etudiantDao.findByFiliere(filiere);
+	public List<Etudiant> findBySector(Sector filiere) {
+		return etudiantDao.findBySector(filiere);
 	}
 
 

@@ -104,8 +104,8 @@ public class EnseignantImpl implements EnseignantService{
 	}
 
 	@Override
-	public List<Enseignant> findByDépartement(Departement departement) {
-		return enseignantDao.findByDépartement(departement);
+	public List<Enseignant> findByDepartement(Departement departement) {
+		return enseignantDao.findByDepartement(departement);
 	}
 
 	@Override

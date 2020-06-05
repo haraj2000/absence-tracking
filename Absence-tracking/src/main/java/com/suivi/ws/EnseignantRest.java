@@ -49,8 +49,8 @@ public class EnseignantRest {
 		return enseignantService.findByCin(cin);
 	}
 	@GetMapping("/departement")
-	public List<Enseignant> findByDépartement(@RequestBody Departement departement) {
-		return enseignantService.findByDépartement(departement);
+	public List<Enseignant> findByDepartement(@RequestBody Departement departement) {
+		return enseignantService.findByDepartement(departement);
 	}
 	@GetMapping("/mail/{mail}")
 	public Enseignant findByMail(@PathVariable String mail) {

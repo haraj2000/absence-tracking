@@ -60,8 +60,8 @@ public class AbsenceRest {
 
 
 	@GetMapping("/seance")
-	public List<Absence> findBySéance(@RequestBody Session session) {
-		return absenceService.findBySéance(session);
+	public List<Absence> findBySession(@RequestBody Session session) {
+		return absenceService.findBySession(session);
 	}
 	
 	

@@ -9,7 +9,7 @@ import com.suivi.bean.Session;
 public interface AbsenceService {
 	public Absence findByRef(String ref);
 	public List<Absence> findByEtudiant(Etudiant etudiant);
-	public List<Absence> findBySéance(Session session);
+	public List<Absence> findBySession(Session session);
 	public int deleteByRef(String ref);
 	public int save(Absence absence);
 	public int update(Absence absence);

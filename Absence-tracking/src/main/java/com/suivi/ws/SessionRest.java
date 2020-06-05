@@ -33,8 +33,8 @@ public class SessionRest {
 		return sessionService.findByDateStop(hourStop);
 	}
 	@GetMapping("/typeSession")
-	public List<Session> findByTypeSéance(@RequestBody TypeSession typeSession) {
-		return sessionService.findByTypeSéance(typeSession);
+	public List<Session> findByTypeSession(@RequestBody TypeSession typeSession) {
+		return sessionService.findByTypeSession(typeSession);
 	}
 	@GetMapping("/libelle/{libelle}")
 	public Session findByLibelle(@PathVariable String libelle) {

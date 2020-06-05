@@ -10,8 +10,8 @@ import com.suivi.bean.SectorManager;
 @Repository
 public interface SectorManagerDao extends JpaRepository<SectorManager, Long>{
 
-	public SectorManager findByFilière(Sector sector);
+	public SectorManager findBySector(Sector sector);
 	public SectorManager findByEnseignant(Enseignant enseignant);
-	public int deleteByFilière(Sector sector);
+	public int deleteBySector(Sector sector);
 	
 }

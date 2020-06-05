@@ -23,8 +23,8 @@ public class AbsenceImpl implements AbsenceService{
 
 
 	@Override
-	public List<Absence> findBySéance(Session session) {
-		return absenceDao.findBySéance(session);
+	public List<Absence> findBySession(Session session) {
+		return absenceDao.findBySession(session);
 	}
 
 	@Override

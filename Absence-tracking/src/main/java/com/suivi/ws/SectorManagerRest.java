@@ -26,16 +26,16 @@ public class SectorManagerRest {
 	private SectorManagerService sectorManagerService;
 
 	@GetMapping("/sector")
-	public SectorManager findByFilière(@RequestBody Sector sector) {
-		return sectorManagerService.findByFilière(sector);
+	public SectorManager findBySector(@RequestBody Sector sector) {
+		return sectorManagerService.findBySector(sector);
 	}
 	@GetMapping("/enseignant")
 	public SectorManager findByEnseignant(@RequestBody Enseignant enseignant) {
 		return sectorManagerService.findByEnseignant(enseignant);
 	}
 	@DeleteMapping("/")
-	public int deleteByFilière(@RequestBody Sector sector) {
-		return sectorManagerService.deleteByFilière(sector);
+	public int deleteBySector(@RequestBody Sector sector) {
+		return sectorManagerService.deleteBySector(sector);
 	}
 	@PostMapping("/{libelle}")
 	public int save(@RequestBody SectorManager sectorManager, @PathVariable String libelle) {

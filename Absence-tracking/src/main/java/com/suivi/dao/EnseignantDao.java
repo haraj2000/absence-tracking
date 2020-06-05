@@ -15,7 +15,7 @@ public interface EnseignantDao extends JpaRepository<Enseignant, Long>{
 	public List<Enseignant> findByLastName(String lastName);
 	public Enseignant findByNumeroSOM(int numeroSOM);
 	public Enseignant findByCin(String cin);
-	public List<Enseignant> findByDépartement(Departement departement);
+	public List<Enseignant> findByDepartement(Departement departement);
 	public Enseignant findByMail(String mail);
 	public int deleteByNumeroSOM(int numeroSOM);
 	public int deleteByCin(String cin);

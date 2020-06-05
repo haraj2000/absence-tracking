@@ -10,7 +10,7 @@ public interface SemestreService {
 	public Semestre findByLibelle(String libelle);
 	public Semestre findByReference(String reference);
 	public List<Semestre> findByAnneeUniversitaire(String anneeUniversitaire);
-	public List<Semestre> findByFiliere(Sector filiere);
+	public List<Semestre> findBySector(Sector filiere);
 	public List<Semestre> findByNumber(int number);
 	public int deleteByReference(String reference);
 	public int save(Semestre semestre, String filiere);

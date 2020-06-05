@@ -14,7 +14,7 @@ public interface SessionDao extends JpaRepository<Session, Long> {
 	public Session findByReference(String reference);
 	public List<Session> findByDateStart(Date date);
 	public List<Session> findByDateStop(Date date);
-	public List<Session> findByTypeSéance(TypeSession typeSession);
+	public List<Session> findByTypeSession(TypeSession typeSession);
 	public int deleteByReference(String reference);
 
 }

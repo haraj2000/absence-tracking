@@ -12,7 +12,7 @@ public interface SessionService {
 	public Session findByReference(String reference);
 	public List<Session> findByDateStart(Date date);
 	public List<Session> findByDateStop(Date date);
-	public List<Session> findByTypeSéance(TypeSession typeSession);
+	public List<Session> findByTypeSession(TypeSession typeSession);
 	public int deleteByReference(String reference);
 	public int save(Session session);
 	public int update(Session session);

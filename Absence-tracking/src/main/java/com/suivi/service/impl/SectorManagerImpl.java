@@ -26,8 +26,8 @@ public class SectorManagerImpl implements SectorManagerService{
 	private SectorService filiereService;
 	
 	@Override
-	public SectorManager findByFilière(Sector sector) {
-		return sectorManagerDao.findByFilière(sector);
+	public SectorManager findBySector(Sector sector) {
+		return sectorManagerDao.findBySector(sector);
 	}
 
 	@Override
@@ -37,14 +37,14 @@ public class SectorManagerImpl implements SectorManagerService{
 
 	@Override
 	@Transactional
-	public int deleteByFilière(Sector sector) {
-		return sectorManagerDao.deleteByFilière(sector);
+	public int deleteBySector(Sector sector) {
+		return sectorManagerDao.deleteBySector(sector);
 	}
 
 	@Override
 	public int save(SectorManager sectorManager, String libelle) {
 		Sector sector = filiereService.findByLibelle(libelle);
-		SectorManager responsableFilièreFounded = findByFilière(sector);
+		SectorManager responsableFilièreFounded = findBySector(sector);
 		if(responsableFilièreFounded == null) {
 			sectorManager.getEnseignant().setRole(2);
 			sectorManager.setFilière(sector);
@@ -57,7 +57,7 @@ public class SectorManagerImpl implements SectorManagerService{
 
 	@Override
 	public int update(SectorManager sectorManager) {
-		SectorManager responsableFilièreFounded = findByFilière(sectorManager.getFilière());
+		SectorManager responsableFilièreFounded = findBySector(sectorManager.getFilière());
 		if(responsableFilièreFounded != null) {
 			responsableFilièreFounded.getEnseignant().setRole(3);
 			enseignantService.update(responsableFilièreFounded.getEnseignant());

@@ -41,8 +41,8 @@ public class SemestreRest {
 		return semestreService.findByAnneeUniversitaire(anneeUniversitaire);
 	}
 	@GetMapping("/sector")
-	public List<Semestre> findByFiliere(@RequestBody Sector filiere) {
-		return semestreService.findByFiliere(filiere);
+	public List<Semestre> findBySector(@RequestBody Sector filiere) {
+		return semestreService.findBySector(filiere);
 	}
 	@DeleteMapping("/reference/{reference}")
 	public int deleteByReference(@PathVariable String reference) {

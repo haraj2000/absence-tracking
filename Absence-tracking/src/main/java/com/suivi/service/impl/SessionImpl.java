@@ -73,8 +73,8 @@ public class SessionImpl implements SessionService {
 		return sessionDao.findByDateStop(hourStart);
 	}
 	@Override
-	public List<Session> findByTypeSéance(TypeSession typeSession) {
-		return sessionDao.findByTypeSéance(typeSession);
+	public List<Session> findByTypeSession(TypeSession typeSession) {
+		return sessionDao.findByTypeSession(typeSession);
 	}
 
 	@Override

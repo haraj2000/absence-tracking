@@ -37,8 +37,8 @@ public class SemestreImpl implements SemestreService{
 	}
 
 	@Override
-	public List<Semestre> findByFiliere(Sector filiere) {
-		return semestreDao.findByFiliere(filiere);
+	public List<Semestre> findBySector(Sector filiere) {
+		return semestreDao.findBySector(filiere);
 	}
 
 	@Override
