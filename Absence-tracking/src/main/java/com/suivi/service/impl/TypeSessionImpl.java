@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.suivi.bean.Enseignant;
+import com.suivi.bean.Module;
 import com.suivi.bean.Subject;
 import com.suivi.bean.TypeSession;
 import com.suivi.dao.TypeSessionDao;
@@ -70,5 +71,10 @@ public class TypeSessionImpl implements TypeSessionService{
 			return 1;
 		}
 		else return -1;
+	}
+
+	@Override
+	public List<TypeSession> findByModule(Module module) {
+		return typeSessionDao.findByModule(module);
 	}
 }

@@ -18,8 +18,16 @@ public class TypeSession {
 	private Subject subject ;
 	@ManyToOne
 	private Enseignant enseignant;
+	@ManyToOne
+	private Module module;
 	
 	
+	public Module getModule() {
+		return module;
+	}
+	public void setModule(Module module) {
+		this.module = module;
+	}
 	public Subject getSubject() {
 		return subject;
 	}
@@ -55,14 +63,13 @@ public class TypeSession {
 	public TypeSession() {
 		super();
 	}
-
-	public TypeSession(Long id, String reference, String libelle, Subject subject, Enseignant enseignant) {
+	public TypeSession(String reference, String libelle, Subject subject, Enseignant enseignant, Module module) {
 		super();
-		this.id = id;
 		this.reference = reference;
 		this.libelle = libelle;
 		this.subject = subject;
 		this.enseignant = enseignant;
+		this.module = module;
 	}
 	@Override
 	public int hashCode() {
@@ -90,7 +97,8 @@ public class TypeSession {
 	@Override
 	public String toString() {
 		return "TypeSession [id=" + id + ", reference=" + reference + ", libelle=" + libelle + ", subject=" + subject
-				+ ", enseignant=" + enseignant + "]";
+				+ ", enseignant=" + enseignant + ", module=" + module + "]";
 	}
+	
 	
 }

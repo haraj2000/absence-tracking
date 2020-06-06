@@ -1,9 +1,12 @@
 package com.suivi.bean;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -16,12 +19,20 @@ public class Module {
 	private String abreveation;
 	@ManyToOne
 	private Semestre semestre;
+	@ManyToMany
+	private List<Subject> subjects;
 	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public List<Subject> getSubjects() {
+		return subjects;
+	}
+	public void setSubjects(List<Subject> subjects) {
+		this.subjects = subjects;
 	}
 	public Semestre getSemestre() {
 		return semestre;
@@ -41,12 +52,12 @@ public class Module {
 	public void setAbreveation(String abreveation) {
 		this.abreveation = abreveation;
 	}
-	public Module(Long id, String libelle, String abreveation, Semestre semestre) {
+	public Module(String libelle, String abreveation, Semestre semestre, List<Subject> subjects) {
 		super();
-		this.id = id;
 		this.libelle = libelle;
 		this.abreveation = abreveation;
 		this.semestre = semestre;
+		this.subjects = subjects;
 	}
 	public Module() {
 		super();
@@ -77,7 +88,7 @@ public class Module {
 	@Override
 	public String toString() {
 		return "Module [id=" + id + ", libelle=" + libelle + ", abreveation=" + abreveation + ", semestre=" + semestre
-				+ "]";
+				+ ", subjects=" + subjects + "]";
 	}
 	
 	

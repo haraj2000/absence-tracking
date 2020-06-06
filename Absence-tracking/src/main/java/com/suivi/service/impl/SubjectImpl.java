@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.suivi.bean.Module;
 import com.suivi.bean.Subject;
 import com.suivi.dao.SubjectDao;
 import com.suivi.service.facade.SubjectService;
@@ -45,10 +44,6 @@ public class SubjectImpl implements SubjectService{
 		return subjectDao.findAll();
 	}
 
-	@Override
-	public List<Subject> findByModule(Module module) {
-		return subjectDao.findByModule(module);
-	}
 
 	
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.suivi.bean.Enseignant;
+import com.suivi.bean.Module;
 import com.suivi.bean.Subject;
 import com.suivi.bean.TypeSession;
 import com.suivi.service.facade.TypeSessionService;
@@ -57,6 +58,10 @@ public class TypeSessionRest {
 	@PostMapping("/update")
 	public int update(@RequestBody TypeSession typeSession) {
 		return typeSessionService.update(typeSession);
+	}
+	@PostMapping("/module")
+	public List<TypeSession> findByModule(@RequestBody Module module) {
+		return typeSessionService.findByModule(module);
 	}
 	
 }

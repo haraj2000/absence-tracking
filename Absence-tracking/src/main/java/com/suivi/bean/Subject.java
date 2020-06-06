@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Subject {
@@ -13,8 +12,6 @@ public class Subject {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
-	@ManyToOne
-	private Module module;
 	
 	public Long getId() {
 		return id;
@@ -28,20 +25,13 @@ public class Subject {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Module getModule() {
-		return module;
-	}
-	public void setModule(Module module) {
-		this.module = module;
-	}
 	public Subject() {
 		super();
 	}
-	public Subject(Long id, String libelle, Module module) {
+	public Subject(Long id, String libelle) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
-		this.module = module;
 	}
 	@Override
 	public int hashCode() {
@@ -68,7 +58,7 @@ public class Subject {
 	}
 	@Override
 	public String toString() {
-		return "Subject [id=" + id + ", libelle=" + libelle + ", module=" + module + "]";
+		return "Subject [id=" + id + ", libelle=" + libelle + "]";
 	}
 
 	
