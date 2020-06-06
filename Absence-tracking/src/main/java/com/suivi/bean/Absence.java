@@ -45,13 +45,12 @@ public class Absence {
 	public void setEtudiant(Etudiant etudiant) {
 		this.etudiant = etudiant;
 	}
-	public Session getSéance() {
+	public Session getSession() {
 		return session;
 	}
-	public void setSéance(Session session) {
+	public void setSession(Session session) {
 		this.session = session;
 	}
-	
 	public String getRef() {
 		return ref;
 	}

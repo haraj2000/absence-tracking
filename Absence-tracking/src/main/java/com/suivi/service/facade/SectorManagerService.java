@@ -11,7 +11,7 @@ public interface SectorManagerService {
 	public SectorManager findBySector(Sector sector);
 	public SectorManager findByEnseignant(Enseignant enseignant);
 	public int deleteBySector(Sector sector);
-	public int save(SectorManager sectorManager, String libelle);
-	public int update(SectorManager sectorManager);
+	public int save(SectorManager sectorManager, String filiere);
+	public int update(SectorManager sectorManager, String libelle);
 	public List<SectorManager> findAll();
 }

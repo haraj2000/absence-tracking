@@ -31,11 +31,10 @@ public class SessionImpl implements SessionService {
 
 	@Override
 	public int save(Session session) {
-		//String libelle = séance.getTypeSéance().getLibelle()+" "+ séance.getTypeSéance().getModule().getLibelle();
-		//String reference =  séance.getDateStart().toString();
+		String reference =  session.getTypeSession().getLibelle()+" "+ session.getTypeSession().getSubject().getLibelle() + session.getDateStart().toString();
 		Session séanceFounded = findByReference(session.getReference());
 		if(séanceFounded == null) {
-			//séance.setLibelle(libelle);
+			session.setReference(reference);
 			sessionDao.save(session);
 			return 1;
 		}
@@ -49,7 +48,7 @@ public class SessionImpl implements SessionService {
 
 	@Override
 	public int update(Session session) {
-		String libelle = session.getTypeSéance().getLibelle()+" "+ session.getTypeSéance().getModule().getLibelle();
+		String libelle = session.getTypeSession().getLibelle()+" "+ session.getTypeSession().getSubject().getLibelle();
 		String reference = libelle + session.getDateStart();
 		Session séanceFounded = findByReference(reference);
 		if(séanceFounded!= null) {

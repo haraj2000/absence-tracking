@@ -19,7 +19,7 @@ import com.suivi.service.facade.SessionService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/seance")
+@RequestMapping("absence-tracking/session")
 public class SessionRest {
 	@Autowired
 	private SessionService sessionService;

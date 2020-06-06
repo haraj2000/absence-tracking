@@ -30,10 +30,10 @@ public class Session {
 	private List<Groupe> groupes;
 	
 	
-	public TypeSession getTypeSéance() {
+	public TypeSession getTypeSession() {
 		return typeSession;
 	}
-	public void setTypeSéance(TypeSession typeSession) {
+	public void setTypeSession(TypeSession typeSession) {
 		this.typeSession = typeSession;
 	}
 	public Long getId() {

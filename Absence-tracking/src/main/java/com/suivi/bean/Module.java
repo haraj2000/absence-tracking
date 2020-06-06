@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Module {
@@ -12,6 +13,9 @@ public class Module {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
+	private String abreveation;
+	@ManyToOne
+	private Semestre semestre;
 	
 	public Long getId() {
 		return id;
@@ -19,20 +23,30 @@ public class Module {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public Semestre getSemestre() {
+		return semestre;
+	}
+	public void setSemestre(Semestre semestre) {
+		this.semestre = semestre;
+	}
 	public String getLibelle() {
 		return libelle;
 	}
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Module(Long id, String libelle) {
+	public String getAbreveation() {
+		return abreveation;
+	}
+	public void setAbreveation(String abreveation) {
+		this.abreveation = abreveation;
+	}
+	public Module(Long id, String libelle, String abreveation, Semestre semestre) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
-	}
-	public Module(String libelle) {
-		super();
-		this.libelle = libelle;
+		this.abreveation = abreveation;
+		this.semestre = semestre;
 	}
 	public Module() {
 		super();
@@ -62,7 +76,8 @@ public class Module {
 	}
 	@Override
 	public String toString() {
-		return "Module [id=" + id + ", libelle=" + libelle + "]";
+		return "Module [id=" + id + ", libelle=" + libelle + ", abreveation=" + abreveation + ", semestre=" + semestre
+				+ "]";
 	}
 	
 	

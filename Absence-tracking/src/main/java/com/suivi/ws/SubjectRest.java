@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.suivi.bean.Module;
 import com.suivi.bean.Subject;
 import com.suivi.service.facade.SubjectService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/matiere")
+@RequestMapping("absence-tracking/subject")
 public class SubjectRest {
 
 	@Autowired
@@ -38,6 +39,10 @@ public class SubjectRest {
 	@GetMapping("/")
 	public List<Subject> findAll() {
 		return subjectService.findAll();
+	}
+	@PostMapping("/module")
+	public List<Subject> findByModule(@RequestBody Module module) {
+		return subjectService.findByModule(module);
 	}
 
 	

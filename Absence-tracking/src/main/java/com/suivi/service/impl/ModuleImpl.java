@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.suivi.bean.Module;
+import com.suivi.bean.Semestre;
 import com.suivi.dao.ModuleDao;
 import com.suivi.service.facade.ModuleService;
 
@@ -40,6 +41,16 @@ public class ModuleImpl implements ModuleService{
 	@Override
 	public List<Module> findAll() {
 		return moduleDao.findAll();
+	}
+
+	@Override
+	public List<Module> findByAbreveation(String abreveation) {
+		return moduleDao.findByAbreveation(abreveation);
+	}
+
+	@Override
+	public List<Module> findBySemestre(Semestre semestre) {
+		return moduleDao.findBySemestre(semestre);
 	}
 	
 

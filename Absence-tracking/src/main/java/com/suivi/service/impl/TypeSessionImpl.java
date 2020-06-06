@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.suivi.bean.Enseignant;
-import com.suivi.bean.Module;
+import com.suivi.bean.Subject;
 import com.suivi.bean.TypeSession;
 import com.suivi.dao.TypeSessionDao;
 import com.suivi.service.facade.TypeSessionService;
@@ -32,8 +32,8 @@ public class TypeSessionImpl implements TypeSessionService{
 
 	@Override
 	public int save(TypeSession typeSession) {
-		TypeSession typeSéanceFounded = findByReference(typeSession.getReference());
-		if(typeSéanceFounded == null) {
+		TypeSession typeSessionFounded = findByReference(typeSession.getReference());
+		if(typeSessionFounded == null) {
 			typeSessionDao.save(typeSession);
 			return 1;
 		}
@@ -50,8 +50,8 @@ public class TypeSessionImpl implements TypeSessionService{
 		return typeSessionDao.findByEnseignant(enseignant);
 	}
 	@Override
-	public List<TypeSession> findByModule(Module module) {
-		return typeSessionDao.findByModule(module);
+	public List<TypeSession> findBySubject(Subject subject) {
+		return typeSessionDao.findBySubject(subject);
 	}
 
 	@Override
@@ -61,12 +61,12 @@ public class TypeSessionImpl implements TypeSessionService{
 
 	@Override
 	public int update(TypeSession typeSession) {
-		TypeSession typeSéanceFounded = findByReference(typeSession.getReference());
-		if(typeSéanceFounded!= null) {
-			typeSéanceFounded.setLibelle(typeSession.getLibelle());
-			typeSéanceFounded.setEnseignant(typeSession.getEnseignant());
-			typeSéanceFounded.setModule(typeSession.getModule());
-			typeSessionDao.save(typeSéanceFounded);
+		TypeSession typeSessionFounded = findByReference(typeSession.getReference());
+		if(typeSessionFounded!= null) {
+			typeSessionFounded.setLibelle(typeSession.getLibelle());
+			typeSessionFounded.setEnseignant(typeSession.getEnseignant());
+			typeSessionFounded.setSubject(typeSession.getSubject());
+			typeSessionDao.save(typeSessionFounded);
 			return 1;
 		}
 		else return -1;

@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.suivi.bean.Enseignant;
-import com.suivi.bean.Module;
+import com.suivi.bean.Subject;
 import com.suivi.bean.TypeSession;
 import com.suivi.service.facade.TypeSessionService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/typeSeance")
+@RequestMapping("absence-tracking/typeSession")
 public class TypeSessionRest {
 	
 	@Autowired
@@ -46,9 +46,9 @@ public class TypeSessionRest {
 	public List<TypeSession> findByEnseignant(@RequestBody Enseignant enseignant) {
 		return typeSessionService.findByEnseignant(enseignant);
 	}
-	@GetMapping("/module")
-	public List<TypeSession> findByModule(@RequestBody Module module) {
-		return typeSessionService.findByModule(module);
+	@PostMapping("/subject")
+	public List<TypeSession> findBySubject(@RequestBody Subject subject) {
+		return typeSessionService.findBySubject(subject);
 	}
 	@GetMapping("/reference/{reference}")
 	public TypeSession findByReference(@PathVariable String reference) {

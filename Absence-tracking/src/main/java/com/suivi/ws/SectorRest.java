@@ -18,7 +18,7 @@ import com.suivi.service.facade.SectorService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/filiere")
+@RequestMapping("absence-tracking/sector")
 public class SectorRest {
 
 	@Autowired

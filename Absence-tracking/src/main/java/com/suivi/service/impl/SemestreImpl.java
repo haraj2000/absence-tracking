@@ -37,8 +37,8 @@ public class SemestreImpl implements SemestreService{
 	}
 
 	@Override
-	public List<Semestre> findBySector(Sector filiere) {
-		return semestreDao.findBySector(filiere);
+	public List<Semestre> findBySector(Sector sector) {
+		return semestreDao.findBySector(sector);
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class SemestreImpl implements SemestreService{
 		Semestre semestreFounded = findByReference(reference);
 		if(semestreFounded == null) {
 			semestre.setReference(reference);
-			semestre.setFiliere(sector);
+			semestre.setSector(sector);
 			semestre.setLibelle(libelle);
 			semestreDao.save(semestre);
 			return 1;
@@ -69,17 +69,6 @@ public class SemestreImpl implements SemestreService{
 		return semestreDao.findAll();
 	}
 
-	@Override
-	public int update(Semestre semestre) {
-		String reference = "S "+semestre.getNumber()+" "+semestre.getFiliere() + " " + semestre.getAnneeUniversitaire();
-		Semestre semestreFounded = findByReference(reference);
-		if(semestreFounded != null) {	
-			semestreFounded.setGroupes(semestre.getGroupes());
-			semestreFounded.setModules(semestre.getModules());
-			semestreDao.save(semestreFounded);
-			return 1;
-		}else return -1;
-	}
 
 	@Override
 	public List<Semestre> findByNumber(int number) {

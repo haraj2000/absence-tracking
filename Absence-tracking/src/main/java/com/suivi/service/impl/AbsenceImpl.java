@@ -29,7 +29,7 @@ public class AbsenceImpl implements AbsenceService{
 
 	@Override
 	public int save(Absence absence) {
-		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant le "+absence.getSéance().getLibelle();
+		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant le "+absence.getSession().getLibelle();
 		absence.setRef(ref);
 		Absence absenceFounded = findByRef(absence.getRef());
 		Etudiant etudiantFounded = etudiantService.findByCne(absence.getEtudiant().getCne());
@@ -43,7 +43,7 @@ public class AbsenceImpl implements AbsenceService{
 
 	@Override
 	public int update(Absence absence) {
-		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant le "+absence.getSéance().getLibelle();
+		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant le "+absence.getSession().getLibelle();
 		absence.setRef(ref);
 		Absence absenceFounded = findByRef(absence.getRef());
 		if(absenceFounded!= null) {

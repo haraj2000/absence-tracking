@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.suivi.bean.Module;
+import com.suivi.bean.Semestre;
 import com.suivi.service.facade.ModuleService;
 
 @RestController
@@ -40,6 +41,14 @@ public class ModuleRest {
 	@GetMapping("/")
 	public List<Module> findAll() {
 		return moduleService.findAll();
+	}
+	@GetMapping("/abreveation/{abreveation}")
+	public List<Module> findByAbreveation(@PathVariable String abreveation) {
+		return moduleService.findByAbreveation(abreveation);
+	}
+	@PostMapping("/semestre")
+	public List<Module> findBySemestre(@RequestBody Semestre semestre) {
+		return moduleService.findBySemestre(semestre);
 	}
 	
 

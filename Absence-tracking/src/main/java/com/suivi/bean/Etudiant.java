@@ -33,7 +33,7 @@ public class Etudiant {
 	@Column(name = "picByte", length = 400000000)
 	private byte[] image;
 	@ManyToOne
-	private Sector filiere;
+	private Sector sector;
 	@ManyToOne
 	private Groupe groupe;
 	public Long getId() {
@@ -96,11 +96,11 @@ public class Etudiant {
 	public void setGroupe(Groupe groupe) {
 		this.groupe = groupe;
 	}
-	public Sector getFilière() {
-		return filiere;
+	public Sector getSector() {
+		return sector;
 	}
-	public void setFilière(Sector sector) {
-		this.filiere = sector;
+	public void setSector(Sector sector) {
+		this.sector = sector;
 	}
 	public String getCne() {
 		return cne;
@@ -126,14 +126,8 @@ public class Etudiant {
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
-	public Sector getFiliere() {
-		return filiere;
-	}
-	public void setFiliere(Sector filiere) {
-		this.filiere = filiere;
-	}
 	public Etudiant(String cin, String cne, int codeApogee, String firstName, String lastName, Date birthDay, int tel,
-			int nbrAbsence, String mail, String password, int role, byte[] image, Sector filiere, Groupe groupe) {
+			int nbrAbsence, String mail, String password, int role, byte[] image, Sector sector, Groupe groupe) {
 		super();
 		this.cin = cin;
 		this.cne = cne;
@@ -147,7 +141,7 @@ public class Etudiant {
 		this.password = password;
 		this.role = role;
 		this.image = image;
-		this.filiere = filiere;
+		this.sector = sector;
 		this.groupe = groupe;
 	}
 	public Etudiant() {
@@ -181,7 +175,7 @@ public class Etudiant {
 		return "Etudiant [id=" + id + ", cin=" + cin + ", cne=" + cne + ", codeApogee=" + codeApogee + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel + ", nbrAbsence="
 				+ nbrAbsence + ", mail=" + mail + ", password=" + password + ", role=" + role + ", image="
-				+ Arrays.toString(image) + ", filiere=" + filiere + ", groupe=" + groupe + "]";
+				+ Arrays.toString(image) + ", sector=" + sector + ", groupe=" + groupe + "]";
 	}
 
 	

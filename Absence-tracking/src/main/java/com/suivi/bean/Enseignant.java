@@ -82,10 +82,10 @@ public class Enseignant {
 	public void setTel(int tel) {
 		this.tel = tel;
 	}
-	public Departement getDépartement() {
+	public Departement getDepartement() {
 		return departement;
 	}
-	public void setDépartement(Departement departement) {
+	public void setDepartement(Departement departement) {
 		this.departement = departement;
 	}
 	public String getMail() {

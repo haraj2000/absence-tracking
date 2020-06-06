@@ -81,7 +81,7 @@ public class EnseignantImpl implements EnseignantService{
 		String mail2 = enseignant.getFirstName()+"."+enseignant.getLastName()+"@edu.uca.ma";
 		if(enseignantFounded != null) {
 			String mail = enseignantFounded.getFirstName()+"."+enseignantFounded.getLastName()+"@edu.uca.ma";
-			enseignantFounded.setDépartement(enseignant.getDépartement());
+			enseignantFounded.setDepartement(enseignant.getDepartement());
 			enseignantFounded.setTel(enseignant.getTel());
 			enseignantFounded.setFirstName(enseignant.getFirstName());
 			enseignantFounded.setLastName(enseignant.getLastName());

@@ -24,10 +24,6 @@ public class SemestreRest {
 	@Autowired
 	private SemestreService semestreService;
 	
-	@PostMapping("/update")
-	public int update(@RequestBody Semestre semestre) {
-		return semestreService.update(semestre);
-	}
 	@GetMapping("/reference/{reference}")
 	public Semestre findByReference(@PathVariable String reference) {
 		return semestreService.findByReference(reference);
@@ -40,7 +36,7 @@ public class SemestreRest {
 	public List<Semestre> findByAnneeUniversitaire(@PathVariable String anneeUniversitaire) {
 		return semestreService.findByAnneeUniversitaire(anneeUniversitaire);
 	}
-	@GetMapping("/sector")
+	@PostMapping("/sector")
 	public List<Semestre> findBySector(@RequestBody Sector filiere) {
 		return semestreService.findBySector(filiere);
 	}

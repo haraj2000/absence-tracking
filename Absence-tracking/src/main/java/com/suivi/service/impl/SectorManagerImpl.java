@@ -23,7 +23,7 @@ public class SectorManagerImpl implements SectorManagerService{
 	@Autowired
 	private EnseignantService enseignantService;
 	@Autowired
-	private SectorService filiereService;
+	private SectorService sectorService;
 	
 	@Override
 	public SectorManager findBySector(Sector sector) {
@@ -43,11 +43,11 @@ public class SectorManagerImpl implements SectorManagerService{
 
 	@Override
 	public int save(SectorManager sectorManager, String libelle) {
-		Sector sector = filiereService.findByLibelle(libelle);
-		SectorManager responsableFilièreFounded = findBySector(sector);
-		if(responsableFilièreFounded == null) {
+		Sector sector = sectorService.findByLibelle(libelle);
+		SectorManager sectorManagerFounded = findBySector(sector);
+		if(sectorManagerFounded == null) {
 			sectorManager.getEnseignant().setRole(2);
-			sectorManager.setFilière(sector);
+			sectorManager.setSector(sector);
 			enseignantService.update(sectorManager.getEnseignant());
 			sectorManagerDao.save(sectorManager);
 			return 1;
@@ -56,15 +56,16 @@ public class SectorManagerImpl implements SectorManagerService{
 	}
 
 	@Override
-	public int update(SectorManager sectorManager) {
-		SectorManager responsableFilièreFounded = findBySector(sectorManager.getFilière());
-		if(responsableFilièreFounded != null) {
-			responsableFilièreFounded.getEnseignant().setRole(3);
-			enseignantService.update(responsableFilièreFounded.getEnseignant());
+	public int update(SectorManager sectorManager, String libelle) {
+		Sector sector = sectorService.findByLibelle(libelle);
+		SectorManager sectorManagerFounded = findBySector(sector);
+		if(sectorManagerFounded != null) {
+			sectorManagerFounded.getEnseignant().setRole(3);
+			enseignantService.update(sectorManagerFounded.getEnseignant());
 			sectorManager.getEnseignant().setRole(2);
 			enseignantService.update(sectorManager.getEnseignant());
-			responsableFilièreFounded.setEnseignant(sectorManager.getEnseignant());
-			sectorManagerDao.save(responsableFilièreFounded);
+			sectorManagerFounded.setEnseignant(sectorManager.getEnseignant());
+			sectorManagerDao.save(sectorManagerFounded);
 			return 1;
 		}
 		else return -1;

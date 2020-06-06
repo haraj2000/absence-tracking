@@ -19,7 +19,7 @@ import com.suivi.service.facade.SectorManagerService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("absence-tracking/responsable")
+@RequestMapping("absence-tracking/sectorManager")
 public class SectorManagerRest {
 
 	@Autowired
@@ -41,9 +41,9 @@ public class SectorManagerRest {
 	public int save(@RequestBody SectorManager sectorManager, @PathVariable String libelle) {
 		return sectorManagerService.save(sectorManager,libelle);
 	}
-	@PostMapping("/update")
-	public int update(@RequestBody SectorManager sectorManager) {
-		return sectorManagerService.update(sectorManager);
+	@PostMapping("/update/{libelle}")
+	public int update(@RequestBody SectorManager sectorManager,@PathVariable String libelle) {
+		return sectorManagerService.update(sectorManager,libelle);
 	}
 	@GetMapping("/")
 	public List<SectorManager> findAll() {

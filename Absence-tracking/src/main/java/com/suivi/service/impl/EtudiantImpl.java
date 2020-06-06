@@ -84,7 +84,7 @@ public class EtudiantImpl implements EtudiantService {
 			etudiantFounded.setPassword(etudiant.getPassword());
 			etudiantFounded.setBirthDay(etudiant.getBirthDay());
 			etudiantFounded.setGroupe(etudiant.getGroupe());
-			etudiantFounded.setFiliere(etudiant.getFiliere());
+			etudiantFounded.setSector(etudiant.getSector());
 			etudiantFounded.setImage(etudiant.getImage());
 			if (etudiantFounded.getMail() == mail) {
 				etudiantFounded.setMail(mail2);
@@ -112,8 +112,8 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
-	public List<Etudiant> findBySector(Sector filiere) {
-		return etudiantDao.findBySector(filiere);
+	public List<Etudiant> findBySector(Sector sector) {
+		return etudiantDao.findBySector(sector);
 	}
 
 

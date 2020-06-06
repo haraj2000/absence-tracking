@@ -35,7 +35,7 @@ public class GroupeImpl implements GroupeService {
 
 	@Override
 	public int save(Groupe groupe) {
-		String ref = groupe.getSemestre().getLibelle() + " " + groupe.getLibelle();
+		String ref = groupe.getSemestre().getReference() + " " + groupe.getLibelle();
 		groupe.setReference(ref);
 		Groupe groupeFouded = findByReference(groupe.getReference());
 		if(groupeFouded == null) {

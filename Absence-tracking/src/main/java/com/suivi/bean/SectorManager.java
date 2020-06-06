@@ -24,10 +24,10 @@ public class SectorManager {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Sector getFilière() {
+	public Sector getSector() {
 		return sector;
 	}
-	public void setFilière(Sector sector) {
+	public void setSector(Sector sector) {
 		this.sector = sector;
 	}
 	public Enseignant getEnseignant() {

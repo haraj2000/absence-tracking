@@ -99,8 +99,8 @@ public class EtudiantRest {
 	}
 
 	@PostMapping("/sector")
-	public List<Etudiant> findBySector(@RequestBody Sector filiere) {
-		return etudiantService.findBySector(filiere);
+	public List<Etudiant> findBySector(@RequestBody Sector sector) {
+		return etudiantService.findBySector(sector);
 	}
 
 
