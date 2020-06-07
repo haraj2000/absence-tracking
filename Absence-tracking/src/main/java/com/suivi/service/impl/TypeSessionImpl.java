@@ -33,8 +33,10 @@ public class TypeSessionImpl implements TypeSessionService{
 
 	@Override
 	public int save(TypeSession typeSession) {
-		TypeSession typeSessionFounded = findByReference(typeSession.getReference());
+		String reference = typeSession.getLibelle() + " " + typeSession.getModule().getLibelle() + typeSession.getSubject().getLibelle();
+		TypeSession typeSessionFounded = findByReference(reference);
 		if(typeSessionFounded == null) {
+			typeSession.setReference(reference);
 			typeSessionDao.save(typeSession);
 			return 1;
 		}
@@ -62,11 +64,13 @@ public class TypeSessionImpl implements TypeSessionService{
 
 	@Override
 	public int update(TypeSession typeSession) {
-		TypeSession typeSessionFounded = findByReference(typeSession.getReference());
+		System.out.println("lkharj");
+		String reference = typeSession.getLibelle() + " " + typeSession.getModule().getLibelle() + typeSession.getSubject().getLibelle();
+		TypeSession typeSessionFounded = findByReference(reference);
 		if(typeSessionFounded!= null) {
-			typeSessionFounded.setLibelle(typeSession.getLibelle());
 			typeSessionFounded.setEnseignant(typeSession.getEnseignant());
-			typeSessionFounded.setSubject(typeSession.getSubject());
+			System.out.println(typeSessionFounded);
+			System.out.println("ldakhl");
 			typeSessionDao.save(typeSessionFounded);
 			return 1;
 		}
