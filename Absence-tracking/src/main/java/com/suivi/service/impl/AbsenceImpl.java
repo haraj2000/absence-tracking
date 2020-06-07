@@ -13,13 +13,17 @@ import com.suivi.bean.Session;
 import com.suivi.dao.AbsenceDao;
 import com.suivi.service.facade.AbsenceService;
 import com.suivi.service.facade.EtudiantService;
+import com.suivi.service.facade.SessionService;
 
 @Service
 public class AbsenceImpl implements AbsenceService{
 
 	@Autowired
 	private AbsenceDao absenceDao;
+	@Autowired
 	private EtudiantService etudiantService;
+	@Autowired
+	private SessionService sessionService;
 
 
 	@Override
@@ -32,9 +36,11 @@ public class AbsenceImpl implements AbsenceService{
 		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant le "+absence.getSession().getLibelle();
 		absence.setRef(ref);
 		Absence absenceFounded = findByRef(absence.getRef());
-		Etudiant etudiantFounded = etudiantService.findByCne(absence.getEtudiant().getCne());
+		String reference =  absence.getSession().getTypeSession().getLibelle()+" "+ absence.getSession().getTypeSession().getSubject().getLibelle() + absence.getSession().getDateStart().toString();
+		Session seance = sessionService.findByReference(reference);
 		if(absenceFounded == null) {
-			etudiantFounded.setNbrAbsence(etudiantFounded.getNbrAbsence()+1);
+			absence.setSession(seance);
+			System.out.println(absence);
 			absenceDao.save(absence);
 			return 1;
 		}
