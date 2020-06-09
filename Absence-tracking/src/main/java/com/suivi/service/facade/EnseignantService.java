@@ -20,8 +20,8 @@ public interface EnseignantService {
 	public int deleteByNumeroSOM(int numeroSOM);
 	public int deleteByCin(String cin);
 	public List<Enseignant> findByRole(int role);
-	public int save(Enseignant enseignant);
-	public int update(Enseignant enseignant);
+	public Enseignant save(Enseignant enseignant);
+	public Enseignant update(Enseignant enseignant);
 	public List<Enseignant> findAll();
 	public BodyBuilder uplaodImage(MultipartFile file, int numeroSOM) throws IOException;
 	public Enseignant getImage(String cin) throws IOException;

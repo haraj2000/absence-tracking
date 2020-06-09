@@ -52,9 +52,18 @@ public class AbsenceImpl implements AbsenceService{
 		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant le "+absence.getSession().getLibelle();
 		absence.setRef(ref);
 		Absence absenceFounded = findByRef(absence.getRef());
+		Etudiant etudiant = etudiantService.findByCin(absence.getEtudiant().getCin());
 		if(absenceFounded!= null) {
+			if (absence.isAbsent() != absenceFounded.isAbsent()) {
+				absenceFounded.setAbsent(absence.isAbsent());	
+				if (absenceFounded.isAbsent() == true && absenceFounded.getJustification() == null) {
+					etudiant.setNbrAbsence(etudiant.getNbrAbsence() + 1);
+					}
+				else if (absenceFounded.isAbsent() == false && absenceFounded.getJustification() == null ) etudiant.setNbrAbsence(etudiant.getNbrAbsence() - 1);
+			}else if (absence.getJustification() != null && absenceFounded.getJustification() == null) etudiant.setNbrAbsence(etudiant.getNbrAbsence() - 1);
 			absenceFounded.setJustification(absence.getJustification());
 			absenceDao.save(absenceFounded);
+			etudiantService.save(etudiant);
 			return 1;
 		}
 		else return -1;

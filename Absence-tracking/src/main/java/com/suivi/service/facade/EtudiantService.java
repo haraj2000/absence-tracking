@@ -25,8 +25,8 @@ public interface EtudiantService {
 	public int deleteByCne(String cne);
 	public int deleteByCodeApogee(int codeApogee);
 	public List<Etudiant> findByRole(int role);
-	public int save(Etudiant etudiant);
-	public int update(Etudiant etudiant);
+	public Etudiant save(Etudiant etudiant);
+	public Etudiant update(Etudiant etudiant);
 	public List<Etudiant> findAll();
 	public BodyBuilder uplaodImage(MultipartFile file, String cne) throws IOException;
 	public Etudiant getImage(String cin) throws IOException;

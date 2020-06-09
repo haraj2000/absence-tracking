@@ -74,12 +74,12 @@ public class EtudiantRest {
 	}
 
 	@PostMapping("/")
-	public int save(@RequestBody Etudiant etudiant) {
+	public Etudiant save(@RequestBody Etudiant etudiant) {
 		return etudiantService.save(etudiant);
 	}
 
 	@PostMapping("/update")
-	public int update(@RequestBody Etudiant etudiant) {
+	public Etudiant update(@RequestBody Etudiant etudiant) {
 		return etudiantService.update(etudiant);
 	}
 

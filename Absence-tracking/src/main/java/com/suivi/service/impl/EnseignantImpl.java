@@ -61,7 +61,7 @@ public class EnseignantImpl implements EnseignantService{
 	}
 
 	@Override
-	public int save(Enseignant enseignant) {
+	public Enseignant save(Enseignant enseignant) {
 		Enseignant enseignantFounded = findByNumeroSOM(enseignant.getNumeroSOM());
 		if(enseignantFounded == null) {
 			String mail = enseignant.getFirstName()+"."+enseignant.getLastName()+"@edu.uca.ma";
@@ -70,17 +70,16 @@ public class EnseignantImpl implements EnseignantService{
 			enseignant.setPassword(password);
 			enseignant.setRole(3);
 			enseignantDao.save(enseignant);
-			return 1;
+			return enseignant;
 		}
-		else return -1;
+		else return null;
 	}
 
 	@Override
-	public int update(Enseignant enseignant) {
+	public Enseignant update(Enseignant enseignant) {
 		Enseignant enseignantFounded = findByNumeroSOM(enseignant.getNumeroSOM());
 		String mail2 = enseignant.getFirstName()+"."+enseignant.getLastName()+"@edu.uca.ma";
 		if(enseignantFounded != null) {
-			String mail = enseignantFounded.getFirstName()+"."+enseignantFounded.getLastName()+"@edu.uca.ma";
 			enseignantFounded.setDepartement(enseignant.getDepartement());
 			enseignantFounded.setTel(enseignant.getTel());
 			enseignantFounded.setFirstName(enseignant.getFirstName());
@@ -89,13 +88,16 @@ public class EnseignantImpl implements EnseignantService{
 			enseignantFounded.setLastName(enseignant.getLastName());
 			enseignantFounded.setPassword(enseignant.getPassword());
 			enseignantFounded.setRole(enseignant.getRole());
-			if (enseignantFounded.getMail() == mail) {
-				enseignantFounded.setMail(mail2);
+			enseignantFounded.setSex(enseignant.getSex());
+			enseignantFounded.setVille(enseignant.getVille());
+			String mail = enseignantFounded.getFirstName()+"."+enseignantFounded.getLastName()+"@edu.uca.ma";
+			if (enseignantFounded.getMail() != mail2) {
+				enseignantFounded.setMail(mail);
 			} else { enseignantFounded.setMail(enseignant.getMail());}
 			enseignantDao.save(enseignantFounded);
-			return 1;
+			return enseignantFounded;
 		}
-		else return -1;
+		else return null;
 	}
 
 	@Override

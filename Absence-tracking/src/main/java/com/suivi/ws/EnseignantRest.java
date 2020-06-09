@@ -65,11 +65,11 @@ public class EnseignantRest {
 		return enseignantService.deleteByCin(cin);
 	}
 	@PostMapping("/")
-	public int save(@RequestBody Enseignant enseignant) {
+	public Enseignant save(@RequestBody Enseignant enseignant) {
 		return enseignantService.save(enseignant);
 	}
 	@PostMapping("/update")
-	public int update(@RequestBody Enseignant enseignant) {
+	public Enseignant update(@RequestBody Enseignant enseignant) {
 		return enseignantService.update(enseignant);
 	}
 	@GetMapping("/")

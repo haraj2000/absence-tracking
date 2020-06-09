@@ -28,6 +28,8 @@ public class Enseignant {
 	private String mail;
 	private String password;
 	private int role;
+	private String sex;
+	private String ville;
 	@Column(name = "picByte", length = 400000000)
 	private byte[] image;
 	@ManyToOne
@@ -39,6 +41,18 @@ public class Enseignant {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getVille() {
+		return ville;
+	}
+	public void setVille(String ville) {
+		this.ville = ville;
 	}
 	public byte[] getImage() {
 		return image;
@@ -122,7 +136,7 @@ public class Enseignant {
 	}
 	
 	public Enseignant(int numeroSOM, String cin, String firstName, String lastName, Date birthDay, int tel, String mail,
-			String password, int role, byte[] image, Departement departement) {
+			String password, int role, String sex, String ville, byte[] image, Departement departement) {
 		super();
 		this.numeroSOM = numeroSOM;
 		this.cin = cin;
@@ -133,6 +147,8 @@ public class Enseignant {
 		this.mail = mail;
 		this.password = password;
 		this.role = role;
+		this.sex = sex;
+		this.ville = ville;
 		this.image = image;
 		this.departement = departement;
 	}
@@ -163,9 +179,9 @@ public class Enseignant {
 	public String toString() {
 		return "Enseignant [id=" + id + ", numeroSOM=" + numeroSOM + ", cin=" + cin + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel + ", mail=" + mail
-				+ ", password=" + password + ", role=" + role + ", image=" + Arrays.toString(image) + ", departement=" + departement + "]";
+				+ ", password=" + password + ", role=" + role + ", sex=" + sex + ", ville=" + ville + ", image="
+				+ Arrays.toString(image) + ", departement=" + departement + "]";
 	}
-	
 	
 	
 }

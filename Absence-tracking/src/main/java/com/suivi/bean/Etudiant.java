@@ -30,6 +30,8 @@ public class Etudiant {
 	private String mail;
 	private String password;
 	private int role;
+	private String sex;
+	private String ville;
 	@Column(name = "picByte", length = 400000000)
 	private byte[] image;
 	@ManyToOne
@@ -108,6 +110,18 @@ public class Etudiant {
 	public void setCne(String cne) {
 		this.cne = cne;
 	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getVille() {
+		return ville;
+	}
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
 	public int getCodeApogee() {
 		return codeApogee;
 	}
@@ -127,7 +141,8 @@ public class Etudiant {
 		this.image = image;
 	}
 	public Etudiant(String cin, String cne, int codeApogee, String firstName, String lastName, Date birthDay, int tel,
-			int nbrAbsence, String mail, String password, int role, byte[] image, Sector sector, Groupe groupe) {
+			int nbrAbsence, String mail, String password, int role, String sex, String ville, byte[] image, Sector sector,
+			Groupe groupe) {
 		super();
 		this.cin = cin;
 		this.cne = cne;
@@ -140,6 +155,8 @@ public class Etudiant {
 		this.mail = mail;
 		this.password = password;
 		this.role = role;
+		this.sex = sex;
+		this.ville = ville;
 		this.image = image;
 		this.sector = sector;
 		this.groupe = groupe;
@@ -174,8 +191,9 @@ public class Etudiant {
 	public String toString() {
 		return "Etudiant [id=" + id + ", cin=" + cin + ", cne=" + cne + ", codeApogee=" + codeApogee + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", birthDay=" + birthDay + ", tel=" + tel + ", nbrAbsence="
-				+ nbrAbsence + ", mail=" + mail + ", password=" + password + ", role=" + role + ", image="
-				+ Arrays.toString(image) + ", sector=" + sector + ", groupe=" + groupe + "]";
+				+ nbrAbsence + ", mail=" + mail + ", password=" + password + ", role=" + role + ", sex=" + sex
+				+ ", ville=" + ville + ", image=" + Arrays.toString(image) + ", sector=" + sector + ", groupe=" + groupe
+				+ "]";
 	}
 
 	

@@ -56,8 +56,8 @@ public class EtudiantImpl implements EtudiantService {
 	}
 
 	@Override
-	public int save(Etudiant etudiant) {
-		Etudiant etudiantFounded = findByCin(etudiant.getCin());
+	public Etudiant save(Etudiant etudiant) {
+		Etudiant etudiantFounded = findByCne(etudiant.getCne());
 		if(etudiantFounded == null) {
 			String mail = etudiant.getFirstName()+"."+etudiant.getLastName()+"@edu.uca.ma";
 			String password = etudiant.getCne();
@@ -65,19 +65,16 @@ public class EtudiantImpl implements EtudiantService {
 			etudiant.setPassword(password);
 			etudiant.setRole(4);
 			etudiantDao.save(etudiant);
-			return 1;
+			return etudiant;
 		}
-		else return -1;
+		else return null;
 	}
 
 	@Override
-	public int update(Etudiant etudiant) {
-		System.out.println(etudiant);
+	public Etudiant update(Etudiant etudiant) {
 		Etudiant etudiantFounded = findByCin(etudiant.getCin());
-		System.out.println(etudiantFounded);
 		String mail2 = etudiant.getFirstName()+"."+etudiant.getLastName()+"@edu.uca.ma";
 		if(etudiantFounded != null) {
-			String mail = etudiantFounded.getFirstName()+"."+etudiantFounded.getLastName()+"@edu.uca.ma";
 			etudiantFounded.setTel(etudiant.getTel());
 			etudiantFounded.setFirstName(etudiant.getFirstName());
 			etudiantFounded.setLastName(etudiant.getLastName());
@@ -86,13 +83,16 @@ public class EtudiantImpl implements EtudiantService {
 			etudiantFounded.setGroupe(etudiant.getGroupe());
 			etudiantFounded.setSector(etudiant.getSector());
 			etudiantFounded.setImage(etudiant.getImage());
-			if (etudiantFounded.getMail() == mail) {
-				etudiantFounded.setMail(mail2);
+			etudiantFounded.setSex(etudiant.getSex());
+			etudiantFounded.setVille(etudiant.getVille());
+			String mail = etudiantFounded.getFirstName()+"."+etudiantFounded.getLastName()+"@edu.uca.ma";
+			if (etudiantFounded.getMail() != mail2) {
+				etudiantFounded.setMail(mail);
 			} else { etudiantFounded.setMail(etudiant.getMail());}
 			etudiantDao.save(etudiantFounded);
-			return 1;
+			return etudiantFounded;
 		}
-		else return -1;
+		else return null;
 	}
 
 	@Override
