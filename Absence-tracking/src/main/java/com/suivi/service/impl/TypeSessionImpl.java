@@ -69,8 +69,7 @@ public class TypeSessionImpl implements TypeSessionService{
 		TypeSession typeSessionFounded = findByReference(reference);
 		if(typeSessionFounded!= null) {
 			typeSessionFounded.setEnseignant(typeSession.getEnseignant());
-			System.out.println(typeSessionFounded);
-			System.out.println("ldakhl");
+			typeSessionFounded.setGroupes(typeSession.getGroupes());
 			typeSessionDao.save(typeSessionFounded);
 			return 1;
 		}

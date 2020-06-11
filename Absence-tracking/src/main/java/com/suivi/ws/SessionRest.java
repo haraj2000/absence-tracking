@@ -45,7 +45,7 @@ public class SessionRest {
 		return sessionService.deleteByReference(reference);
 	}
 	@PostMapping("/")
-	public int save(@RequestBody Session session) {
+	public Session save(@RequestBody Session session) {
 		System.out.println(session);
 		return sessionService.save(session);
 	}

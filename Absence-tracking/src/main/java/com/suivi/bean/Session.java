@@ -1,13 +1,11 @@
 package com.suivi.bean;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,8 +24,7 @@ public class Session {
 	private Date dateStop;
 	@ManyToOne
 	private TypeSession typeSession;
-	@ManyToMany
-	private List<Groupe> groupes;
+	
 	
 	
 	public TypeSession getTypeSession() {
@@ -60,12 +57,6 @@ public class Session {
 	public void setDateStop(Date dateStop) {
 		this.dateStop = dateStop;
 	}
-	public List<Groupe> getGroupes() {
-		return groupes;
-	}
-	public void setGroupes(List<Groupe> groupes) {
-		this.groupes = groupes;
-	}
 	public String getReference() {
 		return reference;
 	}
@@ -75,15 +66,13 @@ public class Session {
 	public Session() {
 		super();
 	}
-	public Session(String libelle, String reference, Date dateStart, Date dateStop, TypeSession typeSession,
-			List<Groupe> groupes) {
+	public Session(String libelle, String reference, Date dateStart, Date dateStop, TypeSession typeSession) {
 		super();
 		this.libelle = libelle;
 		this.reference = reference;
 		this.dateStart = dateStart;
 		this.dateStop = dateStop;
 		this.typeSession = typeSession;
-		this.groupes = groupes;
 	}
 	@Override
 	public int hashCode() {
@@ -111,7 +100,7 @@ public class Session {
 	@Override
 	public String toString() {
 		return "Session [id=" + id + ", libelle=" + libelle + ", reference=" + reference + ", dateStart=" + dateStart
-				+ ", dateStop=" + dateStop + ", typeSession=" + typeSession + ", groupes=" + groupes + "]";
+				+ ", dateStop=" + dateStop + ", typeSession=" + typeSession + "]";
 	}
 	
 }

@@ -29,7 +29,7 @@ public class EnseignantRest {
 	private EnseignantService enseignantService;
 	
 	@GetMapping("role/{role}")
-	public List<Enseignant> findByRole(int role) {
+	public List<Enseignant> findByRole(@PathVariable int role) {
 		return enseignantService.findByRole(role);
 	}
 	@GetMapping("firstName/{firstName}")

@@ -43,7 +43,7 @@ public class TypeSessionRest {
 		return typeSessionService.findAll();
 	}
 
-	@GetMapping("/enseignant")
+	@PostMapping("/enseignant")
 	public List<TypeSession> findByEnseignant(@RequestBody Enseignant enseignant) {
 		return typeSessionService.findByEnseignant(enseignant);
 	}

@@ -34,15 +34,15 @@ public class GroupeImpl implements GroupeService {
 	}
 
 	@Override
-	public int save(Groupe groupe) {
+	public Groupe save(Groupe groupe) {
 		String ref = groupe.getSemestre().getReference() + " " + groupe.getLibelle();
 		groupe.setReference(ref);
 		Groupe groupeFouded = findByReference(groupe.getReference());
 		if(groupeFouded == null) {
 			groupeDao.save(groupe);
-			return 1;
+			return groupe;
 		}
-		else return -1;
+		else return null;
 	}
 
 	@Override
@@ -56,7 +56,6 @@ public class GroupeImpl implements GroupeService {
 		groupe.setReference(ref);
 		Groupe groupeFouded = findByReference(groupe.getReference());
 		if(groupeFouded != null) {
-			groupeFouded.setLibelle(groupe.getLibelle());
 			groupeFouded.setSemestre(groupe.getSemestre());
 			groupeDao.save(groupeFouded);
 			return 1;

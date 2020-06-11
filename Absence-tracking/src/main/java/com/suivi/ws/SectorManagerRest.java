@@ -25,11 +25,11 @@ public class SectorManagerRest {
 	@Autowired
 	private SectorManagerService sectorManagerService;
 
-	@GetMapping("/sector")
+	@PostMapping("/sector")
 	public SectorManager findBySector(@RequestBody Sector sector) {
 		return sectorManagerService.findBySector(sector);
 	}
-	@GetMapping("/enseignant")
+	@PostMapping("/enseignant")
 	public SectorManager findByEnseignant(@RequestBody Enseignant enseignant) {
 		return sectorManagerService.findByEnseignant(enseignant);
 	}

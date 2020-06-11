@@ -27,13 +27,13 @@ public class AbsenceRest {
 
 
 
-	@GetMapping("/etudiant")
+	@PostMapping("/etudiant")
 	public List<Absence> findByEtudiant(@RequestBody Etudiant etudiant) {
 		return absenceService.findByEtudiant(etudiant);
 	}
 
 	@PostMapping("/")
-	public int save(@RequestBody Absence absence) {
+	public Absence save(@RequestBody Absence absence) {
 		return absenceService.save(absence);
 	}
 
@@ -59,7 +59,7 @@ public class AbsenceRest {
 	}
 
 
-	@GetMapping("/session")
+	@PostMapping("/session")
 	public List<Absence> findBySession(@RequestBody Session session) {
 		return absenceService.findBySession(session);
 	}

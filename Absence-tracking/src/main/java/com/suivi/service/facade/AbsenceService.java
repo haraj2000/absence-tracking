@@ -11,7 +11,7 @@ public interface AbsenceService {
 	public List<Absence> findByEtudiant(Etudiant etudiant);
 	public List<Absence> findBySession(Session session);
 	public int deleteByRef(String ref);
-	public int save(Absence absence);
+	public Absence save(Absence absence);
 	public int update(Absence absence);
 	public List<Absence> findAll();
 

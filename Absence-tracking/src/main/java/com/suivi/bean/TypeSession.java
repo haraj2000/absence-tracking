@@ -1,9 +1,12 @@
 package com.suivi.bean;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -20,8 +23,16 @@ public class TypeSession {
 	private Enseignant enseignant;
 	@ManyToOne
 	private Module module;
+	@ManyToMany
+	private List<Groupe> groupes;
 	
 	
+	public List<Groupe> getGroupes() {
+		return groupes;
+	}
+	public void setGroupes(List<Groupe> groupes) {
+		this.groupes = groupes;
+	}
 	public Module getModule() {
 		return module;
 	}
@@ -63,13 +74,15 @@ public class TypeSession {
 	public TypeSession() {
 		super();
 	}
-	public TypeSession(String reference, String libelle, Subject subject, Enseignant enseignant, Module module) {
+	public TypeSession(String reference, String libelle, Subject subject, Enseignant enseignant, Module module,
+			List<Groupe> groupes) {
 		super();
 		this.reference = reference;
 		this.libelle = libelle;
 		this.subject = subject;
 		this.enseignant = enseignant;
 		this.module = module;
+		this.groupes = groupes;
 	}
 	@Override
 	public int hashCode() {
@@ -97,8 +110,9 @@ public class TypeSession {
 	@Override
 	public String toString() {
 		return "TypeSession [id=" + id + ", reference=" + reference + ", libelle=" + libelle + ", subject=" + subject
-				+ ", enseignant=" + enseignant + ", module=" + module + "]";
+				+ ", enseignant=" + enseignant + ", module=" + module + ", groupes=" + groupes + "]";
 	}
+	
 	
 	
 }

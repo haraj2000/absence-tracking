@@ -14,7 +14,7 @@ public interface SessionService {
 	public List<Session> findByDateStop(Date date);
 	public List<Session> findByTypeSession(TypeSession typeSession);
 	public int deleteByReference(String reference);
-	public int save(Session session);
+	public Session save(Session session);
 	public int update(Session session);
 	public List<Session> findAll();
 }

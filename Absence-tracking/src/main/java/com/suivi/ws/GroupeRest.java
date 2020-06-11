@@ -44,7 +44,7 @@ public class GroupeRest {
 	}
 
 	@PostMapping("/")
-	public int save(@RequestBody Groupe groupe) {
+	public Groupe save(@RequestBody Groupe groupe) {
 		return groupeService.save(groupe);
 	}
 
@@ -52,7 +52,7 @@ public class GroupeRest {
 	public List<Groupe> findAll() {
 		return groupeService.findAll();
 	}
-	@GetMapping("/semestre")
+	@PostMapping("/semestre")
 	public List<Groupe> findBySemestre(@RequestBody Semestre semestre) {
 		return groupeService.findBySemestre(semestre);
 	}

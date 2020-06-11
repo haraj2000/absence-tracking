@@ -11,7 +11,7 @@ public interface GroupeService {
 	public Groupe findByReference(String reference);
 	public List<Groupe> findBySemestre(Semestre semestre);
 	public int deleteByReference(String reference);
-	public int save(Groupe groupe);
+	public Groupe save(Groupe groupe);
 	public List<Groupe> findAll();
 	public int update(Groupe groupe);
 }

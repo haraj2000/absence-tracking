@@ -3,11 +3,13 @@ package com.suivi.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Etudiant;
 import com.suivi.bean.Session;
 
+@Repository
 public interface AbsenceDao extends JpaRepository<Absence, Long> {
 
 	public Absence findByRef(String ref);

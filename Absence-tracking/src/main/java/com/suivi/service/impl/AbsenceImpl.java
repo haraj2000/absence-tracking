@@ -32,7 +32,7 @@ public class AbsenceImpl implements AbsenceService{
 	}
 
 	@Override
-	public int save(Absence absence) {
+	public Absence save(Absence absence) {
 		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant le "+absence.getSession().getLibelle();
 		absence.setRef(ref);
 		Absence absenceFounded = findByRef(absence.getRef());
@@ -42,9 +42,9 @@ public class AbsenceImpl implements AbsenceService{
 			absence.setSession(seance);
 			System.out.println(absence);
 			absenceDao.save(absence);
-			return 1;
+			return absence;
 		}
-		else return -1;
+		else return null;
 	}
 
 	@Override
