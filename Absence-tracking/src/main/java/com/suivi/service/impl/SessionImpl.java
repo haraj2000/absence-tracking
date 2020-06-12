@@ -1,5 +1,6 @@
 package com.suivi.service.impl;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -31,6 +32,13 @@ public class SessionImpl implements SessionService {
 
 	@Override
 	public Session save(Session session) {
+		Calendar calendar=Calendar.getInstance();
+		calendar.setTime(session.getDateStop());
+		calendar.set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY) + session.getPeriode());
+		session.setDateStop(calendar.getTime());
+		System.out.println(session.getDateStart());
+		System.out.println("hana binathum");
+		System.out.println(session.getDateStop());
 		String reference =  session.getTypeSession().getLibelle()+" "+ session.getTypeSession().getSubject().getLibelle() + session.getDateStart().toString();
 		Session séanceFounded = findByReference(session.getReference());
 		if(séanceFounded == null) {
@@ -47,18 +55,19 @@ public class SessionImpl implements SessionService {
 	}
 
 	@Override
-	public int update(Session session) {
+	public Session update(Session session) {
 		String libelle = session.getTypeSession().getLibelle()+" "+ session.getTypeSession().getSubject().getLibelle();
-		String reference = libelle + session.getDateStart();
-		Session séanceFounded = findByReference(reference);
+		String reference = libelle + session.getDateStart().toString();
+		Session séanceFounded = findByReference(session.getReference());
 		if(séanceFounded!= null) {
-			séanceFounded.setLibelle(libelle);
+			séanceFounded.setReference(reference);
+			séanceFounded.setLibelle(session.getLibelle());
 			séanceFounded.setDateStart(session.getDateStart());
 			séanceFounded.setDateStop(session.getDateStop());
 			sessionDao.save(séanceFounded);
-			return 1;
+			return séanceFounded;
 		}
-		else return -1;
+		else return null;
 	}
 
 	@Override

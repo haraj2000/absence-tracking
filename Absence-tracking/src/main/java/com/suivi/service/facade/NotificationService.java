@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Enseignant;
+import com.suivi.bean.Etudiant;
 import com.suivi.bean.Notification;
 
 public interface NotificationService {
@@ -15,5 +16,6 @@ public interface NotificationService {
 	public int update(Notification notification);
 	public int deleteByAbsence(String absence);
 	public List<Notification> findAll();
+	public List<Notification> findByAbsenceEtudiant(Etudiant etudiant);
 
 }

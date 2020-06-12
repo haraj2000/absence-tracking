@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Enseignant;
+import com.suivi.bean.Etudiant;
 import com.suivi.bean.Notification;
 import com.suivi.service.facade.NotificationService;
 
@@ -53,6 +54,16 @@ public class NotificationRest {
 	@DeleteMapping("/absence/{absence}")
 	public int deleteByAbsence(@PathVariable  String absence) {
 		return notificationService.deleteByAbsence(absence);
+	}
+
+	@GetMapping("/")
+	public List<Notification> findAll() {
+		return notificationService.findAll();
+	}
+
+	@PostMapping("/etudiant")
+	public List<Notification> findByAbsenceEtudiant(@RequestBody Etudiant etudiant) {
+		return notificationService.findByAbsenceEtudiant(etudiant);
 	}
 	
 	

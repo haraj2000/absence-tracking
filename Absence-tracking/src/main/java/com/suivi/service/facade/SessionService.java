@@ -15,6 +15,6 @@ public interface SessionService {
 	public List<Session> findByTypeSession(TypeSession typeSession);
 	public int deleteByReference(String reference);
 	public Session save(Session session);
-	public int update(Session session);
+	public Session update(Session session);
 	public List<Session> findAll();
 }

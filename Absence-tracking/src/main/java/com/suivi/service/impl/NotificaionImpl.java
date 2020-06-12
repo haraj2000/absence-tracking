@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Enseignant;
+import com.suivi.bean.Etudiant;
 import com.suivi.bean.Notification;
 import com.suivi.dao.NotificationDao;
 import com.suivi.service.facade.AbsenceService;
@@ -34,6 +35,8 @@ public class NotificaionImpl implements NotificationService{
 
 	@Override
 	public List<Notification> findByState(String state) {
+		System.out.println("coucou chui la");
+		System.out.println(notificationDao.findByState(state));
 		return notificationDao.findByState(state);
 	}
 
@@ -71,5 +74,10 @@ public class NotificaionImpl implements NotificationService{
 	@Override
 	public List<Notification> findAll() {
 		return notificationDao.findAll();
+	}
+
+	@Override
+	public List<Notification> findByAbsenceEtudiant(Etudiant etudiant) {
+		return notificationDao.findByAbsenceEtudiant(etudiant);
 	}
 }

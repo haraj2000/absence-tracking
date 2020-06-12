@@ -24,9 +24,16 @@ public class Session {
 	private Date dateStop;
 	@ManyToOne
 	private TypeSession typeSession;
+	private int periode;
 	
 	
 	
+	public int getPeriode() {
+		return periode;
+	}
+	public void setPeriode(int periode) {
+		this.periode = periode;
+	}
 	public TypeSession getTypeSession() {
 		return typeSession;
 	}
@@ -66,13 +73,16 @@ public class Session {
 	public Session() {
 		super();
 	}
-	public Session(String libelle, String reference, Date dateStart, Date dateStop, TypeSession typeSession) {
+
+	public Session(String libelle, String reference, Date dateStart, Date dateStop, TypeSession typeSession,
+			int periode) {
 		super();
 		this.libelle = libelle;
 		this.reference = reference;
 		this.dateStart = dateStart;
 		this.dateStop = dateStop;
 		this.typeSession = typeSession;
+		this.periode = periode;
 	}
 	@Override
 	public int hashCode() {
@@ -100,7 +110,7 @@ public class Session {
 	@Override
 	public String toString() {
 		return "Session [id=" + id + ", libelle=" + libelle + ", reference=" + reference + ", dateStart=" + dateStart
-				+ ", dateStop=" + dateStop + ", typeSession=" + typeSession + "]";
+				+ ", dateStop=" + dateStop + ", typeSession=" + typeSession + ", periode=" + periode + "]";
 	}
 	
 }

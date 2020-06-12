@@ -32,7 +32,7 @@ public class SessionRest {
 	public List<Session> findByDateStop(@PathVariable Date hourStop) {
 		return sessionService.findByDateStop(hourStop);
 	}
-	@GetMapping("/typeSession")
+	@PostMapping("/typeSession")
 	public List<Session> findByTypeSession(@RequestBody TypeSession typeSession) {
 		return sessionService.findByTypeSession(typeSession);
 	}
@@ -54,7 +54,7 @@ public class SessionRest {
 		return sessionService.findAll();
 	}
 	@PostMapping("/update")
-	public int update(@RequestBody Session session) {
+	public Session update(@RequestBody Session session) {
 		return sessionService.update(session);
 	}
 	@GetMapping("/reference/{reference}")
