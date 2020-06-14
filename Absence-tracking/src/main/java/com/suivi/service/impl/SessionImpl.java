@@ -41,7 +41,7 @@ public class SessionImpl implements SessionService {
 		System.out.println(session.getDateStop());
 		String reference =  session.getTypeSession().getLibelle()+" "+ session.getTypeSession().getSubject().getLibelle() + session.getDateStart().toString();
 		Session séanceFounded = findByReference(session.getReference());
-		if(séanceFounded == null) {
+		if(séanceFounded == null) { 
 			session.setReference(reference);
 			sessionDao.save(session);
 			return session;
