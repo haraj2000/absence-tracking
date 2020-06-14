@@ -56,5 +56,10 @@ public class SemestreRest {
 	public List<Semestre> findByNumber(int number) {
 		return semestreService.findByNumber(number);
 	}
+	@PostMapping("/sectorAndAnneeUniversitaire/anneeUniversitaire/{anneeUniversitaire}")
+	public List<Semestre> findBySectorAndAnneeUniversitaire(@RequestBody Sector sector,@PathVariable String anneeUniversitaire) {
+		return semestreService.findBySectorAndAnneeUniversitaire(sector, anneeUniversitaire);
+	}
+	
 	
 }

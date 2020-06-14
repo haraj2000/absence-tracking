@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Etudiant;
 import com.suivi.bean.Sector;
+import com.suivi.bean.Semestre;
 import com.suivi.bean.Groupe;
 import com.suivi.service.facade.EtudiantService;
 
@@ -115,6 +116,11 @@ public class EtudiantRest {
 	@GetMapping("/get/{cin}")
 	public Etudiant getImage(@PathVariable String cin) throws IOException {
 		return etudiantService.getImage(cin);
+	}
+
+	@PostMapping("/semestre")
+	public List<Etudiant> findByGroupeSemestre(@RequestBody Semestre semestre) {
+		return etudiantService.findByGroupeSemestre(semestre);
 	}
 
 }

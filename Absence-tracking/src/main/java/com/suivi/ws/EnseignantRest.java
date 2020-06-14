@@ -77,7 +77,7 @@ public class EnseignantRest {
 		return enseignantService.findAll();
 	}
 	@PostMapping("/upload/{numeroSOM}")
-	public BodyBuilder uplaodImage(@RequestParam("imageFile") MultipartFile file, @PathVariable int numeroSOM) throws IOException {
+	public int uplaodImage(@RequestParam("imageFile") MultipartFile file, @PathVariable int numeroSOM) throws IOException {
 		return enseignantService.uplaodImage(file, numeroSOM);
 	}
 	@GetMapping("/get/{cin}")

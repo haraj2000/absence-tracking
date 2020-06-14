@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Etudiant;
 import com.suivi.bean.Sector;
+import com.suivi.bean.Semestre;
 import com.suivi.bean.Groupe;
 
 public interface EtudiantService {
@@ -30,4 +31,5 @@ public interface EtudiantService {
 	public List<Etudiant> findAll();
 	public BodyBuilder uplaodImage(MultipartFile file, String cne) throws IOException;
 	public Etudiant getImage(String cin) throws IOException;
+	public List<Etudiant> findByGroupeSemestre(Semestre semestre);
 }

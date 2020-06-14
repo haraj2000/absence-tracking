@@ -121,12 +121,14 @@ public class EnseignantImpl implements EnseignantService{
 	}
 
 	@Override
-	public BodyBuilder uplaodImage(MultipartFile file, int numeroSOM) throws IOException {
+	public int uplaodImage(MultipartFile file, int numeroSOM) throws IOException {
 		Enseignant enseignant = enseignantDao.findByNumeroSOM(numeroSOM);
+		System.out.println(enseignant.getImage());
 			//	new Enseignant(compressBytes(file.getBytes()));
 				enseignant.setImage(compressBytes(file.getBytes()));
+				System.out.println(enseignant.getImage());
 		enseignantDao.save(enseignant);
-		return ResponseEntity.status(HttpStatus.OK);
+		return 1;
 	}
 	// compress the image bytes before storing it in the database
 		public static byte[] compressBytes(byte[] data) {

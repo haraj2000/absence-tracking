@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.suivi.bean.Etudiant;
 import com.suivi.bean.Sector;
+import com.suivi.bean.Semestre;
 import com.suivi.bean.Groupe;
 
 public interface EtudiantDao extends JpaRepository<Etudiant, Long>{
@@ -23,4 +24,5 @@ public interface EtudiantDao extends JpaRepository<Etudiant, Long>{
 	public int deleteByCne(String cne);
 	public int deleteByCodeApogee(int codeApogee);
 	public List<Etudiant> findByRole(int role);
+	public List<Etudiant> findByGroupeSemestre(Semestre semestre);
 }

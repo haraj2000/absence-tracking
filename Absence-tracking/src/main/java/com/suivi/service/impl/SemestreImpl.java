@@ -75,4 +75,9 @@ public class SemestreImpl implements SemestreService{
 		return semestreDao.findByNumber(number);
 	}
 
+	@Override
+	public List<Semestre> findBySectorAndAnneeUniversitaire(Sector sector, String anneeUnivesitaire) {
+		return semestreDao.findBySectorAndAnneeUniversitaire(sector, anneeUnivesitaire);
+	}
+
 }

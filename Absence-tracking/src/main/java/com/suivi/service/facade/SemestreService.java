@@ -15,4 +15,5 @@ public interface SemestreService {
 	public int deleteByReference(String reference);
 	public int save(Semestre semestre, String filiere);
 	public List<Semestre> findAll();
+	public List<Semestre> findBySectorAndAnneeUniversitaire(Sector sector, String anneeUniversitaire);
 }

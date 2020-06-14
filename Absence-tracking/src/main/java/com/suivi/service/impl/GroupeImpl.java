@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.suivi.bean.Groupe;
+import com.suivi.bean.Sector;
 import com.suivi.bean.Semestre;
 import com.suivi.dao.GroupeDao;
 import com.suivi.service.facade.GroupeService;
@@ -65,6 +66,10 @@ public class GroupeImpl implements GroupeService {
 	@Override
 	public List<Groupe> findBySemestre(Semestre semestre) {
 		return groupeDao.findBySemestre(semestre);
+	}
+	@Override
+	public List<Groupe> findBySemestreSector(Sector sector) {
+		return groupeDao.findBySemestreSector(sector);
 	}
 
 }

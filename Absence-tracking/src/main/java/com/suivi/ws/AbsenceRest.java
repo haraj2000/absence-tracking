@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Etudiant;
+import com.suivi.bean.Module;
 import com.suivi.bean.Session;
+import com.suivi.bean.TypeSession;
 import com.suivi.service.facade.AbsenceService;
 
 @RestController
@@ -62,6 +64,16 @@ public class AbsenceRest {
 	@PostMapping("/session")
 	public List<Absence> findBySession(@RequestBody Session session) {
 		return absenceService.findBySession(session);
+	}
+
+	@PostMapping("/module")
+	public List<Absence> findBySessionTypeSessionModule(@RequestBody Module module) {
+		return absenceService.findBySessionTypeSessionModule(module);
+	}
+
+	@PostMapping("/typeSession")
+	public List<Absence> findBySessionTypeSession(@RequestBody TypeSession typeSession) {
+		return absenceService.findBySessionTypeSession(typeSession);
 	}
 	
 	

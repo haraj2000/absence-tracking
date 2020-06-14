@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.suivi.bean.Groupe;
+import com.suivi.bean.Sector;
 import com.suivi.bean.Semestre;
 import com.suivi.service.facade.GroupeService;
 
@@ -55,6 +56,11 @@ public class GroupeRest {
 	@PostMapping("/semestre")
 	public List<Groupe> findBySemestre(@RequestBody Semestre semestre) {
 		return groupeService.findBySemestre(semestre);
+	}
+
+	@PostMapping("/sector")
+	public List<Groupe> findBySemestreSector(@RequestBody Sector sector) {
+		return groupeService.findBySemestreSector(sector);
 	}
 	
 

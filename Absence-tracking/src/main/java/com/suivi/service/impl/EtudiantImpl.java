@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Etudiant;
 import com.suivi.bean.Sector;
+import com.suivi.bean.Semestre;
 import com.suivi.bean.Groupe;
 import com.suivi.dao.EtudiantDao;
 import com.suivi.service.facade.EtudiantService;
@@ -190,6 +191,11 @@ public class EtudiantImpl implements EtudiantService {
 			final Etudiant image= etudiantDao.findByCin(cin);
 			image.setImage(decompressBytes(image.getImage()));
 			return image;
+		}
+
+		@Override
+		public List<Etudiant> findByGroupeSemestre(Semestre semestre) {
+			return etudiantDao.findByGroupeSemestre(semestre);
 		}
 
 }

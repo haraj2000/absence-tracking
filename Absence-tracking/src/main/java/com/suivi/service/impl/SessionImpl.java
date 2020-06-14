@@ -33,7 +33,7 @@ public class SessionImpl implements SessionService {
 	@Override
 	public Session save(Session session) {
 		Calendar calendar=Calendar.getInstance();
-		calendar.setTime(session.getDateStop());
+		calendar.setTime(session.getDateStart());
 		calendar.set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY) + session.getPeriode());
 		session.setDateStop(calendar.getTime());
 		System.out.println(session.getDateStart());
@@ -56,6 +56,12 @@ public class SessionImpl implements SessionService {
 
 	@Override
 	public Session update(Session session) {
+		if (session.getDateStop() == null) {
+		Calendar calendar=Calendar.getInstance();
+		calendar.setTime(session.getDateStart());
+		calendar.set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY) + session.getPeriode());
+		session.setDateStop(calendar.getTime());
+		}
 		String libelle = session.getTypeSession().getLibelle()+" "+ session.getTypeSession().getSubject().getLibelle();
 		String reference = libelle + session.getDateStart().toString();
 		Session séanceFounded = findByReference(session.getReference());
