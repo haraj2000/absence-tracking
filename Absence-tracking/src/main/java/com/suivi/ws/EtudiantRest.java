@@ -110,7 +110,7 @@ public class EtudiantRest {
 		return etudiantService.findByCodeApogee(codeApogee);
 	}
 	@PostMapping("/upload/{cne}")
-	public BodyBuilder uplaodImage(@RequestParam("imageFile") MultipartFile file, @PathVariable String cne) throws IOException {
+	public int uplaodImage(@RequestParam("imageFile") MultipartFile file, @PathVariable String cne) throws IOException {
 		return etudiantService.uplaodImage(file, cne);
 	}
 	@GetMapping("/get/{cin}")

@@ -18,4 +18,5 @@ public interface AbsenceService {
 	public List<Absence> findAll();
 	public List<Absence> findBySessionTypeSessionModule(Module module);
 	public List<Absence> findBySessionTypeSession(TypeSession typeSession); 
+	public Absence findBySessionAndEtudiant(Session session, Etudiant etudiant);
 }

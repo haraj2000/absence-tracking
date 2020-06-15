@@ -18,6 +18,7 @@ import com.suivi.bean.Module;
 import com.suivi.bean.Session;
 import com.suivi.bean.TypeSession;
 import com.suivi.service.facade.AbsenceService;
+import com.suivi.service.util.SessionEtudiant;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -74,6 +75,11 @@ public class AbsenceRest {
 	@PostMapping("/typeSession")
 	public List<Absence> findBySessionTypeSession(@RequestBody TypeSession typeSession) {
 		return absenceService.findBySessionTypeSession(typeSession);
+	}
+
+	@PostMapping("/sessionEtudiant")
+	public Absence findBySessionAndEtudiant(@RequestBody SessionEtudiant sessionEtudiant) {
+		return absenceService.findBySessionAndEtudiant(sessionEtudiant.getSession(),sessionEtudiant.getEtudiant());
 	}
 	
 	

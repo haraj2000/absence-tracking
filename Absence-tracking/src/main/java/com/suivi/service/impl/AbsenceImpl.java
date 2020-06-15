@@ -102,6 +102,12 @@ public class AbsenceImpl implements AbsenceService{
 		return absenceDao.findBySessionTypeSession(typeSession);
 	}
 
+	@Override
+	public Absence findBySessionAndEtudiant(Session session, Etudiant etudiant) {
+		System.out.println(absenceDao.findBySessionAndEtudiant(session, etudiant));
+		return absenceDao.findBySessionAndEtudiant(session, etudiant);
+	}
+
 
 
 

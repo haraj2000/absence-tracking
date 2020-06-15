@@ -19,6 +19,7 @@ public interface AbsenceDao extends JpaRepository<Absence, Long> {
 	public List<Absence> findBySession(Session session);
 	public List<Absence> findBySessionTypeSessionModule(Module module); 
 	public List<Absence> findBySessionTypeSession(TypeSession typeSession); 
+	public Absence findBySessionAndEtudiant(Session session, Etudiant etudiant);
 	public int deleteByRef(String ref);
 
 }

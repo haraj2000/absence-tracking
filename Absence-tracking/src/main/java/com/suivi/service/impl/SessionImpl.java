@@ -9,6 +9,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.suivi.bean.Enseignant;
+import com.suivi.bean.Semestre;
 import com.suivi.bean.Session;
 import com.suivi.bean.TypeSession;
 import com.suivi.dao.SessionDao;
@@ -93,6 +95,26 @@ public class SessionImpl implements SessionService {
 	@Override
 	public Session findByReference(String reference) {
 		return sessionDao.findByReference(reference);
+	}
+
+	@Override
+	public Session findByDateStartAndTypeSessionEnseignant(Date dateStart, Enseignant enseignant) {
+		return sessionDao.findByDateStartAndTypeSessionEnseignant(dateStart, enseignant);
+	}
+
+	@Override
+	public Session findByDateStartAndTypeSessionModuleSemestre(Date dateStart, Semestre semestre) {
+		return sessionDao.findByDateStartAndTypeSessionModuleSemestre(dateStart, semestre);
+	}
+
+	@Override
+	public List<Session> findByTypeSessionModuleSemestre(Semestre semestre) {
+		return sessionDao.findByTypeSessionModuleSemestre(semestre);
+	}
+
+	@Override
+	public List<Session> findByTypeSessionEnseignant(Enseignant enseignant) {
+		return sessionDao.findByTypeSessionEnseignant(enseignant);
 	}
 }
 

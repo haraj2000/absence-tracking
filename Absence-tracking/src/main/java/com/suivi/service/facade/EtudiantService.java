@@ -29,7 +29,7 @@ public interface EtudiantService {
 	public Etudiant save(Etudiant etudiant);
 	public Etudiant update(Etudiant etudiant);
 	public List<Etudiant> findAll();
-	public BodyBuilder uplaodImage(MultipartFile file, String cne) throws IOException;
+	public int uplaodImage(MultipartFile file, String cne) throws IOException;
 	public Etudiant getImage(String cin) throws IOException;
 	public List<Etudiant> findByGroupeSemestre(Semestre semestre);
 }

@@ -144,11 +144,11 @@ public class EtudiantImpl implements EtudiantService {
 		return etudiantDao.findByRole(role);
 	}
 	@Override
-	public BodyBuilder uplaodImage(MultipartFile file, String cne) throws IOException {
+	public int uplaodImage(MultipartFile file, String cne) throws IOException {
 		Etudiant etudiant = etudiantDao.findByCne(cne);
 				etudiant.setImage(compressBytes(file.getBytes()));
 		etudiantDao.save(etudiant);
-		return ResponseEntity.status(HttpStatus.OK);
+		return 1;
 	}
 	// compress the image bytes before storing it in the database
 		public static byte[] compressBytes(byte[] data) {

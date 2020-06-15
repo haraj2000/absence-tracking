@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.suivi.bean.Enseignant;
+import com.suivi.bean.Semestre;
 import com.suivi.bean.Session;
 import com.suivi.bean.TypeSession;
 import com.suivi.service.facade.SessionService;
@@ -60,6 +62,22 @@ public class SessionRest {
 	@GetMapping("/reference/{reference}")
 	public Session findByReference(@PathVariable String reference) {
 		return sessionService.findByReference(reference);
+	}
+	@PostMapping("/dateAndEnseignant/dateStart/{dateStart}")
+	public Session findByDateStartAndTypeSessionEnseignant(@PathVariable Date dateStart,@RequestBody Enseignant enseignant) {
+		return sessionService.findByDateStartAndTypeSessionEnseignant(dateStart, enseignant);
+	}
+	@PostMapping("/dateAndSemestre/dateStart/{dateStart}")
+	public Session findByDateStartAndTypeSessionModuleSemestre(@PathVariable Date dateStart,@RequestBody Semestre semestre) {
+		return sessionService.findByDateStartAndTypeSessionModuleSemestre(dateStart, semestre);
+	}
+	@PostMapping("/semestre")
+	public List<Session> findByTypeSessionModuleSemestre(@RequestBody Semestre semestre) {
+		return sessionService.findByTypeSessionModuleSemestre(semestre);
+	}
+	@PostMapping("/enseignant")
+	public List<Session> findByTypeSessionEnseignant(@RequestBody Enseignant enseignant) {
+		return sessionService.findByTypeSessionEnseignant(enseignant);
 	}
 	
 }
