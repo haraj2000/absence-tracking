@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.ResponseEntity.BodyBuilder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,6 +29,8 @@ public class EtudiantImpl implements EtudiantService {
 	
 	@Autowired
 	private EtudiantDao etudiantDao;
+	@Autowired
+	private PasswordEncoder bcryptEncoder;
 
 	@Override
 	public List<Etudiant> findByFirstName(String firstName) {
@@ -63,7 +66,7 @@ public class EtudiantImpl implements EtudiantService {
 			String mail = etudiant.getFirstName()+"."+etudiant.getLastName()+"@edu.uca.ma";
 			String password = etudiant.getCne();
 			etudiant.setMail(mail);
-			etudiant.setPassword(password);
+			etudiant.setPassword(bcryptEncoder.encode(password));
 			etudiant.setRole(4);
 			etudiantDao.save(etudiant);
 			return etudiant;
@@ -79,7 +82,7 @@ public class EtudiantImpl implements EtudiantService {
 			etudiantFounded.setTel(etudiant.getTel());
 			etudiantFounded.setFirstName(etudiant.getFirstName());
 			etudiantFounded.setLastName(etudiant.getLastName());
-			etudiantFounded.setPassword(etudiant.getPassword());
+			etudiantFounded.setPassword(bcryptEncoder.encode(etudiant.getPassword()));
 			etudiantFounded.setBirthDay(etudiant.getBirthDay());
 			etudiantFounded.setGroupe(etudiant.getGroupe());
 			etudiantFounded.setSector(etudiant.getSector());

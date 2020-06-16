@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.ResponseEntity.BodyBuilder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,6 +27,8 @@ public class EnseignantImpl implements EnseignantService{
 
 	@Autowired
 	private EnseignantDao enseignantDao;
+	@Autowired
+	private PasswordEncoder bcryptEncoder;
 	
 	@Override
 	public List<Enseignant> findByFirstName(String firstName) {
@@ -64,10 +67,10 @@ public class EnseignantImpl implements EnseignantService{
 	public Enseignant save(Enseignant enseignant) {
 		Enseignant enseignantFounded = findByNumeroSOM(enseignant.getNumeroSOM());
 		if(enseignantFounded == null) {
-			String mail = enseignant.getFirstName()+"."+enseignant.getLastName()+"@edu.uca.ma";
+			String mail = enseignant.getFirstName()+"."+enseignant.getLastName()+"@uca.ma";
 			String password = enseignant.getCin();
 			enseignant.setMail(mail);
-			enseignant.setPassword(password);
+			enseignant.setPassword(bcryptEncoder.encode(password));
 			enseignant.setRole(3);
 			enseignantDao.save(enseignant);
 			return enseignant;
@@ -78,7 +81,7 @@ public class EnseignantImpl implements EnseignantService{
 	@Override
 	public Enseignant update(Enseignant enseignant) {
 		Enseignant enseignantFounded = findByNumeroSOM(enseignant.getNumeroSOM());
-		String mail2 = enseignant.getFirstName()+"."+enseignant.getLastName()+"@edu.uca.ma";
+		String mail2 = enseignant.getFirstName()+"."+enseignant.getLastName()+"@uca.ma";
 		if(enseignantFounded != null) {
 			enseignantFounded.setDepartement(enseignant.getDepartement());
 			enseignantFounded.setTel(enseignant.getTel());
@@ -86,11 +89,11 @@ public class EnseignantImpl implements EnseignantService{
 			enseignantFounded.setLastName(enseignant.getLastName());
 			enseignantFounded.setBirthDay(enseignant.getBirthDay());
 			enseignantFounded.setLastName(enseignant.getLastName());
-			enseignantFounded.setPassword(enseignant.getPassword());
+			enseignantFounded.setPassword(bcryptEncoder.encode(enseignant.getPassword()));
 			enseignantFounded.setRole(enseignant.getRole());
 			enseignantFounded.setSex(enseignant.getSex());
 			enseignantFounded.setVille(enseignant.getVille());
-			String mail = enseignantFounded.getFirstName()+"."+enseignantFounded.getLastName()+"@edu.uca.ma";
+			String mail = enseignantFounded.getFirstName()+"."+enseignantFounded.getLastName()+"@uca.ma";
 			if (enseignantFounded.getMail() != mail2) {
 				enseignantFounded.setMail(mail);
 			} else { enseignantFounded.setMail(enseignant.getMail());}
