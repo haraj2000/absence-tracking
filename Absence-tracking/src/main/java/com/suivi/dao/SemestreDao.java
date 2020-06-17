@@ -11,7 +11,7 @@ import com.suivi.bean.Semestre;
 @Repository
 public interface SemestreDao extends JpaRepository<Semestre, Long>{
 
-	public Semestre findByLibelle(String libelle);
+	public List<Semestre> findByLibelle(String libelle);
 	public Semestre findByReference(String reference);
 	public List<Semestre> findByAnneeUniversitaire(String anneeUniversitaire);
 	public List<Semestre> findBySector(Sector sector);

@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.suivi.bean.Cycle;
 import com.suivi.service.facade.CycleService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api("Cette end point permet de gerer les cycles")
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RequestMapping("absence-tracking/cycle")
@@ -23,18 +27,22 @@ public class CycleRest {
 	@Autowired
 	private CycleService cycleService;
 
+	@ApiOperation("Rechercher un cycle par libelle")
 	@GetMapping("/libelle/{libelle}")
 	public Cycle findByLibelle(@PathVariable String libelle) {
 		return cycleService.findByLibelle(libelle);
 	}
+	@ApiOperation("Supprimer un cycle par libelle")
 	@DeleteMapping("/libelle/{libelle}")
 	public int deleteByLibelle(@PathVariable String libelle) {
 		return cycleService.deleteByLibelle(libelle);
 	}
+	@ApiOperation("Enregistrer un cycle")
 	@PostMapping("/")
 	public int save(@RequestBody Cycle cycle) {
 		return cycleService.save(cycle);
 	}
+	@ApiOperation("Rechercher tous les cycles enregistrés")
 	@GetMapping("/")
 	public List<Cycle> findAll() {
 		return cycleService.findAll();

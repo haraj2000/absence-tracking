@@ -24,7 +24,7 @@ public class GroupeImpl implements GroupeService {
 		return groupeDao.findByReference(reference);
 	}
 	@Override
-	public Groupe findByLibelle(String libelle) {
+	public List<Groupe> findByLibelle(String libelle) {
 		return groupeDao.findByLibelle(libelle);
 	}
 

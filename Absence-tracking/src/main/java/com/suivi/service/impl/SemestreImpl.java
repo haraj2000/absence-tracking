@@ -27,7 +27,7 @@ public class SemestreImpl implements SemestreService{
 	}
 	
 	@Override
-	public Semestre findByLibelle(String libelle) {
+	public List<Semestre> findByLibelle(String libelle) {
 		return semestreDao.findByLibelle(libelle);
 	}
 

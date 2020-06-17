@@ -20,6 +20,10 @@ import com.suivi.bean.TypeSession;
 import com.suivi.service.facade.AbsenceService;
 import com.suivi.service.util.SessionEtudiant;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api("Cette end point permet de gerer les absences")
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RequestMapping("absence-tracking/absence")
@@ -29,54 +33,55 @@ public class AbsenceRest {
 	private AbsenceService absenceService;
 
 
-
+	@ApiOperation("Rechercher des absences d'un étudiant")
 	@PostMapping("/etudiant")
 	public List<Absence> findByEtudiant(@RequestBody Etudiant etudiant) {
 		return absenceService.findByEtudiant(etudiant);
 	}
-
+	@ApiOperation("Enregister une absence")
 	@PostMapping("/")
 	public Absence save(@RequestBody Absence absence) {
 		return absenceService.save(absence);
 	}
-
+	@ApiOperation("Modifier une absence")
 	@PostMapping("/update")
 	public int update(@RequestBody Absence absence) {
 		return absenceService.update(absence);
 	}
-
+	@ApiOperation("Rechercher tous les absences enregistrées")
 	@GetMapping("/")
 	public List<Absence> findAll() {
 		return absenceService.findAll();
 	}
-
+	@ApiOperation("Rechercher une absence par reférence")
 	@GetMapping("/ref/{ref}")
 	public Absence findByRef(@PathVariable String ref) {
 		return absenceService.findByRef(ref);
 	}
 
-
+	@ApiOperation("Supprimer une absence par reférence")
 	@DeleteMapping("/ref/{ref}")
 	public int deleteByRef(@PathVariable String ref) {
 		return absenceService.deleteByRef(ref);
 	}
 
-
+	@ApiOperation("Rechercher des absences d'une séance")
 	@PostMapping("/session")
 	public List<Absence> findBySession(@RequestBody Session session) {
 		return absenceService.findBySession(session);
 	}
-
+	@ApiOperation("Rechercher des absences d'un module")
 	@PostMapping("/module")
 	public List<Absence> findBySessionTypeSessionModule(@RequestBody Module module) {
 		return absenceService.findBySessionTypeSessionModule(module);
 	}
-
+	@ApiOperation("Rechercher des absences d'un type séance")
 	@PostMapping("/typeSession")
 	public List<Absence> findBySessionTypeSession(@RequestBody TypeSession typeSession) {
 		return absenceService.findBySessionTypeSession(typeSession);
 	}
 
+	@ApiOperation("Rechercher des absences d'un étudiant pendant une séance")
 	@PostMapping("/sessionEtudiant")
 	public Absence findBySessionAndEtudiant(@RequestBody SessionEtudiant sessionEtudiant) {
 		return absenceService.findBySessionAndEtudiant(sessionEtudiant.getSession(),sessionEtudiant.getEtudiant());

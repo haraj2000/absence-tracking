@@ -9,7 +9,7 @@ import com.suivi.bean.Sector;
 import com.suivi.bean.Semestre;
 
 public interface GroupeDao extends JpaRepository<Groupe, Long> {
-	public Groupe findByLibelle(String libelle);
+	public List<Groupe> findByLibelle(String libelle);
 	public Groupe findByReference(String reference);
 	public List<Groupe> findBySemestre(Semestre semestre);
 	public List<Groupe> findBySemestreSector(Sector sector);

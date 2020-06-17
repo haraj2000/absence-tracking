@@ -3,7 +3,6 @@ package com.suivi.service.facade;
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Departement;

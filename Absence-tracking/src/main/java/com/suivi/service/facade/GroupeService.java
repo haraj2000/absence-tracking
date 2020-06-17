@@ -8,7 +8,7 @@ import com.suivi.bean.Semestre;
 
 public interface GroupeService {
 	
-	public Groupe findByLibelle(String libelle);
+	public List<Groupe> findByLibelle(String libelle);
 	public Groupe findByReference(String reference);
 	public List<Groupe> findBySemestre(Semestre semestre);
 	public int deleteByReference(String reference);
