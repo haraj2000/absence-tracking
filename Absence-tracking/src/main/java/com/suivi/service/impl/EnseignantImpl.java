@@ -86,7 +86,6 @@ public class EnseignantImpl implements EnseignantService{
 			enseignantFounded.setLastName(enseignant.getLastName());
 			enseignantFounded.setBirthDay(enseignant.getBirthDay());
 			enseignantFounded.setLastName(enseignant.getLastName());
-			enseignantFounded.setPassword(bcryptEncoder.encode(enseignant.getPassword()));
 			enseignantFounded.setRole(enseignant.getRole());
 			enseignantFounded.setSex(enseignant.getSex());
 			enseignantFounded.setVille(enseignant.getVille());

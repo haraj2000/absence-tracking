@@ -25,21 +25,28 @@ public class JwtUserDetailsService  implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		String mail = null;
 		String password = null;
+		System.out.println("hana ji hna yallah hmri lia wjhi");
 		Enseignant enseignant = enseignantDao.findByMail(username);
+		System.out.println(enseignant);
 		Etudiant etudiant = etudiantDao.findByMail(username);
+		System.out.println(etudiant);
+		System.out.println("yallah hana 3awtani ach ban lik");
 		if (enseignant != null) {
+			System.out.println("wayli sd9t enseignant");
 			mail = enseignant.getMail();
 			password = enseignant.getPassword();
 		}
 		if (etudiant != null) {
+			System.out.println("laaah ana etudiant ");
 			mail = etudiant.getMail();
 			password = etudiant.getPassword();
 		}
 		if (mail == null) {
 			throw new UsernameNotFoundException("User not found with username: " + username);
 		}
-		return new org.springframework.security.core.userdetails.User(mail,password,
-				new ArrayList<>());
+		System.out.println("mail: " + mail);
+		System.out.println("password: "+ password);
+		return new org.springframework.security.core.userdetails.User(mail,password,new ArrayList<>());
 	}
 
 	
