@@ -36,8 +36,8 @@ public class SectorImpl implements SectorService{
 
 	@Override
 	public int save(Sector sector) {
-		Sector filièreFounded = findByLibelle(sector.getLibelle());
-		if(filièreFounded == null) {
+		Sector filiereFounded = findByLibelle(sector.getLibelle());
+		if(filiereFounded == null) {
 			sectorDao.save(sector);
 			return 1;
 		}
@@ -46,10 +46,10 @@ public class SectorImpl implements SectorService{
 
 	@Override
 	public int update(Sector sector) {
-		Sector filièreFounded = findByLibelle(sector.getLibelle());
-		if(filièreFounded != null) {
-			filièreFounded.setCycle(sector.getCycle());
-			sectorDao.save(filièreFounded);
+		Sector filiereFounded = findByLibelle(sector.getLibelle());
+		if(filiereFounded != null) {
+			filiereFounded.setCycle(sector.getCycle());
+			sectorDao.save(filiereFounded);
 			return 1;
 		}
 		else return -1;

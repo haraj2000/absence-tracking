@@ -172,4 +172,15 @@ public class EnseignantImpl implements EnseignantService{
 			image.setImage(decompressBytes(image.getImage()));
 			return image;
 		}
+
+		@Override
+		public Enseignant password(Enseignant enseignant) {
+			Enseignant enseignantFounded = findByNumeroSOM(enseignant.getNumeroSOM());
+			if(enseignantFounded != null) {
+				enseignantFounded.setPassword(bcryptEncoder.encode(enseignant.getPassword()));
+				enseignantDao.save(enseignantFounded);
+				return enseignantFounded;
+			}
+			else return null;
+		}
 }

@@ -101,5 +101,10 @@ public class EnseignantRest {
 	public Enseignant getImage(@PathVariable String cin) throws IOException {
 		return enseignantService.getImage(cin);
 	}
+	@ApiOperation("Modifier le mot de passe d'un enseignant")
+	@PostMapping("/password")
+	public Enseignant password(@RequestBody Enseignant enseignant) {
+		return enseignantService.password(enseignant);
+	}
 
 }

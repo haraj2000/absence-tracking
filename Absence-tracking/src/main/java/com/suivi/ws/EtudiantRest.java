@@ -128,5 +128,10 @@ public class EtudiantRest {
 	public List<Etudiant> findByGroupeSemestre(@RequestBody Semestre semestre) {
 		return etudiantService.findByGroupeSemestre(semestre);
 	}
+	@ApiOperation("Modifier le mot de passe d'un étudiant")
+	@PostMapping("/password")
+	public Etudiant password(@RequestBody Etudiant etudiant) {
+		return etudiantService.password(etudiant);
+	}
 
 }

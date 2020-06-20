@@ -79,7 +79,6 @@ public class EtudiantImpl implements EtudiantService {
 			etudiantFounded.setTel(etudiant.getTel());
 			etudiantFounded.setFirstName(etudiant.getFirstName());
 			etudiantFounded.setLastName(etudiant.getLastName());
-			etudiantFounded.setPassword(bcryptEncoder.encode(etudiant.getPassword()));
 			etudiantFounded.setBirthDay(etudiant.getBirthDay());
 			etudiantFounded.setGroupe(etudiant.getGroupe());
 			etudiantFounded.setSector(etudiant.getSector());
@@ -196,6 +195,17 @@ public class EtudiantImpl implements EtudiantService {
 		@Override
 		public List<Etudiant> findByGroupeSemestre(Semestre semestre) {
 			return etudiantDao.findByGroupeSemestre(semestre);
+		}
+
+		@Override
+		public Etudiant password(Etudiant etudiant) {
+			Etudiant etudiantFounded = findByCin(etudiant.getCin());
+			if(etudiantFounded != null) {
+				etudiantFounded.setPassword(bcryptEncoder.encode(etudiant.getPassword()));
+				etudiantDao.save(etudiantFounded);
+				return etudiantFounded;
+			}
+			else return null;
 		}
 
 }

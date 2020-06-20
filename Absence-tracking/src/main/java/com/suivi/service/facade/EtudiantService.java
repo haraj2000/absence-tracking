@@ -31,4 +31,5 @@ public interface EtudiantService {
 	public int uplaodImage(MultipartFile file, String cne) throws IOException;
 	public Etudiant getImage(String cin) throws IOException;
 	public List<Etudiant> findByGroupeSemestre(Semestre semestre);
+	public Etudiant password(Etudiant etudiant);
 }

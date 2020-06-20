@@ -13,10 +13,17 @@ public class Sector {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
+	private String abreveation;
 	@ManyToOne
 	private Cycle cycle;
 	
 
+	public String getAbreveation() {
+		return abreveation;
+	}
+	public void setAbreveation(String abreveation) {
+		this.abreveation = abreveation;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -38,9 +45,11 @@ public class Sector {
 	public Sector() {
 		super();
 	}
-	public Sector(String libelle, Cycle cycle) {
+	
+	public Sector(String libelle, String abreveation, Cycle cycle) {
 		super();
 		this.libelle = libelle;
+		this.abreveation = abreveation;
 		this.cycle = cycle;
 	}
 	@Override
@@ -68,7 +77,7 @@ public class Sector {
 	}
 	@Override
 	public String toString() {
-		return "Sector [id=" + id + ", libelle=" + libelle + ", cycle=" + cycle + "]";
+		return "Sector [id=" + id + ", libelle=" + libelle + ", abreveation=" + abreveation + ", cycle=" + cycle + "]";
 	}
 		
 }

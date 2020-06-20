@@ -24,4 +24,5 @@ public interface EnseignantService {
 	public List<Enseignant> findAll();
 	public int uplaodImage(MultipartFile file, int numeroSOM) throws IOException;
 	public Enseignant getImage(String cin) throws IOException;
+	public Enseignant password(	Enseignant enseignant);
 }
