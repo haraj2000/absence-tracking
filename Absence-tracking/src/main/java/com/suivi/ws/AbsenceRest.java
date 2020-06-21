@@ -1,5 +1,6 @@
 package com.suivi.ws;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Etudiant;
@@ -85,6 +88,16 @@ public class AbsenceRest {
 	@PostMapping("/sessionEtudiant")
 	public Absence findBySessionAndEtudiant(@RequestBody SessionEtudiant sessionEtudiant) {
 		return absenceService.findBySessionAndEtudiant(sessionEtudiant.getSession(),sessionEtudiant.getEtudiant());
+	}
+	@ApiOperation("Enregister le justificatif d'une absence")
+	@PostMapping("/upload/{reference}")
+	public int uplaodImage(@RequestParam("imageFile") MultipartFile file,@PathVariable String reference) throws IOException {
+		return absenceService.uplaodImage(file, reference);
+	}
+	@ApiOperation("Rechercher le justificatif d'une absence")
+	@GetMapping("/get/{reference}")
+	public Absence getImage(@PathVariable String reference) throws IOException {
+		return absenceService.getImage(reference);
 	}
 	
 	

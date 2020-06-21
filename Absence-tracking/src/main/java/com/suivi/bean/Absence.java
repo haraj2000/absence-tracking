@@ -1,6 +1,7 @@
 package com.suivi.bean;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,16 @@ public class Absence {
 	private Etudiant etudiant;
 	@ManyToOne
 	private Session session;
+	@Column(name = "picByte", length = 400000000)
+	private byte[] justificatif;
+	
+	
+	public byte[] getJustificatif() {
+		return justificatif;
+	}
+	public void setJustificatif(byte[] justificatif) {
+		this.justificatif = justificatif;
+	}
 	public Long getId() {
 		return id;
 	}

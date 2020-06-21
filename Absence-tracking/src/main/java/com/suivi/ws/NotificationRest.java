@@ -1,5 +1,6 @@
 package com.suivi.ws;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Enseignant;
@@ -69,6 +72,16 @@ public class NotificationRest {
 	@PostMapping("/etudiant")
 	public List<Notification> findByAbsenceEtudiant(@RequestBody Etudiant etudiant) {
 		return notificationService.findByAbsenceEtudiant(etudiant);
+	}
+	@ApiOperation("Enregister la photo d'une notification")
+	@PostMapping("/upload/{absence}")
+	public int uplaodImage(@RequestParam("imageFile") MultipartFile file,@PathVariable String absence) throws IOException {
+		return notificationService.uplaodImage(file, absence);
+	}
+	@ApiOperation("Rechercher la photo d'une notification")
+	@PostMapping("/get/absence")
+	public Notification getImage(@RequestBody Absence absence) throws IOException {
+		return notificationService.getImage(absence);
 	}
 	
 	

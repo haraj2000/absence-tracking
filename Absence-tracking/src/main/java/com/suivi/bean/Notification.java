@@ -1,5 +1,6 @@
 package com.suivi.bean;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,17 @@ public class Notification {
 	private Enseignant enseignant;
 	private String state;
 	private String contenu;
+	@Column(name = "picByte", length = 400000000)
+	private byte[] photo;
+	
+	
+	
+	public byte[] getPhoto() {
+		return photo;
+	}
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
 	public Long getId() {
 		return id;
 	}

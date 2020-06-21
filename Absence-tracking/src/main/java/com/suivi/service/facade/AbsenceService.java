@@ -1,6 +1,9 @@
 package com.suivi.service.facade;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Absence;
 import com.suivi.bean.Etudiant;
@@ -19,4 +22,6 @@ public interface AbsenceService {
 	public List<Absence> findBySessionTypeSessionModule(Module module);
 	public List<Absence> findBySessionTypeSession(TypeSession typeSession); 
 	public Absence findBySessionAndEtudiant(Session session, Etudiant etudiant);
+	public int uplaodImage(MultipartFile file, String reference) throws IOException;
+	public Absence getImage(String reference) throws IOException;
 }
