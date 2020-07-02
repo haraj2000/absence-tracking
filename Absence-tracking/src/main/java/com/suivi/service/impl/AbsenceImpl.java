@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.suivi.bean.Absence;
-import com.suivi.bean.Enseignant;
 import com.suivi.bean.Etudiant;
 import com.suivi.bean.Module;
 import com.suivi.bean.Session;
@@ -42,13 +41,14 @@ public class AbsenceImpl implements AbsenceService{
 
 	@Override
 	public Absence save(Absence absence) {
-		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant le "+absence.getSession().getLibelle();
+		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant "+absence.getSession().getLibelle();
 		absence.setRef(ref);
 		Absence absenceFounded = findByRef(absence.getRef());
 		String reference =  absence.getSession().getTypeSession().getLibelle()+" "+ absence.getSession().getTypeSession().getSubject().getLibelle() + absence.getSession().getDateStart().toString();
 		Session seance = sessionService.findByReference(reference);
 		if(absenceFounded == null) {
 			absence.setSession(seance);
+			System.out.println("haha");
 			System.out.println(absence);
 			absenceDao.save(absence);
 			return absence;
@@ -58,14 +58,16 @@ public class AbsenceImpl implements AbsenceService{
 
 	@Override
 	public int update(Absence absence) {
-		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant le "+absence.getSession().getLibelle();
+		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant "+absence.getSession().getLibelle();
 		absence.setRef(ref);
 		Absence absenceFounded = findByRef(absence.getRef());
 		Etudiant etudiant = etudiantService.findByCin(absence.getEtudiant().getCin());
 		if(absenceFounded!= null) {
+			System.out.println("l9ity");
 			if (absence.isAbsent() != absenceFounded.isAbsent()) {
+				System.out.println("ha gulia bdlti");
 				absenceFounded.setAbsent(absence.isAbsent());	
-				if (absenceFounded.isAbsent() == true && absenceFounded.getJustification() == null) {
+				if (absenceFounded.isAbsent() && absenceFounded.getJustification() == null) {
 					System.out.println("hani hna");
 					etudiant.setNbrAbsence(etudiant.getNbrAbsence() + 1);
 					}

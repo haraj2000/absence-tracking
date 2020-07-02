@@ -36,7 +36,7 @@ public class SessionImpl implements SessionService {
 	public Session save(Session session) {
 		Calendar calendar=Calendar.getInstance();
 		calendar.setTime(session.getDateStart());
-		calendar.set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY) + session.getPeriode());
+		calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE) + session.getPeriode());
 		session.setDateStop(calendar.getTime());
 		System.out.println(session.getDateStart());
 		System.out.println("hana binathum");
@@ -61,9 +61,10 @@ public class SessionImpl implements SessionService {
 		if (session.getDateStop() == null) {
 		Calendar calendar=Calendar.getInstance();
 		calendar.setTime(session.getDateStart());
-		calendar.set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY) + session.getPeriode());
+		calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE) + session.getPeriode());
 		session.setDateStop(calendar.getTime());
 		}
+		session.getDateStop().setTime(session.getDateStart().getTime() + session.getPeriode()*60000);
 		String libelle = session.getTypeSession().getLibelle()+" "+ session.getTypeSession().getSubject().getLibelle();
 		String reference = libelle + session.getDateStart().toString();
 		Session séanceFounded = findByReference(session.getReference());
@@ -72,6 +73,7 @@ public class SessionImpl implements SessionService {
 			séanceFounded.setLibelle(session.getLibelle());
 			séanceFounded.setDateStart(session.getDateStart());
 			séanceFounded.setDateStop(session.getDateStop());
+			séanceFounded.setPeriode(session.getPeriode());
 			sessionDao.save(séanceFounded);
 			return séanceFounded;
 		}
