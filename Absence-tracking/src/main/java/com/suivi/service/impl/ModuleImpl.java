@@ -29,13 +29,13 @@ public class ModuleImpl implements ModuleService{
 	}
 
 	@Override
-	public int save(Module module) {
+	public Module save(Module module) {
 		Module moduleFounded = findByLibelle(module.getLibelle());
 		if(moduleFounded == null) {
 			moduleDao.save(module);
-			return 1;
+			return module;
 		}
-		else return -1;
+		else return null;
 	}
 
 	@Override

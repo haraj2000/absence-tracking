@@ -11,6 +11,6 @@ public interface ModuleService {
 	public List<Module> findByAbreveation(String abreveation);
 	public List<Module> findBySemestre(Semestre semestre);
 	public int deleteByLibelle(String libelle);
-	public int save(Module module);
+	public Module save(Module module);
 	public List<Module> findAll();
 }

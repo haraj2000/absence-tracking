@@ -40,7 +40,7 @@ public class ModuleRest {
 	}
 	@ApiOperation("Enregister un module")
 	@PostMapping("/")
-	public int save(@RequestBody Module module) {
+	public Module save(@RequestBody Module module) {
 		return moduleService.save(module);
 	}
 	@ApiOperation("Rechercher tous les modules enregistrés")
