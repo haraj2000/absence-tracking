@@ -41,10 +41,10 @@ public class AbsenceImpl implements AbsenceService{
 
 	@Override
 	public Absence save(Absence absence) {
-		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant "+absence.getSession().getLibelle();
+		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant "+absence.getSession().getReference();
 		absence.setRef(ref);
 		Absence absenceFounded = findByRef(absence.getRef());
-		String reference =  absence.getSession().getTypeSession().getLibelle()+" "+ absence.getSession().getTypeSession().getSubject().getLibelle() + absence.getSession().getDateStart().toString();
+		String reference =  absence.getSession().getTypeSession().getReference()+" "+absence.getSession().getDateStart().toString();
 		Session seance = sessionService.findByReference(reference);
 		if(absenceFounded == null) {
 			absence.setSession(seance);
@@ -58,7 +58,7 @@ public class AbsenceImpl implements AbsenceService{
 
 	@Override
 	public int update(Absence absence) {
-		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant "+absence.getSession().getLibelle();
+		String ref = absence.getEtudiant().getFirstName() +" "+ absence.getEtudiant().getLastName() + " pendant "+absence.getSession().getReference();
 		absence.setRef(ref);
 		Absence absenceFounded = findByRef(absence.getRef());
 		Etudiant etudiant = etudiantService.findByCin(absence.getEtudiant().getCin());
