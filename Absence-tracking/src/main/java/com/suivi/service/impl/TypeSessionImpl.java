@@ -25,7 +25,7 @@ public class TypeSessionImpl implements TypeSessionService{
 		return typeSessionDao.findByLibelle(libelle);
 	}
 
-	@Override
+	@Override 
 	@Transactional
 	public int deleteByReference(String reference) {
 		return typeSessionDao.deleteByReference(reference);
